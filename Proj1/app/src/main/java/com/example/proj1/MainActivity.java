@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Toast.makeText(MainActivity, "", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "left icon clicked", Toast.LENGTH_SHORT).show();
 
             }
         });
