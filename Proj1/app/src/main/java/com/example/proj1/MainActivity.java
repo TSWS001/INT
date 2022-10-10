@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
         leftIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startactivity()
+
                 Toast.makeText(MainActivity, "", Toast.LENGTH_SHORT).show();
 
             }

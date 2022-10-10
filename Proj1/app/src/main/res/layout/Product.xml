@@ -2,12 +2,15 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@android:color/holo_red_light">
+    android:layout_height="wrap_content">
     <RelativeLayout
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="16sp">
+        android:padding="16sp"
+        android:id="@+id/toolbar"
+        android:background="@android:color/holo_red_light">
+
 
         <ImageView
             android:id="@id/left_icon"
@@ -31,9 +34,11 @@
             android:layout_height="wrap_content"
             android:id="@+id/right_icon"
             android:src="@drawable/ic_baseline_menu_24"
-            android:layout_alignParentEnd="true"
-            >
+            android:layout_alignParentEnd="true">
         </ImageView>
     </RelativeLayout>
-
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toStartOf="@+id/toolbar"></ListView>
 </RelativeLayout>
