@@ -27,7 +27,7 @@
             android:layout_toEndOf="@+id/left_icon"
             android:text="Mis Productos"
             android:textColor="@android:color/white"
-            android:textSize="24sp"
+            android:textSize="28sp"
             android:textStyle="bold"></TextView>
         <TextView
             android:layout_width="wrap_content"
@@ -36,7 +36,7 @@
             android:layout_alignLeft="@id/toolbar_title"
             android:id="@+id/product_quantity"
             android:textColor="@android:color/white"
-            android:textSize="12sp"
+            android:textSize="18sp"
             android:text="0 products available"></TextView>
         <ImageView
             android:layout_width="wrap_content"
@@ -48,12 +48,4 @@
 
 
     </RelativeLayout>
-    <view class="androidx.appcompat.app.AlertController$RecycleListView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/recycleview"
-        android:layout_below="@id/toolbar"
-        >
-
-    </view>
 </RelativeLayout>
