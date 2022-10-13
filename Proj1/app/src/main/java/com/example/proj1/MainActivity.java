@@ -9,14 +9,24 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.sql.Connection;
+
 public class MainActivity extends AppCompatActivity {
+    Connection connection;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.toolbar);
 
-        ImageView leftIcon = findViewById(R.id.left_icon);
+
+
+
+
+    }
+}
+
+/*ImageView leftIcon = findViewById(R.id.left_icon);
         ImageView rightIcon = findViewById(R.id.right_icon);
         TextView title = findViewById(R.id.toolbar_title);
 
@@ -24,9 +34,4 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Toast.makeText(this, "left icon clicked", Toast.LENGTH_SHORT).show();
-
-            }
-        });
-    }
-}
+                Toast.makeText(this, "left icon clicked", Toast.LENGTH_SHORT).show();*/
