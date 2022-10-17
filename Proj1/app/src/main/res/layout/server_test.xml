@@ -11,7 +11,7 @@
         android:layout_height="62dp"
         android:layout_marginTop="24dp"
         android:layout_marginBottom="233dp"
-        android:onClick="connectionclass"
+        android:onClick="GetTextFromSQL"
         android:text="Button"
         app:layout_constraintBottom_toTopOf="@+id/text"
         app:layout_constraintEnd_toEndOf="parent"

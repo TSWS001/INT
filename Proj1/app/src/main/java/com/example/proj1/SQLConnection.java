@@ -13,7 +13,7 @@ public class SQLConnection {
     String uname, pass, ip, port, database;
 
     public Connection connectionclass(){
-        ip="127.0.0.1"; //ip="10.192.241.71";
+        ip="localhost"; //ip="192.168.1.131";
 
         database="sqldom";
         uname="root";

@@ -14,6 +14,7 @@
 
         <ImageView
             android:id="@id/left_icon"
+            android:onClick="Pasardeactivity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
