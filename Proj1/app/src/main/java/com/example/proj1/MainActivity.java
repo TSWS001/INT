@@ -12,7 +12,6 @@ import android.widget.Toast;
 import java.sql.Connection;
 
 public class MainActivity extends AppCompatActivity {
-    Connection connection;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

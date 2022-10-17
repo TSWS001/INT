@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import org.w3c.dom.Text;
@@ -23,33 +24,39 @@ public class cards extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.card_view);
+        setContentView(R.layout.server_test);
 
-        TextView boton_aux = (TextView) findViewById(R.id.text_showquantity);
+        Button boton1 = (Button) findViewById(R.id.button1);
 
-        boton_aux.setOnClickListener(new View.OnClickListener() {
+        boton1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                TextView name = (TextView) findViewById(R.id.text_productname);
+                TextView word1 = (TextView) findViewById(R.id.text);
+                TextView word2 = (TextView) findViewById(R.id.text2);
+
                 SQLConnection c = new SQLConnection();
-                connection = c.connectionclass();
+                connection = c.connectionclass(); //Empieza la ejecucion de la connexion
                 if (c != null) {
 
                     try {
-                        String sqlstatement = "Select * from customers";
+                        // Creacion del statement que se ejecutara
                         Statement smt = connection.createStatement();
-                        ResultSet set = smt.executeQuery(sqlstatement);
-                        while (set.next()) {
-                            name.setText(set.getString(2));
+                        // Ejecucion del statement
+                        ResultSet set = smt.executeQuery("Select * from customers where customer_id = '1'");
+                        while (set.next()) { //Copiar los datos de sql a los Textview del layout
+                            word1.setText(set.getString(2));
+                            word2.setText(set.getString(3));
                         }
                         connection.close();
                     } catch (Exception e) {
                         Log.e("Error:", e.getMessage());
                     }
                 }
+                else{
+                    ConnectionResult="";
+                }
             }
         });
-
 
     }
 

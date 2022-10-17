@@ -1,5 +1,6 @@
 package com.example.proj1;
 
+import android.annotation.SuppressLint;
 import android.os.StrictMode;
 import android.util.Log;
 
@@ -8,10 +9,12 @@ import java.sql.DriverManager;
 
 public class SQLConnection {
     Connection con;
+    @SuppressLint("NewApi")
     String uname, pass, ip, port, database;
 
     public Connection connectionclass(){
-        ip="127.0.0.1";
+        ip="127.0.0.1"; //ip="10.192.241.71";
+
         database="sqldom";
         uname="root";
         pass="123456";
@@ -19,16 +22,15 @@ public class SQLConnection {
 
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
+
         con=null;
-        String ConnectionURL= null;
 
         try{
             Class.forName("net.sourceforge.jtds.jdbc.Driver");
-            ConnectionURL ="jdbc:jtds:sqlserver://"+ip+":"+port+";"+"databasename="+database+";user="+uname+";password"+pass+";";
-            con= DriverManager.getConnection(ConnectionURL);
+            con= DriverManager.getConnection("jdbc:jtds:sqlserver://"+ip+":"+port+";"+"databasename="+database+";user="+uname+";password"+pass+";");
         }
         catch (Exception ex){
-            Log.e("Error", ex.getMessage());
+            Log.e("Error1:", ex.getMessage());
         }
         return con;
     }
