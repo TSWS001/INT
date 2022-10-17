@@ -1,19 +1,47 @@
 package com.example.proj1;
+import static java.lang.String.valueOf;
+
+import java.util.List;
 import java.util.Scanner;
+import java.util.Calendar;
 
 public class Product { //connected with database Products
     public String barcode; //used as product_id (it has to be in database)
     public String name; //(it has to be in database)
-    public String caducity; // dd/mm/yyyy ? la clase de date se llama SimpleDateFormat. hay que implementar la funcion de leer el dia mes y anyo
+    public Calendar caducity; // dd/mm/yyyy
     public int quantity; //number of products of the same type
     public int total_weight; //weight of the product at 100% (it has to be in database)
     public int remain_product; //remaining percent of product based on weight
     public int base_area; //area to organize products in the scales matrix (it has to be in database)
 
-    public void setCaducity(){//detect the date we write on the app and save it in Product.caducity
+    public boolean setCaducity(){//detect the date we write on the app and save it in Product.caducity
         Scanner scanner = new Scanner(System.in);
-        this.caducity=scanner.nextLine();//in MainActivity, check if the format is correct and the date is
-    }; //previous than current date. We shall do a function so we can use the same to check Customer.birthdate
+        String cad=scanner.nextLine();
+        if (cad.contains("/")) {
+            String[] cad_strs=cad.split("/");
+            List<int> cad_ints = new ArrayList<int>();
+            if (cad_strs.length!=3) {
+                for (int i = 0; i < cad_strs.length; i++) {
+                    if (isNumeric(cad_strs[i])){
+                    cad_ints.add(Integer.parseInt(cad_strs[i]));
+                }else{
+                        return (false);
+                    }
+            }
+        } else {
+            return false;
+        }
+
+        this.caducity.set(Calendar.YEAR,);
+        this.caducity.set(Calendar.MONTH,);
+        this.caducity.set(Calendar.DAY_OF_MONTH,);//in MainActivity, check if the format is correct and the date is
+    }
+
+//    private static boolean isNumeric(String str){ //esto en el main o en el fichero de funciones
+//        return str != null && str.matches("[0-9.]+");
+//    }
+
+    ; //previous than current date. We shall do a function so we can use the same to check Customer.birthdate
     public void setBarcode(String code){
         this.barcode=code;
     }
