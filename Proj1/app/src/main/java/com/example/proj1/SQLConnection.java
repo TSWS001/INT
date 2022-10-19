@@ -26,8 +26,9 @@ public class SQLConnection {
         con=null;
 
         try{
-            Class.forName("net.sourceforge.jtds.jdbc.Driver");
-            con= DriverManager.getConnection("jdbc:jtds:sqlserver://"+ip+":"+port+";"+"databasename="+database+";user="+uname+";password"+pass+";");
+            Class.forName("com.mysql.jdbc.Driver");
+            String con1 ="jdbc:jtds:sqlserver://"+ip+":"+port+";"+"databasename="+database+";user="+uname+";password"+pass+";";
+            con= DriverManager.getConnection("jdbc:mysql://localhost:3306/"+database,uname,pass);
         }
         catch (Exception ex){
             Log.e("Error1:", ex.getMessage());

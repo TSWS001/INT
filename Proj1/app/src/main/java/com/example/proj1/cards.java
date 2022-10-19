@@ -1,28 +1,36 @@
 package com.example.proj1;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
-
-import org.w3c.dom.Text;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 public class cards extends AppCompatActivity {
 
+    ArrayList<Product> productsModels = new ArrayList<>();
     Connection connection;
     String ConnectionResult="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.server_test);
+        setContentView(R.layout.toolbar);
+
+        RecyclerView recyclerView = findViewById(R.id.mRecyclerView);
+        //        SetUpProducts();
+        RecyclerViewAdapter adapter = new RecyclerViewAdapter(this,productsModels);
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
     }
 
     public void GetTextFromSQL(View v) {
@@ -51,6 +59,23 @@ public class cards extends AppCompatActivity {
             ConnectionResult="Check Connection c";
         }
     }
+
+
+
+//    public void SetUpProducts {
+//
+//    String productnames[] = getResources().getStringArray();
+//    String productcaducity[] = getResources().getStringArray();
+//    // String quantity[]
+//
+//    int i;
+//    for(i=0; i<productsModels.length; i++){
+//        //create object and add all the string into it
+//      productsModels.add(new Product(productnames[i],productcaducity[i],...));//falta por completar los atributos de la clase Product
+//    }
+//
+//    }
+
 }
 
 

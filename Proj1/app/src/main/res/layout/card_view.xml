@@ -52,7 +52,7 @@
                 tools:layout_editor_absoluteX="56dp" />
 
             <TextView
-                android:id="@+id/text_showquantity"
+                android:id="@+id/text_quantity"
                 android:layout_width="54dp"
                 android:layout_height="48dp"
                 android:layout_marginEnd="32dp"
