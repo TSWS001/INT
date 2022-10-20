@@ -1,4 +1,4 @@
-package com.example.proj1;
+package com.example.proj1.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -8,6 +8,11 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
+
+import com.example.proj1.Classes.Product;
+import com.example.proj1.R;
+import com.example.proj1.RecyclerViewAdapter;
+import com.example.proj1.Server.SQLConnection;
 
 import java.sql.Connection;
 import java.sql.ResultSet;

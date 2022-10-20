@@ -6,6 +6,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.proj1.Activities.cards;
+import com.example.proj1.Classes.Product;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -21,6 +24,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
         this.context = context;
         this.productsModels = productsModels;
+    }
+
+    public RecyclerViewAdapter(cards context, ArrayList<Product> productsModels) {
     }
 
     @NonNull

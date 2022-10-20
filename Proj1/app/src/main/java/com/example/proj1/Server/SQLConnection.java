@@ -1,4 +1,4 @@
-package com.example.proj1;
+package com.example.proj1.Server;
 
 import android.annotation.SuppressLint;
 import android.os.StrictMode;
