@@ -8,4 +8,7 @@ public class Customer { //connects with database Customers
     public String address; //to search near markets, optional
     public String birth_date; //for some offers from markets, recipes or diet, optional
 
+    public Customer() {
+    }
 }
+
