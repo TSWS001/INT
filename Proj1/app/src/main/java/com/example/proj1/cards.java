@@ -23,7 +23,7 @@ public class cards extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.toolbar);
+        setContentView(R.layout.productlist);
 
         RecyclerView recyclerView = findViewById(R.id.mRecyclerView);
         //        SetUpProducts();
