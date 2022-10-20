@@ -7,10 +7,20 @@
     app:cardCornerRadius="12dp"
     android:layout_margin="16dp">
     <LinearLayout
+        android:id="@+id/entrylabels"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
         android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Datos del Usuario:"
+            android:textSize="30sp"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:textStyle="bold"></TextView>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -21,7 +31,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Nombre:"
+                android:text="Nombre*:"
                 android:textSize="20sp"
                 android:textColor="@color/black"
                 android:textStyle="bold"></TextView>
@@ -42,7 +52,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Apellido:"
+                android:text="Apellido*:"
                 android:textSize="20sp"
                 android:textColor="@color/black"
                 android:textStyle="bold"></TextView>
@@ -52,8 +62,30 @@
                 android:id="@+id/textfirstname"
                 android:textSize="20sp"
                 android:textColor="@color/black"
-                android:textStyle="bold"></TextView>
+                ></TextView>
             ></LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="3dp"
+            android:layout_gravity="center_vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Email*:"
+                android:textSize="20sp"
+                android:textColor="@color/black"
+                android:textStyle="bold"></TextView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/text_email"
+                android:textSize="20sp"
+                android:textColor="@color/black"></TextView>
+            ></LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -71,11 +103,74 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/textbirth"
+                android:text="dd/mm/aaaa"
+                android:layout_marginStart="10dp"
+                android:textSize="20sp"
+                android:textColor="@color/grey"
+                ></TextView>
+            ></LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="3dp"
+            android:layout_gravity="center_vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Telefono:"
                 android:textSize="20sp"
                 android:textColor="@color/black"
                 android:textStyle="bold"></TextView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/text_phone"
+                android:textSize="20sp"
+                android:layout_marginStart="10dp"
+                android:text="000000000"
+                android:textColor="@color/grey"
+                ></TextView>
             ></LinearLayout>
 
-</LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="3dp"
+            android:layout_gravity="center_vertical">
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Dirección:"
+                android:textSize="20sp"
+                android:textColor="@color/black"
+                android:textStyle="bold"></TextView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/text_direccion"
+                android:textSize="20sp"
+                android:text="C/ xxxxxx, 00"
+                android:layout_marginStart="10dp"
+                android:textColor="@color/grey"
+                ></TextView>
+
+</LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center">
+            <Button
+            android:id="@+id/btn1"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_below="@id/text_direccion"
+            android:layout_marginTop="5dp"
+            android:text="aceptar"></Button>
+
+        </LinearLayout>
+
+        ></LinearLayout>
 </androidx.cardview.widget.CardView>
