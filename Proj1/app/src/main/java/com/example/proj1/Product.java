@@ -18,18 +18,19 @@ public class Product { //connected with database Products
         Scanner scanner = new Scanner(System.in);
         String cad=scanner.nextLine();
         if (cad.contains("/")) {
-            String[] cad_strs=cad.split("/");
+            String[] cad_strs = cad.split("/");
             List<int> cad_ints = new ArrayList<int>();
-            if (cad_strs.length!=3) {
+            if (cad_strs.length != 3) {
                 for (int i = 0; i < cad_strs.length; i++) {
-                    if (isNumeric(cad_strs[i])){
-                    cad_ints.add(Integer.parseInt(cad_strs[i]));
-                }else{
+                    if (isNumeric(cad_strs[i])) {
+                        cad_ints.add(Integer.parseInt(cad_strs[i]));
+                    } else {
                         return (false);
                     }
+                }
+            } else {
+                return false;
             }
-        } else {
-            return false;
         }
 
         this.caducity.set(Calendar.YEAR,);
@@ -68,7 +69,7 @@ public class Product { //connected with database Products
         return name;
     }
 
-    public String getCaducity() {//to be able to show the caducity date
+    public Calendar getCaducity() {//to be able to show the caducity date
         return caducity;
     }
 
@@ -80,4 +81,5 @@ public class Product { //connected with database Products
         return remain_product;
     }
 }
+
 
