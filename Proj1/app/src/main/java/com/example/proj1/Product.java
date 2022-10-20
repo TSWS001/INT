@@ -1,6 +1,7 @@
 package com.example.proj1;
 import static java.lang.String.valueOf;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import java.util.Calendar;
@@ -14,12 +15,12 @@ public class Product { //connected with database Products
     public int remain_product; //remaining percent of product based on weight
     public int base_area; //area to organize products in the scales matrix (it has to be in database)
 
-    public boolean setCaducity(){//detect the date we write on the app and save it in Product.caducity
+    public boolean setCaducity(/*int day,int month,int year*/){//detect the date we write on the app and save it in Product.caducity
         Scanner scanner = new Scanner(System.in);
         String cad=scanner.nextLine();
+        List<Integer> cad_ints = new ArrayList<Integer>();
         if (cad.contains("/")) {
             String[] cad_strs = cad.split("/");
-            List<int> cad_ints = new ArrayList<int>();
             if (cad_strs.length != 3) {
                 for (int i = 0; i < cad_strs.length; i++) {
                     if (isNumeric(cad_strs[i])) {
@@ -31,14 +32,21 @@ public class Product { //connected with database Products
             } else {
                 return false;
             }
+        }else {
+            return false;
         }
-
-        this.caducity.set(Calendar.YEAR,);
-        this.caducity.set(Calendar.MONTH,);
-        this.caducity.set(Calendar.DAY_OF_MONTH,);//in MainActivity, check if the format is correct and the date is
+        if (isValidCadDate()) {
+            this.caducity.set(Calendar.YEAR, );
+            this.caducity.set(Calendar.MONTH, );
+            this.caducity.set(Calendar.DAY_OF_MONTH, );
+            return true;
+        } else {
+            return false;
+        }
     }
 
-//    private static boolean isNumeric(String str){ //esto en el main o en el fichero de funciones
+
+    //    private static boolean isNumeric(String str){ //esto en el main o en el fichero de funciones
 //        return str != null && str.matches("[0-9.]+");
 //    }
 
@@ -69,8 +77,8 @@ public class Product { //connected with database Products
         return name;
     }
 
-    public Calendar getCaducity() {//to be able to show the caducity date
-        return caducity;
+    public String getCaducity() {//to be able to show the caducity date
+        return caducity.toString();//solo sacar dd/mm/aaaa
     }
 
     public int getQuantity() {//to be able to show the quantity of the product
@@ -80,6 +88,16 @@ public class Product { //connected with database Products
     public int getRemain_product() {//to be able to show the percentage remaining
         return remain_product;
     }
+    private boolean isNumeric(String text){
+        try{
+            Integer.parseInt(text);
+            return true;
+        } catch (NumberFormatException nfe){
+            return false;
+        }
+    }
+    private boolean isValidCadDate(int d,int m,int y) {
+        Calendar act_date;
+        if (y>act_date.getCalendarType())
+    }
 }
-
-
