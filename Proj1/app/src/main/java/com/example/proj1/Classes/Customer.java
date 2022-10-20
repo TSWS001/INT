@@ -3,14 +3,14 @@ package com.example.proj1.Classes;
 public class Customer { //connects with database Customers
     public String email;//mandatory
     public String first_name; // mandatory, used to refer to customer inside the app
-    public String second_name;//mandatory
+    public String last_name;//mandatory
     public String phone=null; //send offers, optional
     public String address=null; //to search near markets, optional
     public String birth_date=null; //for some offers from markets, recipes or diet, optional
 
     public Customer(String first_name, String email, String second_name){//constructor for mandatory attributes
         this.first_name=first_name;
-        this.second_name=second_name;
+        this.last_name=second_name;
         this.email=email;
     }
 
@@ -35,7 +35,7 @@ public class Customer { //connects with database Customers
     }
 
     public String getSecond_name() {
-        return second_name;
+        return last_name;
     }
 
     public String getPhone() {
