@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
         ImageView leftIcon = findViewById(R.id.left_icon);
         ImageView rightIcon = findViewById(R.id.right_icon);
     }
-        public void Pasardeactivity(View v) {
+        public void NextActivity(View v) {
             Intent i = new Intent(this, cards.class);
             Toast.makeText(this, "left icon clicked", Toast.LENGTH_SHORT).show();
             startActivity(i);
