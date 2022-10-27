@@ -15,7 +15,7 @@ public class Product { //connected with database Products
     public int remain_product; //remaining percent of product based on weight
     public int base_area; //area to organize products in the scales matrix (it has to be in database)
 
-    public boolean setCaducity(/*int day,int month,int year*/){//detect the date we write on the app and save it in Product.caducity
+    public boolean setCaducity(int day,int month,int year){//detect the date we write on the app and save it in Product.caducity
         Scanner scanner = new Scanner(System.in);
         String cad=scanner.nextLine();
         List<Integer> cad_ints = new ArrayList<Integer>();
@@ -35,14 +35,13 @@ public class Product { //connected with database Products
         }else {
             return false;
         }
-        if (isValidCadDate()) {
-            this.caducity.set(Calendar.YEAR, );
-            this.caducity.set(Calendar.MONTH, );
-            this.caducity.set(Calendar.DAY_OF_MONTH, );
-            return true;
-        } else {
-            return false;
+        Calendar act_date = null;
+        if (isValidCadDate(day, month, year, act_date)) {
+            this.caducity.set(Calendar.YEAR, year);
+            this.caducity.set(Calendar.MONTH, month);
+            this.caducity.set(Calendar.DAY_OF_MONTH, day);
         }
+        return isValidCadDate(day, month, year, act_date);
     }
 
 
@@ -99,20 +98,19 @@ public class Product { //connected with database Products
     private boolean isValidCadDate(int d,int m,int y,Calendar act_date) {
         if (y<act_date.get(Calendar.YEAR)){
             return false;
-        }else{
+        }else if (y<act_date.get(Calendar.YEAR)){
             if (m<act_date.get(Calendar.MONTH) || m<0 || m>12){
                 return false;
-            }else if (m==1 || m==3 || m==5 || m==7 || m==8 || m==10 || m==){
-                if (d>31){
-                    return false;
-                }
-            }else if (m==4 || m==6 || m==9 || m==11) {
-                if (d > 30) {
-                    return false;
-                }
+            }else if (m==act_date.get(Calendar.MONTH) && d<act_date.get(Calendar.DAY_OF_MONTH)){
+                return false;
+            }else if ((m==1 || m==3 || m==5 || m==7 || m==8 || m==10 || m==12) && d>31){
+                return false;
+            }else if ((m==4 || m==6 || m==9 || m==11) && d>30) {
+                return false;
             }else if ((m==2) && ((((y%4==0 && y%100!=0) || y%400==0) && d>29) || (((y%4!=0 || y%100==0) && y%400!=0) && d>28))){
                 return false;
             }
         }
+        return true;
     }
 }
