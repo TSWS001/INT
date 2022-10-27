@@ -19,6 +19,12 @@ package com.example.proj1.Activities;
 
         import com.example.proj1.R;
 
+        import androidx.activity.result.ActivityResult;
+        import androidx.activity.result.ActivityResultCallback;
+        import androidx.activity.result.ActivityResultLauncher;
+        import androidx.activity.result.contract.ActivityResultContracts;
+
+
 public class ActivityEscaneo extends AppCompatActivity {
 
     private static final int CODIGO_PERMISOS_CAMARA = 1, CODIGO_INTENT = 2;
@@ -33,17 +39,14 @@ public class ActivityEscaneo extends AppCompatActivity {
 
         Button btnEscanear = findViewById(R.id.btnEscanear);
         tvCodigoLeido = findViewById(R.id.tvCodigoLeido);
-        btnEscanear.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (!permisoCamaraConcedido) {
-                    Toast.makeText(ActivityEscaneo.this, "Por favor permite que la app acceda a la cámara", Toast.LENGTH_SHORT).show();
-                    permisoSolicitadoDesdeBoton = true;
-                    verificarYPedirPermisosDeCamara();
-                    return;
-                }
-                escanear();
+        btnEscanear.setOnClickListener(v -> {
+            if (!permisoCamaraConcedido) {
+                Toast.makeText(ActivityEscaneo.this, "Por favor permite que la app acceda a la cámara", Toast.LENGTH_SHORT).show();
+                permisoSolicitadoDesdeBoton = true;
+                verificarYPedirPermisosDeCamara();
+                return;
             }
+            escanear();
         });
     }
 
@@ -51,7 +54,6 @@ public class ActivityEscaneo extends AppCompatActivity {
         Intent i = new Intent(ActivityEscaneo.this, ActivityEscanear.class);
         startActivityForResult(i, CODIGO_INTENT);
     }
-
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -61,7 +63,6 @@ public class ActivityEscaneo extends AppCompatActivity {
                 if (data != null) {
                     String codigo = data.getStringExtra("codigo"); //funcion que lee el codigo de barras y guarda el texto
                     tvCodigoLeido.setText(codigo); //codigo es la variable que toma lo que lee el escaner y añade posteriormente en la label tvcodigoleido
-                    //avisoverde.setVisibility(View.VISIBLE); //deberia mostrar la imagen seleccionada
 
                 }
             }
@@ -89,13 +90,11 @@ public class ActivityEscaneo extends AppCompatActivity {
     private void verificarYPedirPermisosDeCamara() {
         int estadoDePermiso = ContextCompat.checkSelfPermission(ActivityEscaneo.this, Manifest.permission.CAMERA);
         if (estadoDePermiso == PackageManager.PERMISSION_GRANTED) {
-            // En caso de que haya dado permisos ponemos la bandera en true
-            // y llamar al método
+            // En caso de que haya dado permisos ponemos la bandera en true y llamar al metodo
             permisoCamaraConcedido = true;
         } else {
             // Si no, pedimos permisos. Ahora mira onRequestPermissionsResult
-            ActivityCompat.requestPermissions(ActivityEscaneo.this,
-                    new String[]{Manifest.permission.CAMERA},
+            ActivityCompat.requestPermissions(ActivityEscaneo.this, new String[]{Manifest.permission.CAMERA},
                     CODIGO_PERMISOS_CAMARA);
         }
     }

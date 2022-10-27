@@ -15,6 +15,7 @@ public class Product { //connected with database Products
     public int remain_product; //remaining percent of product based on weight
     public int base_area; //area to organize products in the scales matrix (it has to be in database)
 
+
     public boolean setCaducity(int day,int month,int year){//detect the date we write on the app and save it in Product.caducity
         Scanner scanner = new Scanner(System.in);
         String cad=scanner.nextLine();
@@ -43,6 +44,7 @@ public class Product { //connected with database Products
         }
         return isValidCadDate(day, month, year, act_date);
     }
+
 
 
     //    private static boolean isNumeric(String str){ //esto en el main o en el fichero de funciones
