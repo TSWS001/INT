@@ -17,13 +17,11 @@ public class ActivityInicio extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.pantalla_inicial);
 
-        new Handler().postDelayed(new Runnable(){
-            public void run(){
-                // Cuando pasen los 3 segundos, pasamos a la actividad principal de la aplicación
-                Intent intent = new Intent(ActivityInicio.this, MainActivity.class);
-                startActivity(intent);
-                finish();
-            }
+        new Handler().postDelayed(() -> {
+            // Cuando pasen los 3 segundos, pasamos a la actividad principal de la aplicación
+            Intent intent = new Intent(ActivityInicio.this, ActivityEscaneo.class);
+            startActivity(intent);
+            finish();
         }, DURACION_SPLASH);
     }
 }
