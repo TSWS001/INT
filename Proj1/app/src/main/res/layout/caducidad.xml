@@ -129,7 +129,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:textColor="@color/black"
-        android:backgroundTint="@color/almost_green"
+        android:backgroundTint="@color/purple"
         android:outlineProvider="paddedBounds"
         android:outlineSpotShadowColor="@color/black"
         app:layout_constraintTop_toBottomOf="@+id/cad_layout"></Button>
