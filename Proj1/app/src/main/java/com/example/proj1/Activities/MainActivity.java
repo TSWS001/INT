@@ -25,11 +25,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.productlist);
 
-        RecyclerView recyclerView = findViewById(R.id.mRecyclerView);
-        SetUpProducts();
-        RecyclerViewAdapter adapter = new RecyclerViewAdapter(this,productsModels);
-        recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
 
 
         ImageView leftIcon = findViewById(R.id.left_icon);

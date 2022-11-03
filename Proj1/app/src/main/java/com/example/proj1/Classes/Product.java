@@ -1,6 +1,7 @@
 package com.example.proj1.Classes;
 import static java.lang.String.valueOf;
 
+import java.time.Month;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -9,11 +10,21 @@ import java.util.Calendar;
 public class Product { //connected with database Products
     public String barcode; //used as product_id (it has to be in database)
     public String name; //(it has to be in database)
-    public Calendar caducity; // dd/mm/yyyy
+    public String caducity; // dd/mm/yyyy
     public int quantity; //number of products of the same type
     public int total_weight; //weight of the product at 100% (it has to be in database)
     public int remain_product; //remaining percent of product based on weight
     public int base_area; //area to organize products in the scales matrix (it has to be in database)
+
+    public Product(String barcode, String name, String caducity, int quantity, int total_weight, int remain_product, int base_area) {
+        this.barcode = barcode;
+        this.name = name;
+        this.caducity = caducity;
+        this.quantity = quantity;
+        this.total_weight = total_weight;
+        this.remain_product = remain_product;
+        this.base_area = base_area;
+    }
 
 
     public boolean setCaducity(int day,int month,int year){//detect the date we write on the app and save it in Product.caducity
@@ -38,9 +49,7 @@ public class Product { //connected with database Products
         }
         Calendar act_date = null;
         if (isValidCadDate(day, month, year, act_date)) {
-            this.caducity.set(Calendar.YEAR, year);
-            this.caducity.set(Calendar.MONTH, month);
-            this.caducity.set(Calendar.DAY_OF_MONTH, day);
+            this.caducity=day+"/"+month+"/"+year;
         }
         return isValidCadDate(day, month, year, act_date);
     }
@@ -79,7 +88,7 @@ public class Product { //connected with database Products
     }
 
     public String getCaducity() {//to be able to show the caducity date
-        return caducity.toString();//solo sacar dd/mm/aaaa
+        return caducity;
     }
 
     public int getQuantity() {//to be able to show the quantity of the product
