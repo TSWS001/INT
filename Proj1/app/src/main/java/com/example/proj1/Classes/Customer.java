@@ -49,5 +49,9 @@ public class Customer { //connects with database Customers
     public String getBirth_date() {
         return birth_date;
     }
+
+    public void SendToDatabase(){
+
+    }
 }
 
