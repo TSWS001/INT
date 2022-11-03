@@ -11,7 +11,6 @@ import android.widget.TextView;
 
 import com.example.proj1.Classes.Product;
 import com.example.proj1.R;
-import com.example.proj1.RecyclerViewAdapter;
 import com.example.proj1.Server.SQLConnection;
 
 import java.sql.Connection;
@@ -21,20 +20,14 @@ import java.util.ArrayList;
 
 public class cards extends AppCompatActivity {
 
-    ArrayList<Product> productsModels = new ArrayList<>();
     Connection connection;
     String ConnectionResult="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.productlist);
+        setContentView(R.layout.server_test);
 
-        RecyclerView recyclerView = findViewById(R.id.mRecyclerView);
-        //        SetUpProducts();
-        RecyclerViewAdapter adapter = new RecyclerViewAdapter(this,productsModels);
-        recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
     }
 
@@ -67,19 +60,19 @@ public class cards extends AppCompatActivity {
 
 
 
-//    public void SetUpProducts {
-//
-//    String productnames[] = getResources().getStringArray();
-//    String productcaducity[] = getResources().getStringArray();
-//    // String quantity[]
-//
-//    int i;
-//    for(i=0; i<productsModels.length; i++){
-//        //create object and add all the string into it
-//      productsModels.add(new Product(productnames[i],productcaducity[i],...));//falta por completar los atributos de la clase Product
-//    }
-//
-//    }
+    public void SetUpProducts {
+
+    String productnames[] = getResources().getStringArray();
+    String productcaducity[] = getResources().getStringArray();
+    // String quantity[]
+
+    int i;
+    for(i=0; i<productsModels.length; i++){
+        //create object and add all the string into it
+      productsModels.add(new Product(productnames[i],productcaducity[i],...));//falta por completar los atributos de la clase Product
+    }
+
+    }
 
 }
 
