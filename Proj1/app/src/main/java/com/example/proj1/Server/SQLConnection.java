@@ -27,6 +27,7 @@ public class SQLConnection {
 
         try{
             Class.forName("com.mysql.jdbc.Driver");
+            String con2="jdbc:mysql://localhost:3306/test";
             String con1 ="jdbc:jtds:sqlserver://"+ip+":"+port+";"+"databasename="+database+";user="+uname+";password"+pass+";";
             con= DriverManager.getConnection("jdbc:mysql://localhost:3306/"+database,uname,pass);
         }

@@ -28,7 +28,7 @@
 <!--            </intent-filter>-->
 <!--        </activity>-->
         <activity
-            android:name=".Activities.ActivityInicio"
+            android:name=".Activities.MainActivity"
             android:label="@string/app_name"
             android:theme="@style/Theme.Proj1"
             android:exported="true">
