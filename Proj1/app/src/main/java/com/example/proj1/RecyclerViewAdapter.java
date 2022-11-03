@@ -26,8 +26,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         this.productsModels = productsModels;
     }
 
-    public RecyclerViewAdapter(cards context, ArrayList<Product> productsModels) {
-    }
 
     @NonNull
     @Override
@@ -46,8 +44,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         //holder.caducity.setText(productsModels.get(position).getCaducity());
         holder.quantity.setText(productsModels.get(position).getQuantity());
         //faltan mas atributos amostrar
-
-
     }
 
     @Override
