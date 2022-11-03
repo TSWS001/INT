@@ -169,6 +169,7 @@
             android:layout_height="60dp"
             android:layout_below="@id/text_direccion"
             android:layout_marginTop="5dp"
+            android:backgroundTint="@color/purple"
             android:text="aceptar"></Button>
 
         </LinearLayout>
