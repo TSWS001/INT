@@ -12,7 +12,7 @@
         android:layout_marginTop="24dp"
         android:layout_marginBottom="233dp"
         android:onClick="GetTextFromSQL"
-        android:text="Button"
+        android:text="@string/conectar"
         app:layout_constraintBottom_toTopOf="@+id/text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

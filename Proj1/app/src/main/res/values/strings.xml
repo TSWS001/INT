@@ -9,4 +9,48 @@
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
+    <!--generales-->
+    <string name="date_separator">/</string>
+    <string name="day_format">dd</string>
+    <string name="month_format">mm</string>
+    <string name="year_format">aaaa</string>
+    <string name="aceptar">Aceptar</string>
+    <string name="compulsory_marker">*</string>
+    <string name="double_dots">:</string>
+    <string name="plus">+</string>
+
+    <!--activity_escaneado.xml-->
+    <string name="scan_title">Escanear</string>
+    <string name="cod_leido">Código leído</string>
+    <string name="pie_layout">Sponsored by KaveHome</string>
+    <!--activity_main.xml-->
+
+    <!--caducidad.xml-->
+    <string name="cad_title">Añade la fecha de caducidad:</string>
+    <string name="cad_date">"Fecha de caducidad:"</string>
+    <string name="no_cad_date">No tiene fecha de caducidad</string>
+
+    <!--card_view.xml-->
+
+    <!--pantalla_inicial.xml-->
+    <string name="proj_name">BATLER CENTER</string>
+    <string name="pie_inicio">A KaveHome Project</string>
+
+    <!--productlist.xml-->
+
+    <!--server_test.xml-->
+    <string name="conectar">Conectar</string>
+
+    <!--user_entry.xml-->
+    <string name="user_title">Datos del usuario</string>
+    <string name="first_name">Nombre</string>
+    <string name="last_name">Apellido</string>
+    <string name="email">Email</string>
+    <string name="birth_date">Fecha de nacimiento</string>
+    <string name="country_prefix">Prefijo telefónico</string>
+    <string name="phone">Teléfono</string>
+    <string name="phone_format">000000000</string>
+    <string name="address">Dirección</string>
+    <string name="address_format">C/ xxxxxx, 00</string>
+
 </resources>
