@@ -41,7 +41,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         //assigning values to the views we created in the card_view layout file based on
         // the position of the recycler view
         holder.name.setText(productsModels.get(position).getName());
-        //holder.caducity.setText(productsModels.get(position).getCaducity());
+        holder.caducity.setText(productsModels.get(position).getCaducity());
         holder.quantity.setText(productsModels.get(position).getQuantity());
         //faltan mas atributos amostrar
     }

@@ -10,20 +10,16 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".ui.login.LoginActivity">
+    tools:context=".Activities.ActivityLogin">
+<!--    tools:context=".ui.login.LoginActivity">-->
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="840dp"
-        android:layout_height="match_parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
 
     <EditText
         android:id="@+id/username"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="96dp"
-        android:hint="@string/prompt_email"
+        android:hint="@string/email"
         android:inputType="textEmailAddress"
         android:selectAllOnFocus="true"
         app:layout_constraintEnd_toEndOf="parent"
@@ -31,12 +27,11 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/password"
+        android:id="@+id/userpassword"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:hint="@string/prompt_password"
-        android:imeActionLabel="@string/action_sign_in_short"
+        android:hint="@string/password"
         android:imeOptions="actionDone"
         android:inputType="textPassword"
         android:selectAllOnFocus="true"
@@ -45,19 +40,30 @@
         app:layout_constraintTop_toBottomOf="@+id/username" />
 
     <Button
-        android:id="@+id/login"
-        android:enabled="false"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/btnaceptar"
+        android:layout_width="325dp"
+        android:layout_height="60dp"
         android:layout_gravity="start"
         android:layout_marginTop="16dp"
-        android:layout_marginBottom="64dp"
-        android:text="@string/action_sign_in"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:backgroundTint="@color/purple"
+        android:text="@string/aceptar"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/password"
-        app:layout_constraintVertical_bias="0.2" />
+        app:layout_constraintTop_toBottomOf="@+id/userpassword" />
+
+    <Button
+        android:id="@+id/btnregister"
+        android:layout_width="325dp"
+        android:layout_height="60dp"
+        android:layout_gravity="start"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="@color/grey"
+        android:text="@string/registrar"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnaceptar" />
 
     <ProgressBar
         android:id="@+id/loading"
@@ -68,10 +74,9 @@
         android:layout_marginTop="64dp"
         android:layout_marginBottom="64dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/password"
-        app:layout_constraintStart_toStartOf="@+id/password"
+        app:layout_constraintEnd_toEndOf="@+id/userpassword"
+        app:layout_constraintStart_toStartOf="@+id/userpassword"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.3" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

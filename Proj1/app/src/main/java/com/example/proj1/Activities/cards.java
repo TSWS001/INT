@@ -58,7 +58,7 @@ public class cards extends AppCompatActivity {
 //            prod_aux.remain_product=99;
 //            prod_aux.total_weight=100;
             productsModels.add(new Product(productbarcode[i],productnames[i],
-                    productcaducity[i],i,0,0,0) );
+                    productcaducity[i],i,100,0,500) );
             //falta por completar los atributos de la clase Product
         }
 

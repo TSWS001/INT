@@ -20,73 +20,163 @@
             android:textSize="30sp"
             android:gravity="center"
             android:textColor="@color/black"
-            android:textStyle="bold"></TextView>
+            android:textStyle="bold" />
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="3dp"
             android:layout_gravity="center_vertical">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/compulsory_marker"
                 android:textSize="20sp"
                 android:textColor="@color/black"
-                android:textStyle="bold"></TextView>
+                android:textStyle="bold" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/email"
                 android:textSize="20sp"
                 android:textColor="@color/black"
-                android:textStyle="bold"></TextView>
+                android:textStyle="bold" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/double_dots"
                 android:textSize="20sp"
                 android:textColor="@color/black"
-                android:textStyle="bold"></TextView>
+                android:textStyle="bold" />
+
             <EditText
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/text_email"
                 android:textSize="20sp"
-                android:textColor="@color/black"></EditText>
-            ></LinearLayout>
+                android:textColor="@color/black"
+                android:autofillHints=""
+                android:inputType="textEmailAddress" />
+            </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="3dp"
             android:layout_gravity="center_vertical">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/compulsory_marker"
                 android:textSize="20sp"
                 android:textColor="@color/black"
-                android:textStyle="bold"></TextView>
+                android:textStyle="bold" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/first_name"
+                android:text="@string/password"
                 android:textSize="20sp"
                 android:textColor="@color/black"
-                android:textStyle="bold"></TextView>
+                android:textStyle="bold" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/double_dots"
                 android:textSize="20sp"
                 android:textColor="@color/black"
-                android:textStyle="bold"></TextView>
+                android:textStyle="bold" />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/text_password"
+                android:textSize="20sp"
+                android:textColor="@color/black"
+                android:autofillHints=""
+                android:inputType="textPassword" />
+            </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="3dp"
+            android:layout_gravity="center_vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/compulsory_marker"
+                android:textSize="20sp"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/confirm_password"
+                android:textSize="20sp"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/double_dots"
+                android:textSize="20sp"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/text_password2"
+                android:textSize="20sp"
+                android:textColor="@color/black"
+                android:autofillHints=""
+                android:inputType="textPassword"/>
+            </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="3dp"
+            android:layout_gravity="center_vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/compulsory_marker"
+                android:textSize="20sp"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/first_name"
+                android:textSize="20sp"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/double_dots"
+                android:textSize="20sp"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+
             <EditText
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/textfirstname"
                 android:textSize="20sp"
-                android:textColor="@color/black"></EditText>
-        ></LinearLayout>
+                android:textColor="@color/black"
+                android:autofillHints=""
+                android:inputType="textNoSuggestions"/>
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -99,28 +189,31 @@
                 android:text="@string/compulsory_marker"
                 android:textSize="20sp"
                 android:textColor="@color/black"
-                android:textStyle="bold"></TextView>
+                android:textStyle="bold"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/last_name"
                 android:textSize="20sp"
                 android:textColor="@color/black"
-                android:textStyle="bold"></TextView>
+                android:textStyle="bold"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/double_dots"
                 android:textSize="20sp"
                 android:textColor="@color/black"
-                android:textStyle="bold"></TextView>
+                android:textStyle="bold"/>
             <EditText
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/textlastname"
                 android:textSize="20sp"
-                android:textColor="@color/black"></EditText>
-            ></LinearLayout>
+                android:textColor="@color/black"
+                android:hint=""
+                android:inputType="textNoSuggestions"
+                android:autofillHints="" />
+            </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -135,7 +228,8 @@
                 android:textSize="20sp"
                 android:textColor="@color/black"
                 android:layout_marginTop="12dp"
-                android:textStyle="bold"></TextView>
+                android:textStyle="bold"/>
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -143,7 +237,7 @@
                 android:layout_marginTop="12dp"
                 android:textSize="20sp"
                 android:textColor="@color/black"
-                android:textStyle="bold"></TextView>
+                android:textStyle="bold" />
             <LinearLayout
                 android:id="@+id/cad_write"
                 android:layout_width="wrap_content"
@@ -160,7 +254,9 @@
                     android:text="@string/day_format"
                     android:textAlignment="center"
                     android:textColor="@color/grey"
-                    android:textSize="20sp"></EditText>
+                    android:textSize="20sp"
+                    android:autofillHints=""
+                    android:inputType="number"/>
 
                 <TextView
                     android:layout_width="match_parent"
@@ -169,7 +265,7 @@
                     android:layout_marginStart="5dp"
                     android:text="@string/date_separator"
                     android:textColor="@color/black"
-                    android:textSize="25sp"></TextView>
+                    android:textSize="25sp" />
 
                 <EditText
                     android:id="@+id/text_month"
@@ -180,7 +276,9 @@
                     android:text="@string/month_format"
                     android:textAlignment="center"
                     android:textColor="@color/grey"
-                    android:textSize="20sp"></EditText>
+                    android:textSize="20sp"
+                    android:autofillHints=""
+                    android:inputType="number"/>
 
                 <TextView
                     android:layout_width="match_parent"
@@ -189,7 +287,7 @@
                     android:layout_marginStart="5dp"
                     android:text="@string/date_separator"
                     android:textColor="@color/black"
-                    android:textSize="25sp"></TextView>
+                    android:textSize="25sp" />
 
                 <EditText
                     android:id="@+id/text_year"
@@ -200,10 +298,11 @@
                     android:text="@string/year_format"
                     android:textAlignment="center"
                     android:textColor="@color/grey"
-                    android:textSize="20sp"></EditText>
-                >
+                    android:textSize="20sp"
+                    android:autofillHints=""
+                    android:inputType="number"/>
+                </LinearLayout>
             </LinearLayout>
-            ></LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -216,14 +315,16 @@
                 android:text="@string/country_prefix"
                 android:textSize="20sp"
                 android:textColor="@color/black"
-                android:textStyle="bold"></TextView>
+                android:textStyle="bold" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/double_dots"
                 android:textSize="20sp"
                 android:textColor="@color/black"
-                android:textStyle="bold"></TextView>
+                android:textStyle="bold" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -231,15 +332,18 @@
                 android:layout_marginStart="10dp"
                 android:textSize="20sp"
                 android:textColor="@color/black"
-                android:textStyle="bold"></TextView>
+                android:textStyle="bold" />
+
             <EditText
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/text_prefix_phone"
                 android:textSize="20sp"
                 android:textColor="@color/grey"
-                ></EditText>
-            ></LinearLayout>
+                android:autofillHints=""
+                android:inputType="number"
+                tools:ignore="TextFields" />
+            </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -252,14 +356,16 @@
                 android:text="@string/phone"
                 android:textSize="20sp"
                 android:textColor="@color/black"
-                android:textStyle="bold"></TextView>
+                android:textStyle="bold" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/double_dots"
                 android:textSize="20sp"
                 android:textColor="@color/black"
-                android:textStyle="bold"></TextView>
+                android:textStyle="bold" />
+
             <EditText
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -268,8 +374,9 @@
                 android:layout_marginStart="10dp"
                 android:text="@string/phone_format"
                 android:textColor="@color/grey"
-                ></EditText>
-            ></LinearLayout>
+                android:autofillHints=""
+                android:inputType="phone"/>
+            </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -283,44 +390,56 @@
                 android:text="@string/address"
                 android:textSize="20sp"
                 android:textColor="@color/black"
-                android:textStyle="bold"></TextView>
+                android:textStyle="bold" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/double_dots"
                 android:textSize="20sp"
                 android:textColor="@color/black"
-                android:textStyle="bold"></TextView>
+                android:textStyle="bold" />
+
             <EditText
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/text_direccion"
                 android:textSize="20sp"
-                android:text="@string/address_format"
+                android:hint="@string/address_format"
                 android:layout_marginStart="10dp"
                 android:textColor="@color/grey"
-                ></EditText>
+                android:inputType="text"/>
 
 </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center">
+            android:layout_gravity="center"
+            android:orientation="vertical">
 
             <Button
-            android:id="@+id/btnacceptar"
-            android:layout_width="325dp"
-            android:layout_height="60dp"
-            android:layout_gravity="center"
-            android:layout_below="@id/text_direccion"
-            android:layout_marginStart="45dp"
-            android:layout_marginTop="5dp"
-            android:backgroundTint="@color/purple"
-            android:text="@string/aceptar"></Button>
+                android:id="@+id/btnacceptar"
+                android:layout_width="325dp"
+                android:layout_height="60dp"
+                android:layout_gravity="start"
+                android:layout_marginStart="45dp"
+                android:layout_marginTop="5dp"
+                android:backgroundTint="@color/purple"
+                android:text="@string/aceptar" />
+
+            <Button
+                android:id="@+id/btnlogin"
+                android:layout_width="325dp"
+                android:layout_height="60dp"
+                android:layout_gravity="start"
+                android:layout_marginStart="45dp"
+                android:layout_marginTop="5dp"
+                android:backgroundTint="@color/grey"
+                android:text="@string/login" />
 
         </LinearLayout>
 
-        ></LinearLayout>
+        </LinearLayout>
     <TextView
         android:id="@+id/pie_layout"
         android:layout_width="wrap_content"

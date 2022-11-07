@@ -1,15 +1,6 @@
 <resources>
+     <!--generales-->
     <string name="app_name">DOM</string>
-    <string name="title_activity_login">LoginActivity</string>
-    <string name="prompt_email">Email</string>
-    <string name="prompt_password">Password</string>
-    <string name="action_sign_in">Sign in or register</string>
-    <string name="action_sign_in_short">Sign in</string>
-    <string name="welcome">"Welcome !"</string>
-    <string name="invalid_username">Not a valid username</string>
-    <string name="invalid_password">Password must be >5 characters</string>
-    <string name="login_failed">"Login failed"</string>
-    <!--generales-->
     <string name="date_separator">/</string>
     <string name="day_format">dd</string>
     <string name="month_format">mm</string>
@@ -18,6 +9,8 @@
     <string name="compulsory_marker">*</string>
     <string name="double_dots">:</string>
     <string name="plus">+</string>
+    <string name="email">Email</string>
+    <string name="password">Contraseña</string>
 
     <!--activity_escaneado.xml-->
     <string name="scan_title">Escanear</string>
@@ -27,7 +20,7 @@
 
     <!--caducidad.xml-->
     <string name="cad_title">Añade la fecha de caducidad:</string>
-    <string name="cad_date">"Fecha de caducidad:"</string>
+    <string name="cad_date">Fecha de caducidad:</string>
     <string name="no_cad_date">No tiene fecha de caducidad</string>
 
     <!--card_view.xml-->
@@ -41,16 +34,19 @@
     <!--server_test.xml-->
     <string name="conectar">Conectar</string>
 
-    <!--user_entry.xml-->
+    <!--user_login.xml-->
+    <string name="registrar">Regístrate</string>
+
+    <!--user_register.xml-->
     <string name="user_title">Datos del usuario</string>
     <string name="first_name">Nombre</string>
     <string name="last_name">Apellido</string>
-    <string name="email">Email</string>
     <string name="birth_date">Fecha de nacimiento</string>
     <string name="country_prefix">Prefijo telefónico</string>
     <string name="phone">Teléfono</string>
     <string name="phone_format">000000000</string>
     <string name="address">Dirección</string>
     <string name="address_format">C/ xxxxxx, 00</string>
-
+    <string name="confirm_password">Repite la contraseña</string>
+    <string name="login">Inicia sesión</string>
 </resources>
