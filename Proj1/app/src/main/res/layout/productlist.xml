@@ -15,11 +15,11 @@
 
         <ImageView
             android:id="@id/left_icon"
-            android:onClick="Pasardeactivity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:src="@drawable/ic_baseline_arrow_back_24"></ImageView>
+        <!--            android:onClick="Pasardeactivity"-->
 
         <TextView
             android:id="@+id/toolbar_title"

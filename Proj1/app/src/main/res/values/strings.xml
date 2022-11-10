@@ -13,7 +13,7 @@
     <string name="password">Contraseña</string>
 
     <!--activity_escaneado.xml-->
-    <string name="scan_title">Escanear</string>
+    <string name="scan_title">Volver a escanear</string>
     <string name="cod_leido">Código leído</string>
     <string name="pie_layout">Sponsored by KaveHome</string>
     <!--activity_main.xml-->

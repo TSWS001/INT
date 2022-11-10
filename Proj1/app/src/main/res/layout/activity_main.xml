@@ -4,9 +4,68 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_gravity="center_vertical"
     tools:context=".Activities.MainActivity">
 <!--    <include layout="@layout/toolbar"></include>-->
 <!--<include layout="@layout/card_view"></include>-->
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:gravity="center">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16sp"
+            android:orientation="horizontal"
+            android:gravity="center"
+            tools:ignore="MissingConstraints">
+
+            <ImageView
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:id="@+id/img11"
+                android:src="@drawable/ic_camera"/>
+<!--                android:onClick="Clicklistener"-->
+
+
+            <ImageView
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:id="@+id/img12"
+            android:layout_marginStart="10dp"
+            android:src="@drawable/ic_list"/>
+
+
+        </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="10dp">
+
+
+        <ImageView
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:id="@+id/img21"
+            android:src="@drawable/ic_cart"
+            />
+
+        <ImageView
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:id="@+id/img22"
+            android:layout_marginStart="10dp"
+            android:src="@drawable/ic_dining"/>
+
+    </LinearLayout>
+</LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>

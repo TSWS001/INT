@@ -14,10 +14,10 @@
         android:layout_centerVertical="true"
         android:layout_marginStart="10dp"
         android:layout_marginTop="30dp"
-        android:onClick="Pasardeactivity"
         android:src="@drawable/ic_baseline_arrow_back_24_black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"></ImageView>
+<!--    android:onClick="Pasardeactivity"-->
 
     <LinearLayout
         android:id="@+id/cad_layout"
@@ -113,9 +113,9 @@
                     android:textAlignment="center"
                     android:textColor="@color/grey"
                     android:textSize="30sp"></EditText>
-                >
+
             </LinearLayout>
-            ></LinearLayout>
+        </LinearLayout>
 
         </LinearLayout>
 

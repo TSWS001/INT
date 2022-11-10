@@ -36,9 +36,11 @@
                 android:layout_height="38dp"
                 android:text="TextView"
                 android:textSize="28sp"
-                app:layout_constraintTop_toTopOf="parent"
                 android:textStyle="bold"
-                tools:layout_editor_absoluteX="56dp" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.408"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/text_caducity"
@@ -48,8 +50,9 @@
 
                 android:text="TextView"
                 android:textSize="20dp"
-                app:layout_constraintTop_toBottomOf="@+id/text_productname"
-                tools:layout_editor_absoluteX="56dp" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/text_productname" />
 
             <TextView
                 android:id="@+id/text_quantity"
@@ -58,10 +61,11 @@
                 android:layout_marginEnd="32dp"
                 android:gravity="center"
                 android:text="20 u"
-                android:textStyle="bold"
                 android:textSize="25sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                tools:layout_editor_absoluteY="16dp" />
+                app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 

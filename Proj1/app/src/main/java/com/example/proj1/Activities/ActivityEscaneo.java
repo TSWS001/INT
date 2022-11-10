@@ -39,6 +39,7 @@ public class ActivityEscaneo extends AppCompatActivity {
 
         Button btnEscanear = findViewById(R.id.btnEscanear);
         tvCodigoLeido = findViewById(R.id.tvCodigoLeido);
+
         btnEscanear.setOnClickListener(v -> {
             if (!permisoCamaraConcedido) {
                 Toast.makeText(ActivityEscaneo.this, "Por favor permite que la app acceda a la cámara", Toast.LENGTH_SHORT).show();

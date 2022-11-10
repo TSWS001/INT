@@ -13,7 +13,7 @@ public class CustomerActivity extends AppCompatActivity {
 
     Button btnAcceptar;
     EditText first_name,last_name, email, birth, phone, adress;
-
+//habria que haber un atributo de la clase customer de si el usuario esta o no registrado
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,16 +23,10 @@ public class CustomerActivity extends AppCompatActivity {
         first_name = findViewById(R.id.textfirstname);
         last_name = findViewById(R.id.textlastname);
         email = findViewById(R.id.text_email);
-        birth = findViewById(R.id.textbirth);
+        //birth = findViewById(R.id.textbirth);
         phone = findViewById(R.id.text_phone);
         adress = findViewById(R.id.text_direccion);
 
-        btnAcceptar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-//                startActivity(new Intent(this, ));  //al clicar el boton aceptar pasar a la pagina inicial
-            }
-        });
     }
 
 //    private void SetUserData(){
