@@ -5,9 +5,7 @@ package com.example.proj1.Activities;
         import android.content.Intent;
         import android.content.pm.PackageManager;
         import android.os.Bundle;
-        import android.view.View;
         import android.widget.Button;
-        import android.widget.ImageView;
         import android.widget.TextView;
         import android.widget.Toast;
 
@@ -18,11 +16,6 @@ package com.example.proj1.Activities;
         import androidx.core.content.ContextCompat;
 
         import com.example.proj1.R;
-
-        import androidx.activity.result.ActivityResult;
-        import androidx.activity.result.ActivityResultCallback;
-        import androidx.activity.result.ActivityResultLauncher;
-        import androidx.activity.result.contract.ActivityResultContracts;
 
 
 public class ActivityEscaneo extends AppCompatActivity {

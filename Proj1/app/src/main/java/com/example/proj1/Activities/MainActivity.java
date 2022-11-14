@@ -1,8 +1,6 @@
 package com.example.proj1.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,17 +8,14 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.example.proj1.Classes.Product;
 import com.example.proj1.R;
-import com.example.proj1.RecyclerViewAdapter;
-
-import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //setTheme(R.style.Theme_Proj1);// set the theme proj1 after splash screen
         setContentView(R.layout.activity_main);
 
         ImageView ic_camera = findViewById(R.id.img11);

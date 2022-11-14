@@ -6,7 +6,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.proj1.Activities.cards;
 import com.example.proj1.Classes.Product;
 
 import androidx.annotation.NonNull;
@@ -18,12 +17,12 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
 
     Context context;
-    ArrayList<Product> productsModels;
+    ArrayList<Product> productlist;
 
-    public RecyclerViewAdapter(Context context, ArrayList<Product> productsModels ){
+    public RecyclerViewAdapter(Context context, ArrayList<Product> productlist ){
 
         this.context = context;
-        this.productsModels = productsModels;
+        this.productlist = productlist;
     }
 
 
@@ -40,16 +39,16 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public void onBindViewHolder(@NonNull RecyclerViewAdapter.MyViewHolder holder, int position) {
         //assigning values to the views we created in the card_view layout file based on
         // the position of the recycler view
-        holder.name.setText(productsModels.get(position).getName());
-        holder.caducity.setText(productsModels.get(position).getCaducity());
-        holder.quantity.setText(productsModels.get(position).getQuantity());
+        holder.name.setText(productlist.get(position).getName());
+        holder.caducity.setText(productlist.get(position).getCaducity());
+        holder.quantity.setText(String.valueOf(productlist.get(position).getQuantity()));
         //faltan mas atributos amostrar
     }
 
     @Override
     public int getItemCount() {
     // the recycler view just wants to know the number of items you want displayed
-        return productsModels.size(); //
+        return productlist.size();
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder{
@@ -62,7 +61,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             name = itemView.findViewById(R.id.text_productname);
             caducity = itemView.findViewById(R.id.text_caducity);
             quantity = itemView.findViewById(R.id.text_quantity);
-            //flatan mas atributos a mostrar
+            //flatan mas atributos a mostrar?
 
 
         }

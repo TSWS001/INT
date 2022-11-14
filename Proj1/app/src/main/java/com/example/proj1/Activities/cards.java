@@ -22,7 +22,7 @@ import java.util.Calendar;
 
 public class cards extends AppCompatActivity {
 
-    ArrayList<Product> productsModels = new ArrayList<>();
+    ArrayList<Product> productlist = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,15 +33,16 @@ public class cards extends AppCompatActivity {
 
         SetUpProducts();
 
-        RecyclerViewAdapter adapter = new RecyclerViewAdapter(this,productsModels);
+        RecyclerViewAdapter adapter = new RecyclerViewAdapter(this,productlist);
         recyclerView.setAdapter(adapter);
+        //set the value of adapter.getItemCount() to x products available
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
 
     private void SetUpProducts() {
-        String[] productbarcode ={"bar1","bar2","bar3"} ;//getResources().getStringArray()
-        String[] productnames = {"name1","name2","name3"};//getResources().getStringArray()
-        String[] productcaducity= {"cad1","cad2","cad3"};
+        String[] productbarcode ={"bar1","bar2","bar3","bar4","bar5","bar6","bar7"} ;//getResources().getStringArray()
+        String[] productnames = {"name1","name2","name3","name4","name5","name6","name7"};//getResources().getStringArray()
+        String[] productcaducity= {"cad1","cad2","cad3","cad4","cad5","cad6","cad7"};
 //        int[] productquantity;
 //        int[] productbasearea;
 //        int[] productbaseremain;
@@ -57,7 +58,7 @@ public class cards extends AppCompatActivity {
 //            prod_aux.base_area=0;
 //            prod_aux.remain_product=99;
 //            prod_aux.total_weight=100;
-            productsModels.add(new Product(productbarcode[i],productnames[i],
+            productlist.add(new Product(productbarcode[i],productnames[i],
                     productcaducity[i],i,100,0,500) );
             //falta por completar los atributos de la clase Product
         }
