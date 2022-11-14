@@ -30,15 +30,16 @@ public class MainActivity extends AppCompatActivity {
 
     }
     public void Clicklistener (View v){
-        Class class_aux= this.getClass();
-        Intent i = new Intent(this,class_aux);
+        Intent i;
         if(v==findViewById(R.id.img11)){
             Toast.makeText(this, "ic_camera clicked", Toast.LENGTH_SHORT).show();
-            class_aux= ActivityEscanear.class;
+            i = new Intent(this,ActivityEscaneo.class);
+            startActivity(i);
         }
         else if(v==findViewById(R.id.img12)){
             Toast.makeText(this, "ic_list clicked", Toast.LENGTH_SHORT).show();
-            class_aux= ActivityList.class;
+            i = new Intent(this,ActivityList.class);
+            startActivity(i);
         }
         else if(v==findViewById(R.id.img21)){
             Toast.makeText(this, "ic_shopping clicked", Toast.LENGTH_SHORT).show();
@@ -48,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this, "ic_diet clicked", Toast.LENGTH_SHORT).show();
             //activitydiet
         }
-        startActivity(i);
+
     }
 
 

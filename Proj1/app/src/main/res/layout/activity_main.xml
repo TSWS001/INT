@@ -31,7 +31,6 @@
                 android:layout_height="200dp"
                 android:id="@+id/img11"
                 android:src="@drawable/ic_camera"/>
-<!--                android:onClick="Clicklistener"-->
 
 
             <ImageView

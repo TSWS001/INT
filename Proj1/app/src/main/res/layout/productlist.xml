@@ -30,16 +30,25 @@
             android:text="My Products"
             android:textColor="@android:color/white"
             android:textSize="28sp"
-            android:textStyle="bold"></TextView>
+            android:textStyle="bold" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/toolbar_title"
-            android:layout_alignLeft="@id/toolbar_title"
+            android:layout_toEndOf="@id/product_quantity"
+            android:textColor="@android:color/white"
+            android:textSize="18sp"
+            android:text=" products available" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/toolbar_title"
+            android:layout_alignStart="@id/toolbar_title"
             android:id="@+id/product_quantity"
             android:textColor="@android:color/white"
             android:textSize="18sp"
-            android:text="0 products available"></TextView>
+            android:text="0 " />
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
