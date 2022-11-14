@@ -11,6 +11,7 @@
     <string name="plus">+</string>
     <string name="email">Email</string>
     <string name="password">Contraseña</string>
+    <string name="blank_hint">_</string>
 
     <!--activity_escaneado.xml-->
     <string name="scan_title">Volver a escanear</string>
@@ -35,10 +36,11 @@
     <string name="conectar">Conectar</string>
 
     <!--user_login.xml-->
+    <string name="login_title">Inicia Sesión</string>
     <string name="registrar">Regístrate</string>
 
     <!--user_register.xml-->
-    <string name="user_title">Datos del usuario</string>
+    <string name="register_title">Datos del usuario</string>
     <string name="first_name">Nombre</string>
     <string name="last_name">Apellido</string>
     <string name="birth_date">Fecha de nacimiento</string>
