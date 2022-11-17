@@ -39,5 +39,5 @@ public class ActivityLogin extends AppCompatActivity {
         }else{
             return 2;
         }
-    } 
+    }
 }
