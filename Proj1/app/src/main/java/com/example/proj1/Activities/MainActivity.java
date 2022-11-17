@@ -52,13 +52,14 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    public void NextActivity(View v) {
+        Intent i = new Intent(this, MainActivity.class);
 
-        public void NextActivity(View v) {
-            Intent i = new Intent(this, MainActivity.class);
+        Toast.makeText(this, "left icon clicked", Toast.LENGTH_SHORT).show();
+        startActivity(i);
+    }
 
-            Toast.makeText(this, "left icon clicked", Toast.LENGTH_SHORT).show();
-            startActivity(i);
-            }
+
 
 }
 

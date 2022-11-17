@@ -33,14 +33,16 @@ public class ActivityEscaneo extends AppCompatActivity {
         Button btnEscanear = findViewById(R.id.btnEscanear);
         tvCodigoLeido = findViewById(R.id.tvCodigoLeido);
 
+        if (!permisoCamaraConcedido) {
+            Toast.makeText(ActivityEscaneo.this, "Por favor permite que la app acceda a la cámara", Toast.LENGTH_SHORT).show();
+            verificarYPedirPermisosDeCamara();
+            escanear(); //abrir camara al entrar a este layout
+            return;
+        }
         btnEscanear.setOnClickListener(v -> {
-            if (!permisoCamaraConcedido) {
-                Toast.makeText(ActivityEscaneo.this, "Por favor permite que la app acceda a la cámara", Toast.LENGTH_SHORT).show();
-                permisoSolicitadoDesdeBoton = true;
-                verificarYPedirPermisosDeCamara();
-                return;
-            }
-            escanear();
+            permisoSolicitadoDesdeBoton = true;
+            verificarYPedirPermisosDeCamara();
+            escanear(); // abrir camara al apretar el botonEscanear
         });
     }
 
@@ -49,19 +51,39 @@ public class ActivityEscaneo extends AppCompatActivity {
         startActivityForResult(i, CODIGO_INTENT);
     }
 
+
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == CODIGO_INTENT) {
             if (resultCode == Activity.RESULT_OK) {
                 if (data != null) {
-                    String codigo = data.getStringExtra("codigo"); //funcion que lee el codigo de barras y guarda el texto
-                    tvCodigoLeido.setText(codigo); //codigo es la variable que toma lo que lee el escaner y añade posteriormente en la label tvcodigoleido
+                    //Ahora lee el codigo de barras y guarda el texto
+                    String codigo = data.getStringExtra("codigo");
+                    tvCodigoLeido.setText(codigo);
 
                 }
             }
         }
     }
+//    public String analisi_resultado_camara(String str){
+//        int i;
+//        char c;
+//        String res="";
+//
+//        str="ATUN-CLARO-0007";
+//        String[] parts= str.split("-");
+//
+//        for (i=0; i<parts.length; i++){
+//            c=parts[i].charAt(0);
+//            if(Character.isLetter(c)){
+//                res=res+parts[i]+" ";
+//            }
+//        }
+//        return res.substring(0,res.length()-1);//es posible que sea -2
+//    }
+
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
