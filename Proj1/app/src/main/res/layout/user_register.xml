@@ -427,8 +427,7 @@
                 android:id="@+id/btnaceptar_register"
                 android:layout_width="325dp"
                 android:layout_height="60dp"
-                android:layout_gravity="start"
-                android:layout_marginStart="45dp"
+                android:layout_gravity="center"
                 android:layout_marginTop="5dp"
                 android:backgroundTint="@color/purple"
                 android:text="@string/aceptar" />
@@ -443,8 +442,7 @@
                 android:id="@+id/btnlogin"
                 android:layout_width="325dp"
                 android:layout_height="60dp"
-                android:layout_gravity="start"
-                android:layout_marginStart="45dp"
+                android:layout_gravity="center"
                 android:backgroundTint="@color/grey"
                 android:text="@string/login" />
 
