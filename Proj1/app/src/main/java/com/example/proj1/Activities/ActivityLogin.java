@@ -1,6 +1,8 @@
 package com.example.proj1.Activities;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -21,6 +23,20 @@ public class ActivityLogin extends AppCompatActivity {
         btnRegistrarse = findViewById(R.id.btnregister);
         email = findViewById(R.id.email_login);
         password = findViewById(R.id.password_login);
+
+        btnRegistrarse.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(ActivityLogin.this,ActivityRegister.class));
+            }
+        });
+
+        btnAceptar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(ActivityLogin.this,MainActivity.class));
+            }
+        });
     }
     private int getUserDatabase(){//0 si correcto, 1 si contraseña incorrecta, 2 si no existe usuario
         //conexión al server

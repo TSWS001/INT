@@ -39,9 +39,12 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public void onBindViewHolder(@NonNull RecyclerViewAdapter.MyViewHolder holder, int position) {
         //assigning values to the views we created in the card_view layout file based on
         // the position of the recycler view
+
+        String Quantity = String.valueOf(productlist.get(position).getQuantity())+" u";
+
         holder.name.setText(productlist.get(position).getName());
         holder.caducity.setText(productlist.get(position).getCaducity());
-        holder.quantity.setText(String.valueOf(productlist.get(position).getQuantity()));
+        holder.quantity.setText(Quantity);
         //faltan mas atributos amostrar
     }
 
