@@ -11,7 +11,7 @@
     <string name="plus">+</string>
     <string name="email">Email</string>
     <string name="password">Contraseña</string>
-    <string name="blank_hint">_</string>
+    <string name="blank_hint"> </string>
 
     <!--activity_escaneado.xml-->
     <string name="scan_title">Volver a escanear</string>
