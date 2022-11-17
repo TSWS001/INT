@@ -67,13 +67,13 @@ public class ActivityRegister extends AppCompatActivity {
         user.setPhone(phone_data);
         user.setAddress(address_data);
 
-        Log.i("first_name:",first_name_data);
-        Log.i("last_name_data:",last_name_data);
-        Log.i("email_data:",email_data);
-        Log.i("password_data:",password_data);
-        Log.i("birth_data:",birth_data);
-        Log.i("phone_data:",phone_data);
-        Log.i("address_data:",address_data);
+        Log.i("first_name:",user.first_name);
+        Log.i("last_name_data:",user.last_name);
+        Log.i("email_data:",user.email);
+        Log.i("password_data:",user.password);
+        Log.i("birth_data:",user.birth_date);
+        Log.i("phone_data:",user.phone);
+        Log.i("address_data:",user.address);
 
     }
 }

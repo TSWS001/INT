@@ -5,7 +5,9 @@ package com.example.proj1.Activities;
         import android.content.Intent;
         import android.content.pm.PackageManager;
         import android.os.Bundle;
+        import android.view.View;
         import android.widget.Button;
+        import android.widget.ImageView;
         import android.widget.TextView;
         import android.widget.Toast;
 
@@ -32,17 +34,26 @@ public class ActivityEscaneo extends AppCompatActivity {
 
         Button btnEscanear = findViewById(R.id.btnEscanear);
         tvCodigoLeido = findViewById(R.id.tvCodigoLeido);
-
-        if (!permisoCamaraConcedido) {
-            Toast.makeText(ActivityEscaneo.this, "Por favor permite que la app acceda a la cámara", Toast.LENGTH_SHORT).show();
-            verificarYPedirPermisosDeCamara();
-            escanear(); //abrir camara al entrar a este layout
-            return;
+        ImageView btnback_arrow= findViewById(R.id.back_icon);
+        if (permisoCamaraConcedido) {
+            escanear();
         }
+
         btnEscanear.setOnClickListener(v -> {
-            permisoSolicitadoDesdeBoton = true;
-            verificarYPedirPermisosDeCamara();
-            escanear(); // abrir camara al apretar el botonEscanear
+            if (!permisoCamaraConcedido) {
+                Toast.makeText(ActivityEscaneo.this, "Por favor permite que la app acceda a la cámara", Toast.LENGTH_SHORT).show();
+                permisoSolicitadoDesdeBoton = true;
+                verificarYPedirPermisosDeCamara();
+                return;
+            }
+            escanear();
+        });
+
+        btnback_arrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(ActivityEscaneo.this,MainActivity.class));
+            }
         });
     }
 

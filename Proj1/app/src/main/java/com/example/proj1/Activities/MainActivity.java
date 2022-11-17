@@ -30,33 +30,22 @@ public class MainActivity extends AppCompatActivity {
 
     }
     public void Clicklistener (View v){
-        Intent i;
         if(v==findViewById(R.id.img11)){
             Toast.makeText(this, "ic_camera clicked", Toast.LENGTH_SHORT).show();
-            i = new Intent(this,ActivityEscaneo.class);
-            startActivity(i);
+            startActivity(new Intent(this,ActivityEscaneo.class));
         }
         else if(v==findViewById(R.id.img12)){
             Toast.makeText(this, "ic_list clicked", Toast.LENGTH_SHORT).show();
-            i = new Intent(this,ActivityList.class);
-            startActivity(i);
+            startActivity(new Intent(this,ActivityList.class));
         }
         else if(v==findViewById(R.id.img21)){
-            Toast.makeText(this, "ic_shopping clicked", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Shopping function is coming soon...", Toast.LENGTH_SHORT).show();
             //activityshopping
         }
         else if(v==findViewById(R.id.img22)){
-            Toast.makeText(this, "ic_diet clicked", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Diet function is coming soon...", Toast.LENGTH_SHORT).show();
             //activitydiet
         }
-
-    }
-
-    public void NextActivity(View v) {
-        Intent i = new Intent(this, MainActivity.class);
-
-        Toast.makeText(this, "left icon clicked", Toast.LENGTH_SHORT).show();
-        startActivity(i);
     }
 
 
