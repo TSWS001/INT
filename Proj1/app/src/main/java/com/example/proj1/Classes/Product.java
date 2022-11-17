@@ -107,18 +107,18 @@ public class Product { //connected with database Products
         }
     }
     private boolean isValidCadDate(int d,int m,int y,Calendar act_date) {
-        if (y<act_date.get(Calendar.YEAR)){
+        if (m<1 || m>12 || d<1 || d>31){
+            return false;
+        }else if ((m==4 || m==6 || m==9 || m==11) && d>30) {
+            return false;
+        }else if ((m==2) && ((((y%4==0 && (y%100!=0) || y%400==0)) && d>29) || (((y%4!=0 || y%100==0) && y%400!=0) && d>28))){
             return false;
         }else if (y<act_date.get(Calendar.YEAR)){
-            if (m<act_date.get(Calendar.MONTH) || m<0 || m>12){
+            return false;
+        }else if (y==act_date.get(Calendar.YEAR)){
+            if (m<act_date.get(Calendar.MONTH)){
                 return false;
             }else if (m==act_date.get(Calendar.MONTH) && d<act_date.get(Calendar.DAY_OF_MONTH)){
-                return false;
-            }else if ((m==1 || m==3 || m==5 || m==7 || m==8 || m==10 || m==12) && d>31){
-                return false;
-            }else if ((m==4 || m==6 || m==9 || m==11) && d>30) {
-                return false;
-            }else if ((m==2) && ((((y%4==0 && y%100!=0) || y%400==0) && d>29) || (((y%4!=0 || y%100==0) && y%400!=0) && d>28))){
                 return false;
             }
         }
