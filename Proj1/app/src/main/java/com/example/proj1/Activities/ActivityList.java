@@ -28,7 +28,12 @@ public class ActivityList extends AppCompatActivity {
         TextView listquantity = findViewById(R.id.product_quantity);
         ImageView btnback = findViewById(R.id.left_icon);
 
-        btnback.setOnClickListener(this::btnback);
+        btnback.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(ActivityList.this,MainActivity.class));
+            }
+        });
 
 
         RecyclerView recyclerView = findViewById(R.id.mRecyclerView);
@@ -42,7 +47,7 @@ public class ActivityList extends AppCompatActivity {
     }
 
     private void SetUpProducts() {
-        String[] productbarcode ={"bar1","bar2","bar3","bar4","bar5","bar6","bar7"} ;//getResources().getStringArray()
+        String[] productbarcode = {"bar1","bar2","bar3","bar4","bar5","bar6","bar7"} ;//getResources().getStringArray()
         String[] productnames = {"name1","name2","name3","name4","name5","name6","name7"};//getResources().getStringArray()
         String[] productcaducity= {"cad1","cad2","cad3","cad4","cad5","cad6","cad7"};
 //        int[] productquantity;
@@ -58,10 +63,6 @@ public class ActivityList extends AppCompatActivity {
             //falta por completar los atributos de la clase Product
         }
 
-    }
-    private void btnback(View v) {
-        Intent i = new Intent(this,MainActivity.class);
-        startActivity(i);
     }
 
 }
