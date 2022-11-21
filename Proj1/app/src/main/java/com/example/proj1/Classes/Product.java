@@ -47,7 +47,7 @@ public class Product { //connected with database Products
         }else {
             return false;
         }
-        Calendar act_date = null;
+        Calendar act_date;//sacar dia de hoy
         if (isValidCadDate(day, month, year, act_date)) {
             this.caducity=day+"/"+month+"/"+year;
         }

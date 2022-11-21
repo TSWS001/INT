@@ -6,8 +6,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.proj1.Classes.Customer;
 import com.example.proj1.R;
 
 public class MainActivity extends AppCompatActivity {
@@ -17,6 +19,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         //setTheme(R.style.Theme_Proj1);// set the theme proj1 after splash screen
         setContentView(R.layout.activity_main);
+
+        TextView nombre = findViewById(R.id.welcome_name);
+        if (nombre.getText()==""){
+            nombre.setText("Usuario");
+        }
 
         ImageView ic_camera = findViewById(R.id.img11);
         ImageView ic_list = findViewById(R.id.img12);
