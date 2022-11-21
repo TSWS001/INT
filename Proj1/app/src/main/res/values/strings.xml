@@ -12,12 +12,19 @@
     <string name="email">Email</string>
     <string name="password">Contraseña</string>
     <string name="blank_hint"> </string>
+    <string name="comma">,</string>
 
     <!--activity_escaneado.xml-->
     <string name="scan_title">Escanear</string>
     <string name="cod_leido">Código leído</string>
     <string name="pie_layout">Sponsored by KaveHome</string>
     <!--activity_main.xml-->
+    <string name="settings">Configuración</string>
+    <string name="welcome">Hola</string>
+    <string name="camera">Cámara</string>
+    <string name="list">Lista de productos</string>
+    <string name="shopping">Compras online</string>
+    <string name="diet">Dietas sugeridas</string>
 
     <!--caducidad.xml-->
     <string name="cad_title">Añade la fecha de caducidad:</string>

@@ -17,10 +17,68 @@
         android:layout_centerVertical="true"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="16dp"
-        android:contentDescription="TODO"
+        android:contentDescription="@string/settings"
         android:src="@drawable/ic_setting"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/welcome_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="30dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+        <LinearLayout
+            android:id="@+id/welcome_main"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+            <TextView
+                android:id="@+id/welcome_hola"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="@string/welcome"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="50sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/welcome_comma"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="@string/comma"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="50sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </LinearLayout>
+        <TextView
+            android:id="@+id/welcome_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text=
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="40sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -42,7 +100,8 @@
                 android:layout_width="190dp"
                 android:layout_height="200dp"
                 android:id="@+id/img11"
-                android:src="@drawable/ic_camera"/>
+                android:src="@drawable/ic_camera"
+                android:contentDescription="@string/camera" />
 
 
             <ImageView
@@ -50,7 +109,7 @@
             android:layout_height="200dp"
             android:id="@+id/img12"
             android:layout_marginStart="10dp"
-            android:src="@drawable/ic_list"/>
+            android:src="@drawable/ic_list" android:contentDescription="@string/list" />
 
 
         </LinearLayout>
@@ -67,16 +126,28 @@
             android:layout_height="200dp"
             android:id="@+id/img21"
             android:src="@drawable/ic_cart"
-            />
+            android:contentDescription="@string/shopping" />
 
         <ImageView
             android:layout_width="190dp"
             android:layout_height="200dp"
             android:id="@+id/img22"
             android:layout_marginStart="10dp"
-            android:src="@drawable/ic_dining"/>
+            android:src="@drawable/ic_dining"
+            android:contentDescription="@string/diet" />
 
     </LinearLayout>
 </LinearLayout>
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:id="@+id/pie_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="10dp"
+        android:text="@string/pie_layout"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

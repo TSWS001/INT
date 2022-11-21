@@ -9,12 +9,10 @@ import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.proj1.Classes.Customer;
+import com.example.proj1.Classes.Product;
 import com.example.proj1.R;
 
-import java.util.*;
-
-public class ActivityRegister extends AppCompatActivity {
+public class ActivityCaducidad extends AppCompatActivity {
 
     Button btnAceptar,btnlogin;
     EditText first_name,last_name, email, password, birth_day, birth_month, birth_year,prefix_phone, phone, address;
@@ -22,7 +20,7 @@ public class ActivityRegister extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.user_register);
+        setContentView(R.layout.caducidad);
 
         btnlogin = findViewById(R.id.btnlogin);
         btnAceptar = findViewById(R.id.btnaceptar_register);
@@ -51,34 +49,6 @@ public class ActivityRegister extends AppCompatActivity {
                 startActivity(new Intent(ActivityRegister.this,ActivityLogin.class));
             }
         });
-
-    }
-
-    private void SetUserData(){
-
-        String first_name_data = first_name.getText().toString();
-        String last_name_data = last_name.getText().toString();
-        String email_data = email.getText().toString();
-        String password_data = password.getText().toString();
-        String birth_data = birth_day.getText().toString()+"/"+birth_month.getText().toString()+"/"+birth_day.getText().toString();
-        String phone_data = "+"+prefix_phone.getText().toString()+phone.getText().toString();
-        String address_data = address.getText().toString();
-
-        Customer user = new Customer(first_name_data, last_name_data, email_data, password_data);
-        Calendar act_date;
-        act_date.complete();
-        if (!birth_data.equals("//") && user.isValidBirthDate(birth_day.getInputType(),birth_month.getInputType(),birth_year.getInputType(),act_date)
-        user.setBirth_date(birth_data);//comprobar la fecha
-        user.setPhone(phone_data);
-        user.setAddress(address_data);
-
-        Log.i("first_name:",user.first_name);
-        Log.i("last_name_data:",user.last_name);
-        Log.i("email_data:",user.email);
-        Log.i("password_data:",user.password);
-        Log.i("birth_data:",user.birth_date);
-        Log.i("phone_data:",user.phone);
-        Log.i("address_data:",user.address);
 
     }
 }
