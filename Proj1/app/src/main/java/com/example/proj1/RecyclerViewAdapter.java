@@ -25,7 +25,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         this.productlist = productlist;
     }
 
-
     @NonNull
     @Override
     public RecyclerViewAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -66,7 +65,13 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             quantity = itemView.findViewById(R.id.text_quantity);
             //flatan mas atributos a mostrar?
 
-
         }
     }
+    public void removeAt(int index){
+        productlist.remove(index);
+        notifyItemRemoved(index);
+        notifyItemRangeChanged(index,productlist.size());
+    }
+
+
 }

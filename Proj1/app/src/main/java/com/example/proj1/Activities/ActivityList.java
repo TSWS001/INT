@@ -27,6 +27,7 @@ public class ActivityList extends AppCompatActivity {
 
         TextView listquantity = findViewById(R.id.product_quantity);
         ImageView btnback = findViewById(R.id.left_icon);
+        ImageView btnplus = findViewById(R.id.right_icon);
 
         btnback.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -35,6 +36,12 @@ public class ActivityList extends AppCompatActivity {
             }
         });
 
+        btnplus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(ActivityList.this,ActivityEscaneo.class));
+            }
+        });
 
         RecyclerView recyclerView = findViewById(R.id.mRecyclerView);
 

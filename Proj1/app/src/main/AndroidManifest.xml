@@ -22,11 +22,11 @@
         <activity android:name=".Activities.ActivityEscanear" />
         <activity android:name=".Activities.ActivityEscaneo"/>
         <activity android:name=".Activities.ActivityLogin"/>
-<!--        <activity android:name=".Activities.ActivityRegister"/>-->
-        <activity android:name=".Activities.MainActivity"/>
+        <activity android:name=".Activities.ActivityRegister"/>
+<!--        <activity android:name=".Activities.MainActivity"/>-->
 
         <activity
-            android:name=".Activities.ActivityRegister"
+            android:name=".Activities.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
