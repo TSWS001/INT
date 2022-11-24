@@ -1,4 +1,4 @@
-package com.example.proj1;
+package com.example.proj1.Classes;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -6,7 +6,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.proj1.Classes.Product;
+import com.example.proj1.R;
+import com.example.proj1.RecyclerViewInterface;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -15,14 +16,16 @@ import java.util.ArrayList;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MyViewHolder> {
 
+    private final RecyclerViewInterface recyclerViewInterface;
 
     Context context;
     ArrayList<Product> productlist;
 
-    public RecyclerViewAdapter(Context context, ArrayList<Product> productlist ){
+    public RecyclerViewAdapter(Context context, ArrayList<Product> productlist, RecyclerViewInterface recyclerViewInterface  ){
 
         this.context = context;
         this.productlist = productlist;
+        this.recyclerViewInterface = recyclerViewInterface;
     }
 
     @NonNull
@@ -31,7 +34,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         // Where you inflate the layout (Giving a look to our rows)
         LayoutInflater inflater = LayoutInflater.from(context);
         View view = inflater.inflate(R.layout.card_view,parent, false);
-        return new RecyclerViewAdapter.MyViewHolder(view);
+        return new RecyclerViewAdapter.MyViewHolder(view, recyclerViewInterface);
     }
 
     @Override
@@ -44,6 +47,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         holder.name.setText(productlist.get(position).getName());
         holder.caducity.setText(productlist.get(position).getCaducity());
         holder.quantity.setText(Quantity);
+
         //faltan mas atributos amostrar
     }
 
@@ -53,16 +57,28 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         return productlist.size();
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder{
+    public class MyViewHolder extends RecyclerView.ViewHolder{//poner un static?
     //Grabbing the views from our card_view layout file, kinda like in the onCreate method
     TextView name, caducity, quantity;
-
-        public MyViewHolder(@NonNull View itemView) {
+        public MyViewHolder(@NonNull View itemView, RecyclerViewInterface recyclerViewInterface) {
             super(itemView);
 
             name = itemView.findViewById(R.id.text_productname);
             caducity = itemView.findViewById(R.id.text_caducity);
             quantity = itemView.findViewById(R.id.text_quantity);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if(recyclerViewInterface!=null){
+                        int pos = getAdapterPosition();
+
+                        if (pos!= RecyclerView.NO_POSITION){
+                            recyclerViewInterface.onItemClick(pos);
+                        }
+                    }
+                }
+            });
             //flatan mas atributos a mostrar?
 
         }

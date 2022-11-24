@@ -12,11 +12,12 @@ import android.widget.TextView;
 
 import com.example.proj1.Classes.Product;
 import com.example.proj1.R;
-import com.example.proj1.RecyclerViewAdapter;
+import com.example.proj1.Classes.RecyclerViewAdapter;
+import com.example.proj1.RecyclerViewInterface;
 
 import java.util.ArrayList;
 
-public class ActivityList extends AppCompatActivity {
+public class ActivityList extends AppCompatActivity implements RecyclerViewInterface {
 
     ArrayList<Product> productlist = new ArrayList<>();
 
@@ -47,7 +48,7 @@ public class ActivityList extends AppCompatActivity {
 
         SetUpProducts();
 
-        RecyclerViewAdapter adapter = new RecyclerViewAdapter(this,productlist);
+        RecyclerViewAdapter adapter = new RecyclerViewAdapter(this,productlist, this);
         recyclerView.setAdapter(adapter);
         listquantity.setText(String.valueOf(adapter.getItemCount())); //set the value of "x products remaining"
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -72,6 +73,16 @@ public class ActivityList extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onItemClick(int position) {
+        Intent intent = new Intent(ActivityList.this, activity_prodinfo.class);
+
+        intent.putExtra("NAME",productlist.get(position).getName());
+        intent.putExtra("CADUCITY",productlist.get(position).getCaducity());
+
+        startActivity(intent);
+
+    }
 }
 
 
