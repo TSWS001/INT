@@ -15,7 +15,7 @@ import com.example.proj1.R;
 import java.util.*;
 
 public class ActivityRegister extends AppCompatActivity {
-
+    Customer user;
     Button btnAceptar,btnlogin;
     EditText first_name,last_name, email, password, birth_day, birth_month, birth_year,prefix_phone, phone, address;
     //habria que hacer un atributo de la clase customer de si el usuario esta o no registrado
@@ -40,8 +40,10 @@ public class ActivityRegister extends AppCompatActivity {
         btnAceptar.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
+                Intent i = new Intent(ActivityRegister.this,MainActivity.class);
                 SetUserData();
-                startActivity(new Intent(ActivityRegister.this,MainActivity.class));
+                i.putExtra("NAME",user.last_name);
+                startActivity(i);
             }
         });
 
@@ -64,7 +66,7 @@ public class ActivityRegister extends AppCompatActivity {
         String phone_data = "+"+prefix_phone.getText().toString()+phone.getText().toString();
         String address_data = address.getText().toString();
 
-        Customer user = new Customer(first_name_data, last_name_data, email_data, password_data);
+        user = new Customer(first_name_data, last_name_data, email_data, password_data);
         Calendar act_date = null;
 //        act_date.complete();
         if (!birth_data.equals("//") && user.isValidBirthDate(birth_day.getInputType(),birth_month.getInputType(),birth_year.getInputType(),act_date)) {

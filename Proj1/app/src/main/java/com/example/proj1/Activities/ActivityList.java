@@ -20,6 +20,7 @@ import java.util.ArrayList;
 public class ActivityList extends AppCompatActivity implements RecyclerViewInterface {
 
     ArrayList<Product> productlist = new ArrayList<>();
+    RecyclerViewAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +49,7 @@ public class ActivityList extends AppCompatActivity implements RecyclerViewInter
 
         SetUpProducts();
 
-        RecyclerViewAdapter adapter = new RecyclerViewAdapter(this,productlist, this);
+         adapter = new RecyclerViewAdapter(this,productlist, this);
         recyclerView.setAdapter(adapter);
         listquantity.setText(String.valueOf(adapter.getItemCount())); //set the value of "x products remaining"
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -59,6 +60,7 @@ public class ActivityList extends AppCompatActivity implements RecyclerViewInter
         String[] productnames = {"name1","name2","name3","name4","name5","name6","name7"};//getResources().getStringArray()
         String[] productcaducity= {"cad1","cad2","cad3","cad4","cad5","cad6","cad7"};
 //        int[] productquantity;
+
 //        int[] productbasearea;
 //        int[] productbaseremain;
 //        int[] productbaseweight;
@@ -67,7 +69,7 @@ public class ActivityList extends AppCompatActivity implements RecyclerViewInter
         for(i=0; i<productbarcode.length; i++){
             //create object and add all the string/attributes into it
             productlist.add(new Product(productbarcode[i],productnames[i],
-                    productcaducity[i],i,100,0,500) );
+                    productcaducity[i],i,0,100,500) );
             //falta por completar los atributos de la clase Product
         }
 
@@ -75,13 +77,23 @@ public class ActivityList extends AppCompatActivity implements RecyclerViewInter
 
     @Override
     public void onItemClick(int position) {
-        Intent intent = new Intent(ActivityList.this, activity_prodinfo.class);
+        Intent intent = new Intent(ActivityList.this, product_info.class);
 
         intent.putExtra("NAME",productlist.get(position).getName());
         intent.putExtra("CADUCITY",productlist.get(position).getCaducity());
+        intent.putExtra("PERCENT",productlist.get(position).getRemain_product());
+        intent.putExtra("QUANTITY_STATE",productlist.get(position).);
+        intent.putExtra("NUTRICIONAL_INFO",productlist.get(position).);
+        intent.putExtra("INGREDIENTS",productlist.get(position).);
 
         startActivity(intent);
 
+    }
+
+    @Override
+    public void onItemLongClick(int position) {
+        productlist.remove(position);
+        adapter.notifyItemRemoved(position);
     }
 }
 

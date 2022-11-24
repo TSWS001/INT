@@ -79,15 +79,21 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                     }
                 }
             });
-            //flatan mas atributos a mostrar?
 
+            itemView.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View view) {
+                    if(recyclerViewInterface!=null){
+                        int pos = getAdapterPosition();
+
+                        if (pos!= RecyclerView.NO_POSITION){
+                            recyclerViewInterface.onItemLongClick(pos);
+                        }
+                    }
+                    return true;
+                }
+            });
         }
     }
-    public void removeAt(int index){
-        productlist.remove(index);
-        notifyItemRemoved(index);
-        notifyItemRangeChanged(index,productlist.size());
-    }
-
 
 }
