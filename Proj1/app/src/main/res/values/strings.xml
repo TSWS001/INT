@@ -13,7 +13,10 @@
     <string name="password">Contraseña</string>
     <string name="blank_hint"> </string>
     <string name="comma">,</string>
+    <string name="bracket_open">(</string>
+    <string name="bracket_close">)</string>
     <string name="back_to_main_menu">Back to main menu</string>
+    <string name="cad_date">Fecha de caducidad</string>
 
     <!--activity_escaneado.xml-->
     <string name="scan_title">Escanear</string>
@@ -30,7 +33,6 @@
 
     <!--caducidad.xml-->
     <string name="cad_title">Añade la fecha de caducidad:</string>
-    <string name="cad_date">Fecha de caducidad:</string>
     <string name="no_cad_date">No tiene fecha de caducidad</string>
 
     <!--card_view.xml-->
@@ -38,6 +40,9 @@
     <!--pantalla_inicial.xml-->
     <string name="proj_name">BATLER CENTER</string>
     <string name="pie_inicio">A KaveHome Project</string>
+
+    <!--productlist.xml-->
+    <string name="quantity">Cantidad</string>
 
     <!--productlist.xml-->
 
