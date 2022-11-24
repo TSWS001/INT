@@ -47,7 +47,7 @@ public class Product { //connected with database Products
         }else {
             return false;
         }
-        Calendar act_date;//sacar dia de hoy
+        Calendar act_date = null;//sacar dia de hoy
         if (isValidCadDate(day, month, year, act_date)) {
             this.caducity=day+"/"+month+"/"+year;
         }
@@ -106,7 +106,7 @@ public class Product { //connected with database Products
             return false;
         }
     }
-    private boolean isValidCadDate(int d,int m,int y,Calendar act_date) {
+    public boolean isValidCadDate(int d,int m,int y,Calendar act_date) {
         if (m<1 || m>12 || d<1 || d>31){
             return false;
         }else if ((m==4 || m==6 || m==9 || m==11) && d>30) {

@@ -65,13 +65,13 @@ public class ActivityRegister extends AppCompatActivity {
         String address_data = address.getText().toString();
 
         Customer user = new Customer(first_name_data, last_name_data, email_data, password_data);
-        Calendar act_date;
-        act_date.complete();
-        if (!birth_data.equals("//") && user.isValidBirthDate(birth_day.getInputType(),birth_month.getInputType(),birth_year.getInputType(),act_date)
-        user.setBirth_date(birth_data);//comprobar la fecha
-        user.setPhone(phone_data);
-        user.setAddress(address_data);
-
+        Calendar act_date = null;
+//        act_date.complete();
+        if (!birth_data.equals("//") && user.isValidBirthDate(birth_day.getInputType(),birth_month.getInputType(),birth_year.getInputType(),act_date)) {
+            user.setBirth_date(birth_data);//comprobar la fecha
+            user.setPhone(phone_data);
+            user.setAddress(address_data);
+        }
         Log.i("first_name:",user.first_name);
         Log.i("last_name_data:",user.last_name);
         Log.i("email_data:",user.email);

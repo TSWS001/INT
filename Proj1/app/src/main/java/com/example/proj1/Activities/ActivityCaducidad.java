@@ -9,46 +9,50 @@ import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.proj1.Classes.Customer;
 import com.example.proj1.Classes.Product;
 import com.example.proj1.R;
 
+import java.util.Calendar;
+
 public class ActivityCaducidad extends AppCompatActivity {
 
-    Button btnAceptar,btnlogin;
-    EditText first_name,last_name, email, password, birth_day, birth_month, birth_year,prefix_phone, phone, address;
+    Button btnAceptar,btnNoCad;
+    EditText cad_day, cad_month, cad_year;
     //habria que hacer un atributo de la clase customer de si el usuario esta o no registrado
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.caducidad);
 
-        btnlogin = findViewById(R.id.btnlogin);
-        btnAceptar = findViewById(R.id.btnaceptar_register);
-        first_name = findViewById(R.id.textfirstname);
-        last_name = findViewById(R.id.textlastname);
-        email = findViewById(R.id.text_email);
-        password = findViewById(R.id.text_password);
-        birth_day = findViewById(R.id.birth_day);
-        birth_month = findViewById(R.id.birth_month);
-        birth_year = findViewById(R.id.birth_year);
-        prefix_phone = findViewById(R.id.text_prefix_phone);
-        phone = findViewById(R.id.text_phone);
-        address = findViewById(R.id.text_direccion);
+        btnNoCad = findViewById(R.id.btnnocaducity);
+        btnAceptar = findViewById(R.id.btnaceptar_cad);
+        cad_day = findViewById(R.id.cad_day);
+        cad_month = findViewById(R.id.cad_month);
+        cad_year = findViewById(R.id.cad_year);
 
         btnAceptar.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                SetUserData();
-                startActivity(new Intent(ActivityRegister.this,MainActivity.class));
+                Calendar act_date=null;
+                if (product.isValidCadDate(cad_day.getInputType(),cad_month.getInputType(),cad_year.getInputType(),act_date)){
+                    SetCad();
+                    startActivity(new Intent(ActivityCaducidad.this,MainActivity.class));
+                }
+                else{
+
+                }
             }
         });
 
-        btnlogin.setOnClickListener(new View.OnClickListener(){
+        btnNoCad.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(ActivityRegister.this,ActivityLogin.class));
+                startActivity(new Intent(ActivityCaducidad.this,ActivityLogin.class));
             }
         });
-
+        private void SetCad(){
+            
+        }
     }
 }

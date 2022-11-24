@@ -16,7 +16,7 @@
         android:src="@drawable/ic_baseline_arrow_back_24_black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:contentDescription="TODO" />
+        android:contentDescription="@string/back_to_main_menu" />
 
     <LinearLayout
         android:id="@+id/cad_layout"
@@ -64,14 +64,16 @@
                 android:layout_marginTop="100dp">
 
                 <EditText
-                    android:id="@+id/text_day"
+                    android:id="@+id/cad_day"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
+                    android:inputType="number"
                     android:hint="@string/day_format"
                     android:textAlignment="center"
                     android:textColor="@color/grey"
-                    android:textSize="30sp" />
+                    android:textSize="30sp"
+                    android:autofillHints="" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -83,15 +85,17 @@
                     android:textSize="35sp" />
 
                 <EditText
-                    android:id="@+id/text_month"
+                    android:id="@+id/cad_month"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginStart="5dp"
+                    android:inputType="number"
                     android:hint="@string/month_format"
                     android:textAlignment="center"
                     android:textColor="@color/grey"
-                    android:textSize="30sp" />
+                    android:textSize="30sp"
+                    android:autofillHints="" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -103,15 +107,17 @@
                     android:textSize="35sp" />
 
                 <EditText
-                    android:id="@+id/text_year"
+                    android:id="@+id/cad_year"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginStart="5dp"
+                    android:inputType="number"
                     android:hint="@string/year_format"
                     android:textAlignment="center"
                     android:textColor="@color/grey"
-                    android:textSize="30sp" />
+                    android:textSize="30sp"
+                    android:autofillHints="" />
 
             </LinearLayout>
         </LinearLayout>
@@ -119,7 +125,7 @@
         </LinearLayout>
 
     <Button
-        android:id="@+id/btnacceptar"
+        android:id="@+id/btnaceptar_cad"
         android:layout_width="325dp"
         android:layout_height="60dp"
         android:layout_gravity="center"
@@ -130,7 +136,6 @@
         android:textColor="@color/black"
         android:backgroundTint="@color/purple"
         android:outlineProvider="paddedBounds"
-        android:outlineSpotShadowColor="@color/black"
         app:layout_constraintTop_toBottomOf="@+id/cad_layout" />
 
     <Button
@@ -144,7 +149,7 @@
         app:layout_constraintStart_toStartOf="parent"
         android:textColor="@color/black"
         android:backgroundTint="@color/grey"
-        app:layout_constraintTop_toBottomOf="@+id/btnacceptar" />
+        app:layout_constraintTop_toBottomOf="@+id/btnaceptar_cad" />
 
     <TextView
         android:id="@+id/pie_layout"
