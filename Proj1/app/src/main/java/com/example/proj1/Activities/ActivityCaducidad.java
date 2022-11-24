@@ -37,7 +37,7 @@ public class ActivityCaducidad extends AppCompatActivity {
                 Calendar act_date=null;
                 if (product.isValidCadDate(cad_day.getInputType(),cad_month.getInputType(),cad_year.getInputType(),act_date)){
                     SetCad();
-                    startActivity(new Intent(ActivityCaducidad.this,MainActivity.class));
+                    startActivity(new Intent(ActivityCaducidad.this,ActivityList.class));
                 }
                 else{
 
@@ -48,11 +48,11 @@ public class ActivityCaducidad extends AppCompatActivity {
         btnNoCad.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(ActivityCaducidad.this,ActivityLogin.class));
+                startActivity(new Intent(ActivityCaducidad.this,ActivityList.class));
             }
         });
         private void SetCad(){
-            
+
         }
     }
 }

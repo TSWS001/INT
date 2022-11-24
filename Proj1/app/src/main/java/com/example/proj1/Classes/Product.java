@@ -12,7 +12,7 @@ public class Product { //connected with database Products
     public String name; //(it has to be in database)
     public String caducity; // dd/mm/yyyy
     public int quantity; //number of products of the same type
-    public int total_weight; //weight of the product at 100% (it has to be in database)
+    public int total_weight; //weight of the product at 100%
     public int remain_product; //remaining percent of product based on weight
     public int base_area; //area to organize products in the scales matrix (it has to be in database)
 
@@ -27,34 +27,9 @@ public class Product { //connected with database Products
     }
 
 
-    public boolean setCaducity(int day,int month,int year){//detect the date we write on the app and save it in Product.caducity
-        Scanner scanner = new Scanner(System.in);
-        String cad=scanner.nextLine();
-        List<Integer> cad_ints = new ArrayList<Integer>();
-        if (cad.contains("/")) {
-            String[] cad_strs = cad.split("/");
-            if (cad_strs.length != 3) {
-                for (int i = 0; i < cad_strs.length; i++) {
-                    if (isNumeric(cad_strs[i])) {
-                        cad_ints.add(Integer.parseInt(cad_strs[i]));
-                    } else {
-                        return (false);
-                    }
-                }
-            } else {
-                return false;
-            }
-        }else {
-            return false;
-        }
-        Calendar act_date = null;//sacar dia de hoy
-        if (isValidCadDate(day, month, year, act_date)) {
-            this.caducity=day+"/"+month+"/"+year;
-        }
-        return isValidCadDate(day, month, year, act_date);
+    public void setCaducity(String cad){//detect the date we write on the app and save it in Product.caducity
+        this.caducity=cad;
     }
-
-
 
     //    private static boolean isNumeric(String str){ //esto en el main o en el fichero de funciones
 //        return str != null && str.matches("[0-9.]+");
@@ -98,6 +73,7 @@ public class Product { //connected with database Products
     public int getRemain_product() {//to be able to show the percentage remaining
         return remain_product;
     }
+
     private boolean isNumeric(String text){
         try{
             Integer.parseInt(text);
@@ -106,6 +82,9 @@ public class Product { //connected with database Products
             return false;
         }
     }
+
+    //funcion de segun el % remain, devuelva completo, ...
+
     public boolean isValidCadDate(int d,int m,int y,Calendar act_date) {
         if (m<1 || m>12 || d<1 || d>31){
             return false;
