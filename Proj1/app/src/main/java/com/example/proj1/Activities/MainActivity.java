@@ -22,7 +22,8 @@ public class MainActivity extends AppCompatActivity {
 
         TextView nombre = findViewById(R.id.welcome_name);
         if (nombre.getText()==""){
-            nombre.setText(getIntent().getStringExtra("NAME"));//sets the name of the user to the main page
+            String name= getIntent().getStringExtra("NAME");
+            nombre.setText(name);//sets the name of the user to the main page
         }
 
         ImageView ic_camera = findViewById(R.id.img11);

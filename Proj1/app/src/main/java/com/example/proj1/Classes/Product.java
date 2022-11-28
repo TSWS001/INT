@@ -23,6 +23,7 @@ public class Product { //connected with database Products
     public float fibra;
     public float proteinas;
     public float sal;
+    public String ingredients;
 
     public Product(String barcode, String name, String caducity, int quantity, int total_weight, int remain_product, int base_area) {
         this.barcode = barcode;
@@ -94,6 +95,9 @@ public class Product { //connected with database Products
 
     public float[] getNutricionalInfo(){
         return new float[]{this.grasas,this.grasas_sat,this.hid_carb,this.azucares,this.fibra,this.proteinas,this.sal};}
+
+    public String getIngredients() { return this.ingredients; }
+
 
     private boolean isNumeric(String text){
         try{

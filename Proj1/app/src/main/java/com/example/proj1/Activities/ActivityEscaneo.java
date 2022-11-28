@@ -17,6 +17,7 @@ package com.example.proj1.Activities;
         import androidx.core.app.ActivityCompat;
         import androidx.core.content.ContextCompat;
 
+        import com.example.proj1.Classes.Product;
         import com.example.proj1.R;
 
 
@@ -34,7 +35,6 @@ public class ActivityEscaneo extends AppCompatActivity {
 
         Button btnEscanear = findViewById(R.id.btnEscanear);
         tvCodigoLeido = findViewById(R.id.tvCodigoLeido);
-        ImageView btnback_arrow= findViewById(R.id.back_icon);
         if (permisoCamaraConcedido) {
             escanear();
         }
@@ -49,10 +49,21 @@ public class ActivityEscaneo extends AppCompatActivity {
             escanear();
         });
 
+        ImageView btnback_arrow= findViewById(R.id.back_icon);
         btnback_arrow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(ActivityEscaneo.this,MainActivity.class));
+            }
+        });
+        Button btnaceptar = findViewById(R.id.btnaceptar_escaneado);
+        btnaceptar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i =new Intent(ActivityEscaneo.this,ActivityCaducidad.class);
+                //Product product_object = new Product();//obtener los atributos del server
+                //i.putExtra("PRODUCT",product_object);//error de no puedo pasar algo que no sea string
+                startActivity(i);
             }
         });
     }
