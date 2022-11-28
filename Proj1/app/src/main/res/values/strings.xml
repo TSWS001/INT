@@ -41,8 +41,18 @@
     <string name="proj_name">BATLER CENTER</string>
     <string name="pie_inicio">A KaveHome Project</string>
 
-    <!--productlist.xml-->
+    <!--product_info.xml-->
     <string name="quantity">Cantidad</string>
+    <string name="nutri_info">Información nutricional</string>
+    <string name="ingredients">Ingredientes</string>
+    <string name="grasas">Grasas</string>
+    <string name="grasas_sat">Grasas saturadas</string>
+    <string name="hid_carb">Hidratos de carbono</string>
+    <string name="azucares">Azúcares</string>
+    <string name="fibra">Fibra alimentaria</string>
+    <string name="proteinas">Proteínas</string>
+    <string name="sal">Sal</string>
+    <string name="gramos">g</string>
 
     <!--productlist.xml-->
 
