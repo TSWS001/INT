@@ -1,6 +1,7 @@
 package com.example.proj1.Classes;
 import static java.lang.String.valueOf;
 
+import java.lang.reflect.Array;
 import java.time.Month;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,6 +16,13 @@ public class Product { //connected with database Products
     public int total_weight; //weight of the product at 100%
     public int remain_product; //remaining percent of product based on weight
     public int base_area; //area to organize products in the scales matrix (it has to be in database)
+    public float grasas;
+    public float grasas_sat;
+    public float hid_carb;
+    public float azucares;
+    public float fibra;
+    public float proteinas;
+    public float sal;
 
     public Product(String barcode, String name, String caducity, int quantity, int total_weight, int remain_product, int base_area) {
         this.barcode = barcode;
@@ -34,6 +42,16 @@ public class Product { //connected with database Products
     //    private static boolean isNumeric(String str){ //esto en el main o en el fichero de funciones
 //        return str != null && str.matches("[0-9.]+");
 //    }
+
+    public void setNutricionalInfo(float grasas,float grasas_sat,float hid_carb,float azucares,float fibra,float proteinas,float sal){
+        this.grasas=grasas;
+        this.grasas_sat=grasas_sat;
+        this.hid_carb=hid_carb;
+        this.azucares=azucares;
+        this.fibra=fibra;
+        this.proteinas=proteinas;
+        this.sal=sal;
+    }
 
     ; //previous than current date. We shall do a function so we can use the same to check Customer.birthdate
     public void setBarcode(String code){
@@ -74,6 +92,9 @@ public class Product { //connected with database Products
         return remain_product;
     }
 
+    public float[] getNutricionalInfo(){
+        return new float[]{this.grasas,this.grasas_sat,this.hid_carb,this.azucares,this.fibra,this.proteinas,this.sal};}
+
     private boolean isNumeric(String text){
         try{
             Integer.parseInt(text);
@@ -84,6 +105,19 @@ public class Product { //connected with database Products
     }
 
     //funcion de segun el % remain, devuelva completo, ...
+    public String RemainProductToText(){
+        if (this.remain_product<10){
+            return ("Casi vacío");
+        } else if (this.remain_product<30){
+            return ("Menos de la mitad");
+        } else if (this.remain_product<60){
+            return ("Más de la mitad");
+        }else if (this.remain_product<90){
+            return ("Casi completo");
+        }else{
+            return ("Completo");
+        }
+    }
 
     public boolean isValidCadDate(int d,int m,int y,Calendar act_date) {
         if (m<1 || m>12 || d<1 || d>31){
