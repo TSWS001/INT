@@ -63,6 +63,7 @@
 
     <!--settings.xml-->
     <string name="log_out">Cerrar sesión</string>
+    <string name="info_condition_politics">Condiciones y política</string>
 
     <!--user_login.xml-->
     <string name="registrar">Regístrate</string>
@@ -79,4 +80,9 @@
     <string name="address_format">C/ xxxxxx, 00</string>
     <string name="confirm_password">Repite la contraseña</string>
     <string name="have_user">¿Ya tienes una cuenta?</string>
+
+    <!--user_register.xml-->
+    <string name="cond_pol_title">Condiciones de uso y política de privacidad</string>
+    <string name="cond_pol_text">[falta]</string>
+
 </resources>
