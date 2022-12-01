@@ -20,33 +20,57 @@ public class ActivityProdInfo extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.product_info);
         {
-            String name,cad,perc,state,nutri,ingred;
+            String name,cad,perc,state,ingred;
+            String grasa,grasa_sat,hidcarbono,azucar,fibra,proteina,sal;
 
+            //Get string from Intent
             name = getIntent().getStringExtra("NAME");
             cad = getIntent().getStringExtra("CADUCITY");
             perc = getIntent().getStringExtra("PERCENT");
             state = getIntent().getStringExtra("QUANTITY_STATE");
-            nutri = getIntent().getStringExtra("NUTRITIONAL_INFO");
             ingred = getIntent().getStringExtra("INGREDIENTS");
+
+            grasa = getIntent().getStringExtra("NUTRI_GRASAS");
+            grasa_sat = getIntent().getStringExtra("NUTRI_GRASAS_SAT");
+            hidcarbono = getIntent().getStringExtra("NUTRI_HIDCARB");
+            azucar = getIntent().getStringExtra("NUTRI_AZUCARES");
+            fibra = getIntent().getStringExtra("NUTRI_FIBRA");
+            proteina = getIntent().getStringExtra("NUTRI_PROT");
+            sal = getIntent().getStringExtra("NUTRI_SAL");
+
 
             TextView tvname,tvcad,tvpercent,tvstate,tvingredient;
             TextView tvgrasa,tvgrasa_sat,tvhidcarbono,tvazucar,tvfibra,tvproteina,tvsal;
 
-            tvname.setText(findViewById(R.id.));
-            tvcad.setText(findViewById(R.id.));
-            tvpercent.setText(findViewById(R.id.));
-            tvstate.setText(findViewById(R.id.));
-            tvingredient.setText(findViewById(R.id.));
+            //Find views
+            tvname = findViewById(R.id.prod_name);
+            tvcad = findViewById(R.id.cad_date);
+            tvpercent = findViewById(R.id.prod_rem_percent);
+            tvstate = findViewById(R.id.prod_rem_text);
+            tvingredient = findViewById(R.id.prod_ingredientes);
 
-            tvgrasa.setText(findViewById(R.id.));
-            tvgrasa_sat.setText(findViewById(R.id.));
-            tvhidcarbono.setText(findViewById(R.id.));
-            tvazucar.setText(findViewById(R.id.));
-            tvfibra.setText(findViewById(R.id.));
-            tvproteina.setText(findViewById(R.id.));
-            tvsal.setText(findViewById(R.id.));
+            tvgrasa = findViewById(R.id.prod_nutri_grasas);
+            tvgrasa_sat = findViewById(R.id.prod_nutri_grasas_sat);
+            tvhidcarbono = findViewById(R.id.prod_nutri_hid_carb);
+            tvazucar = findViewById(R.id.prod_nutri_azucares);
+            tvfibra = findViewById(R.id.prod_nutri_fibra);
+            tvproteina = findViewById(R.id.prod_nutri_prot);
+            tvsal = findViewById(R.id.prod_nutri_sal);
 
+            // Set texts
+            tvname.setText(name);
+            tvcad.setText(cad);
+            tvpercent.setText(perc);
+            tvstate.setText(state);
+            tvingredient.setText(ingred);
 
+            tvgrasa.setText(grasa);
+            tvgrasa_sat.setText(grasa_sat);
+            tvhidcarbono.setText(hidcarbono);
+            tvazucar.setText(azucar);
+            tvfibra.setText(fibra);
+            tvproteina.setText(proteina);
+            tvsal.setText(sal);
 
         }
     }

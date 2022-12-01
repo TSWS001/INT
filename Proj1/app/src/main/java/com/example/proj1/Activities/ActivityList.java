@@ -83,8 +83,16 @@ public class ActivityList extends AppCompatActivity implements RecyclerViewInter
         intent.putExtra("CADUCITY",productlist.get(position).getCaducity());
         intent.putExtra("PERCENT",productlist.get(position).getRemain_product());
         intent.putExtra("QUANTITY_STATE",productlist.get(position).RemainProductToText());
-        intent.putExtra("NUTRITIONAL_INFO",productlist.get(position).getNutricionalInfo());//va a ser un array de float
         intent.putExtra("INGREDIENTS",productlist.get(position).getIngredients());
+        //aqui recibe el array de float de nutritional info
+        float[] arraynutri= productlist.get(position).getNutricionalInfo();
+        intent.putExtra("NUTRI_GRASAS",arraynutri[0]);
+        intent.putExtra("NUTRI_GRASAS_SAT",arraynutri[1]);
+        intent.putExtra("NUTRI_HIDCARB",arraynutri[2]);
+        intent.putExtra("NUTRI_AZUCARES",arraynutri[3]);
+        intent.putExtra("NUTRI_FIBRA",arraynutri[4]);
+        intent.putExtra("NUTRI_PROT",arraynutri[5]);
+        intent.putExtra("NUTRI_SAL",arraynutri[6]);
 
         startActivity(intent);
 

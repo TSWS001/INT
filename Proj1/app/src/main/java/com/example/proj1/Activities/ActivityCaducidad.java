@@ -30,13 +30,18 @@ public class ActivityCaducidad extends AppCompatActivity {
         cad_day = findViewById(R.id.cad_day);
         cad_month = findViewById(R.id.cad_month);
         cad_year = findViewById(R.id.cad_year);
+        String cad_data = cad_day.getText().toString()+"/"+cad_month.getText().toString()+"/"+cad_year.getText().toString();
+
 
         btnAceptar.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                Calendar act_date=null;
+                Calendar act_date= Calendar.getInstance();
+                String[] array_str = getIntent().getStringArrayExtra("PRODUCT_STR");
+                int[] array_int = getIntent().getIntArrayExtra("PRODUCT_INT");
+                Product product = new Product(array_str[0],array_str[1],array_str[2],array_int[0],array_int[1],array_int[2],array_int[3]);
                 if (product.isValidCadDate(cad_day.getInputType(),cad_month.getInputType(),cad_year.getInputType(),act_date)){
-                    SetCad();
+                    product.setCaducity(cad_data);
                     startActivity(new Intent(ActivityCaducidad.this,ActivityList.class));
                 }
                 else{
@@ -51,8 +56,5 @@ public class ActivityCaducidad extends AppCompatActivity {
                 startActivity(new Intent(ActivityCaducidad.this,ActivityList.class));
             }
         });
-        private void SetCad(){
-
-        }
     }
 }
