@@ -23,9 +23,8 @@ public class MainActivity extends AppCompatActivity {
 
         TextView nombre = findViewById(R.id.welcome_name);
         String name= getIntent().getStringExtra("NAME");
-        Log.i("main_name:",name);
+        //Log.i("main_name:",name);
         nombre.setText(name);//sets the name of the user to the main page
-
 
         ImageView ic_camera = findViewById(R.id.img11);
         ImageView ic_list = findViewById(R.id.img12);
@@ -38,31 +37,28 @@ public class MainActivity extends AppCompatActivity {
         ic_shopping.setOnClickListener(this::Clicklistener);
         ic_diet.setOnClickListener(this::Clicklistener);
         ic_settings.setOnClickListener(this::Clicklistener);
-
     }
-    public void Clicklistener (View v){
-        if(v==findViewById(R.id.img11)){
+
+
+    public void Clicklistener (View v) {
+        if (v == findViewById(R.id.img11)) {
             Toast.makeText(this, "ic_camera clicked", Toast.LENGTH_SHORT).show();
-            startActivity(new Intent(this,ActivityEscaneo.class));
-        }
-        else if(v==findViewById(R.id.img12)){
-            Toast.makeText(this, "ic_list clicked", Toast.LENGTH_SHORT).show();
-            startActivity(new Intent(this,ActivityList.class));
-        }
-        else if(v==findViewById(R.id.img21)){
+            startActivity(new Intent(this, ActivityEscaneo.class));
+        } else if (v == findViewById(R.id.img12)) {
+            Toast.makeText(this, "cargando la lista de productos", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(this, ActivityList.class));
+        } else if (v == findViewById(R.id.img21)) {
             Toast.makeText(this, "Shopping function is coming soon...", Toast.LENGTH_SHORT).show();
             //activityshopping
-        }
-        else if(v==findViewById(R.id.img22)){
+        } else if (v == findViewById(R.id.img22)) {
             Toast.makeText(this, "Diet function is coming soon...", Toast.LENGTH_SHORT).show();
             //activitydiet
-        }
-        else if(v==findViewById(R.id.ic_settings)){
+        } else if (v == findViewById(R.id.ic_settings)) {
             Toast.makeText(this, "ic_settings clicked", Toast.LENGTH_SHORT).show();
-            startActivity(new Intent(this,ActivitySettings.class));
+            startActivity(new Intent(this, ActivitySettings.class));
+        }
+
+
     }
-
-
-
 }
 

@@ -5,6 +5,7 @@ package com.example.proj1.Activities;
         import android.content.Intent;
         import android.content.pm.PackageManager;
         import android.os.Bundle;
+        import android.util.Log;
         import android.view.View;
         import android.widget.Button;
         import android.widget.ImageView;
@@ -65,9 +66,10 @@ public class ActivityEscaneo extends AppCompatActivity {
                 String[] array_str = new String[] {"ESPAGUETIS-0004","Espaguetis",""};
                 int[] array_int = new int[] {5,100,88,10};
 
+                Log.i("testbotton aceptar","antes de putextra");
                 i.putExtra("PRODUCT_STR", array_str);
                 i.putExtra("PRODUCT_INT", array_int);
-
+                Log.i("testbotton aceptar","despues de putextra");
                 startActivity(i);
             }
         });
@@ -77,7 +79,6 @@ public class ActivityEscaneo extends AppCompatActivity {
         Intent i = new Intent(ActivityEscaneo.this, ActivityEscanear.class);
         startActivityForResult(i, CODIGO_INTENT);
     }
-
 
 
     @Override

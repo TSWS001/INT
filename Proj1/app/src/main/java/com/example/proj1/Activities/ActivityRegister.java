@@ -17,7 +17,7 @@ import java.util.*;
 
 public class ActivityRegister extends AppCompatActivity {
     Customer user;
-    boolean validcad= true, emptycad;
+    boolean validcad= true, emptycad, mandatoryfilled=true;
     Button btnAceptar,btnlogin;
     EditText first_name,last_name, email, password, birth_day, birth_month, birth_year,prefix_phone, phone, address;
     //habria que hacer un atributo de la clase customer de si el usuario esta o no registrado
@@ -35,9 +35,7 @@ public class ActivityRegister extends AppCompatActivity {
         birth_day = findViewById(R.id.birth_day);
         birth_month = findViewById(R.id.birth_month);
         birth_year = findViewById(R.id.birth_year);
-        prefix_phone = findViewById(R.id.text_prefix_phone);
         phone = findViewById(R.id.text_phone);
-        address = findViewById(R.id.text_direccion);
 
         btnAceptar.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -64,11 +62,12 @@ public class ActivityRegister extends AppCompatActivity {
     }
 
     private void SetUserData(){
-
+        //campos obligatorios
         String first_name_data = first_name.getText().toString();
         String last_name_data = last_name.getText().toString();
         String email_data = email.getText().toString();
         String password_data = password.getText().toString();
+        //campos opcionales
         String birth_data = birth_day.getText().toString()+"/"+birth_month.getText().toString()+"/"+birth_year.getText().toString();
         String phone_data = phone.getText().toString();
 
@@ -78,6 +77,9 @@ public class ActivityRegister extends AppCompatActivity {
         emptycad = birth_data.equals("//");
 
         user.setPhone(phone_data);
+
+        mandatoryfilled= (first_name_data.equals("") && last_name_data=="" && email_data=="" && password_data=="");
+            //probamos poner "" y si no añadimos un espacio al final del first_name_data al asignarle valor
 
         if (validcad) {
             if (emptycad)
