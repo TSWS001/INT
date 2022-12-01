@@ -17,6 +17,8 @@
     <string name="bracket_close">)</string>
     <string name="back_to_main_menu">Back to main menu</string>
     <string name="cad_date">Fecha de caducidad</string>
+    <string name="login">Inicia sesión</string>
+    <string name="settings">Configuración</string>
 
     <!--activity_escaneado.xml-->
     <string name="scan_title">Escanear</string>
@@ -24,7 +26,6 @@
     <string name="pie_layout">Sponsored by KaveHome</string>
 
     <!--activity_main.xml-->
-    <string name="settings">Configuración</string>
     <string name="welcome">Hola</string>
     <string name="camera">Cámara</string>
     <string name="list">Lista de productos</string>
@@ -60,8 +61,10 @@
     <!--server_test.xml-->
     <string name="conectar">Conectar</string>
 
+    <!--settings.xml-->
+    <string name="log_out">Cerrar sesión</string>
+
     <!--user_login.xml-->
-    <string name="login_title">Inicia Sesión</string>
     <string name="registrar">Regístrate</string>
 
     <!--user_register.xml-->
@@ -76,5 +79,4 @@
     <string name="address_format">C/ xxxxxx, 00</string>
     <string name="confirm_password">Repite la contraseña</string>
     <string name="have_user">¿Ya tienes una cuenta?</string>
-    <string name="login">Inicia sesión</string>
 </resources>

@@ -23,7 +23,7 @@
         app:layout_constraintTop_toTopOf="parent"
         android:textSize="30sp"
         android:textColor="@color/black"
-        android:text="@string/login_title" />
+        android:text="@string/login" />
 
     <EditText
         android:id="@+id/email_login"
