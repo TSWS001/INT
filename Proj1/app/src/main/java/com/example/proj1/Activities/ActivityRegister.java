@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -16,6 +17,7 @@ import java.util.*;
 
 public class ActivityRegister extends AppCompatActivity {
     Customer user;
+    boolean validcad= true, emptycad;
     Button btnAceptar,btnlogin;
     EditText first_name,last_name, email, password, birth_day, birth_month, birth_year,prefix_phone, phone, address;
     //habria que hacer un atributo de la clase customer de si el usuario esta o no registrado
@@ -40,10 +42,16 @@ public class ActivityRegister extends AppCompatActivity {
         btnAceptar.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(ActivityRegister.this,MainActivity.class);
                 SetUserData();
-                i.putExtra("NAME",user.last_name);
-                startActivity(i);
+                if (!validcad){
+                    Toast.makeText(ActivityRegister.this, "fecha de nacimiento invalida,", Toast.LENGTH_SHORT).show();
+                }
+                else
+                {
+                    Intent i = new Intent(ActivityRegister.this,MainActivity.class);
+                    i.putExtra("NAME",user.first_name);
+                    startActivity(i);
+                }
             }
         });
 
@@ -53,7 +61,6 @@ public class ActivityRegister extends AppCompatActivity {
                 startActivity(new Intent(ActivityRegister.this,ActivityLogin.class));
             }
         });
-
     }
 
     private void SetUserData(){
@@ -62,25 +69,29 @@ public class ActivityRegister extends AppCompatActivity {
         String last_name_data = last_name.getText().toString();
         String email_data = email.getText().toString();
         String password_data = password.getText().toString();
-        String birth_data = birth_day.getText().toString()+"/"+birth_month.getText().toString()+"/"+birth_day.getText().toString();
-        String phone_data = "+"+prefix_phone.getText().toString()+phone.getText().toString();
-        String address_data = address.getText().toString();
+        String birth_data = birth_day.getText().toString()+"/"+birth_month.getText().toString()+"/"+birth_year.getText().toString();
+        String phone_data = phone.getText().toString();
 
         user = new Customer(first_name_data, last_name_data, email_data, password_data);
-        Calendar act_date = null;
-//        act_date.complete();
-        if (!birth_data.equals("//") && user.isValidBirthDate(birth_day.getInputType(),birth_month.getInputType(),birth_year.getInputType(),act_date)) {
-            user.setBirth_date(birth_data);//comprobar la fecha
-            user.setPhone(phone_data);
-            user.setAddress(address_data);
-        }
-        Log.i("first_name:",user.first_name);
-        Log.i("last_name_data:",user.last_name);
-        Log.i("email_data:",user.email);
-        Log.i("password_data:",user.password);
-        Log.i("birth_data:",user.birth_date);
-        Log.i("phone_data:",user.phone);
-        Log.i("address_data:",user.address);
+        Calendar act_date = Calendar.getInstance();
+        validcad = user.isValidBirthDate(birth_day.getInputType(),birth_month.getInputType(),birth_year.getInputType(),act_date);
+        emptycad = birth_data.equals("//");
 
+        user.setPhone(phone_data);
+
+        if (validcad) {
+            if (emptycad)
+                user.setBirth_date("");
+            else
+                user.setBirth_date(birth_data);
+        }
+        Log.i("validcad:", String.valueOf(validcad));
+            Log.i("first_name:",user.first_name);
+//            Log.i("last_name_data:",user.last_name);
+//            Log.i("email_data:",user.email);
+//            Log.i("password_data:",user.password);
+//            Log.i("birth_data:",user.birth_date);
+//            Log.i("phone_data:",user.phone);
+//            Log.i("address_data:",user.address);
     }
 }

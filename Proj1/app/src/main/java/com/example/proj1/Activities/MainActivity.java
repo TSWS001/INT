@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -21,10 +22,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         TextView nombre = findViewById(R.id.welcome_name);
-        if (nombre.getText()==""){
-            String name= getIntent().getStringExtra("NAME");
-            nombre.setText(name);//sets the name of the user to the main page
-        }
+        String name= getIntent().getStringExtra("NAME");
+        Log.i("main_name:",name);
+        nombre.setText(name);//sets the name of the user to the main page
+
 
         ImageView ic_camera = findViewById(R.id.img11);
         ImageView ic_list = findViewById(R.id.img12);

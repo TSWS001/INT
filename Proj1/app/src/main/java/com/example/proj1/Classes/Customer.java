@@ -8,7 +8,6 @@ public class Customer { //connects with database Customers
     public String last_name;//mandatory
     public String password;//mandatory
     public String phone=null; //send offers, optional
-    public String address=null; //to search near markets, optional
     public String birth_date=null; //for some offers from markets, recipes or diet, optional
 
     public Customer(String email, String first_name, String second_name, String password){//constructor for mandatory attributes
@@ -20,10 +19,6 @@ public class Customer { //connects with database Customers
 
     public void setPhone(String phone) {
         this.phone = phone;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
     }
 
     public void setBirth_date(String birth_date) {
@@ -46,17 +41,10 @@ public class Customer { //connects with database Customers
         return phone;
     }
 
-    public String getAddress() {
-        return address;
-    }
-
     public String getBirth_date() {
         return birth_date;
     }
 
-    public void SendToDatabase(){
-
-    }
     public boolean isValidBirthDate(int d, int m, int y, Calendar act_date) {
         if (m<1 || m>12 || d<1 || d>31){
             return false;

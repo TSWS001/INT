@@ -61,8 +61,13 @@ public class ActivityEscaneo extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent i =new Intent(ActivityEscaneo.this,ActivityCaducidad.class);
-                //Product product_object = new Product();//obtener los atributos del server
-                //i.putExtra("PRODUCT",product_object);//error de no puedo pasar algo que no sea string
+                //obtener los atributos del server
+                String[] array_str = new String[] {"ESPAGUETIS-0004","Espaguetis",""};
+                int[] array_int = new int[] {5,100,88,10};
+
+                i.putExtra("PRODUCT_STR", array_str);
+                i.putExtra("PRODUCT_INT", array_int);
+
                 startActivity(i);
             }
         });
