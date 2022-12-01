@@ -30,11 +30,13 @@ public class MainActivity extends AppCompatActivity {
         ImageView ic_list = findViewById(R.id.img12);
         ImageView ic_shopping = findViewById(R.id.img21);
         ImageView ic_diet = findViewById(R.id.img22);
+        ImageView ic_settings = findViewById(R.id.ic_settings);
 
         ic_camera.setOnClickListener(this::Clicklistener);
         ic_list.setOnClickListener(this::Clicklistener);
         ic_shopping.setOnClickListener(this::Clicklistener);
         ic_diet.setOnClickListener(this::Clicklistener);
+        ic_settings.setOnClickListener(this::Clicklistener);
 
     }
     public void Clicklistener (View v){
@@ -54,6 +56,9 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this, "Diet function is coming soon...", Toast.LENGTH_SHORT).show();
             //activitydiet
         }
+        else if(v==findViewById(R.id.ic_settings)){
+            Toast.makeText(this, "ic_settings clicked", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(this,ActivitySettings.class));
     }
 
 
