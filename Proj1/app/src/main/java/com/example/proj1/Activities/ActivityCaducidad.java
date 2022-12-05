@@ -36,15 +36,19 @@ public class ActivityCaducidad extends AppCompatActivity {
         btnAceptar.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
+                //Set up of the product class object
                 Calendar act_date= Calendar.getInstance();
                 String[] array_str = getIntent().getStringArrayExtra("PRODUCT_STR");
                 int[] array_int = getIntent().getIntArrayExtra("PRODUCT_INT");
                 Product product = new Product(array_str[0],array_str[1],array_str[2],array_int[0],array_int[1],array_int[2],array_int[3]);
+                //check
                 if (product.isValidCadDate(cad_day.getInputType(),cad_month.getInputType(),cad_year.getInputType(),act_date)){
+                    //si la fecha de caducidad es correcta
                     product.setCaducity(cad_data);
                     startActivity(new Intent(ActivityCaducidad.this,ActivityList.class));
                 }
                 else{
+                    //si la fecha de caducidad es incorrecta
 
                 }
             }
