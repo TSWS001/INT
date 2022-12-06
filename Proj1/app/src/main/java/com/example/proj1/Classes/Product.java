@@ -1,6 +1,7 @@
 package com.example.proj1.Classes;
 import static java.lang.String.valueOf;
 
+import java.io.Serializable;
 import java.lang.reflect.Array;
 import java.time.Month;
 import java.util.ArrayList;
@@ -8,7 +9,7 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.Calendar;
 
-public class Product { //connected with database Products
+public class Product implements Serializable { //connected with database Products
     public String barcode; //used as product_id (it has to be in database)
     public String name; //(it has to be in database)
     public String caducity; // dd/mm/yyyy

@@ -34,21 +34,24 @@ public class ActivityEscaneo extends AppCompatActivity {
         setContentView(R.layout.activity_escaneado);
         verificarYPedirPermisosDeCamara();
 
-        Button btnEscanear = findViewById(R.id.btnEscanear);
         tvCodigoLeido = findViewById(R.id.tvCodigoLeido);
         if (permisoCamaraConcedido) {
             escanear();
         }
 
-        btnEscanear.setOnClickListener(v -> {
-            if (!permisoCamaraConcedido) {
-                Toast.makeText(ActivityEscaneo.this, "Por favor permite que la app acceda a la cámara", Toast.LENGTH_SHORT).show();
-                permisoSolicitadoDesdeBoton = true;
-                verificarYPedirPermisosDeCamara();
-                return;
+        Button btnEscanear = findViewById(R.id.btnEscanear);
+        btnEscanear.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (!permisoCamaraConcedido) {
+                    Toast.makeText(ActivityEscaneo.this, "Por favor permite que la app acceda a la cámara", Toast.LENGTH_SHORT).show();
+                    permisoSolicitadoDesdeBoton = true;
+                    verificarYPedirPermisosDeCamara();
+                    return;
+                }
+                escanear();
             }
-            escanear();
-        });
+            });
 
         ImageView btnback_arrow= findViewById(R.id.back_icon);
         btnback_arrow.setOnClickListener(new View.OnClickListener() {
@@ -57,19 +60,19 @@ public class ActivityEscaneo extends AppCompatActivity {
                 startActivity(new Intent(ActivityEscaneo.this,MainActivity.class));
             }
         });
+
         Button btnaceptar = findViewById(R.id.btnaceptar_escaneado);
         btnaceptar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent i =new Intent(ActivityEscaneo.this,ActivityCaducidad.class);
-                //obtener los atributos del server
-                String[] array_str = new String[] {"ESPAGUETIS-0004","Espaguetis",""};
-                int[] array_int = new int[] {5,100,88,10};
+                //get data from server, and send it to ActivityCaducidad with an Intent
+//                String[] array_str = new String[] {"ESPAGUETIS-0004","Espaguetis",""};
+//                int[] array_int = new int[] {5,100,88,10};
+                Product product = new Product("ESPAGUETIS-0004","Espaguetis",
+                        "",5,100,88,10);
+                i.putExtra("product", product);
 
-                Log.i("testbotton aceptar","antes de putextra");
-                i.putExtra("PRODUCT_STR", array_str);
-                i.putExtra("PRODUCT_INT", array_int);
-                Log.i("testbotton aceptar","despues de putextra");
                 startActivity(i);
             }
         });

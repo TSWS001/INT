@@ -56,21 +56,37 @@ public class ActivityList extends AppCompatActivity implements RecyclerViewInter
     }
 
     private void SetUpProducts() {
-        String[] productbarcode = {"bar1","bar2","bar3","bar4","bar5","bar6","bar7"} ;//getResources().getStringArray()
-        String[] productnames = {"name1","name2","name3","name4","name5","name6","name7"};//getResources().getStringArray()
-        String[] productcaducity= {"cad1","cad2","cad3","cad4","cad5","cad6","cad7"};
-//        int[] productquantity;
+        Bundle extra = getIntent().getBundleExtra("product");
 
-//        int[] productbasearea;
-//        int[] productbaseremain;
-//        int[] productbaseweight;
+        ArrayList<String> productbarcode = new ArrayList<>();
+        ArrayList<String> productnames = new ArrayList<>();
+        ArrayList<String> productcaducity = new ArrayList<>();
+        ArrayList<Integer> productquantity = new ArrayList<>();
+        ArrayList<Integer> productbasearea = new ArrayList<>();
+        ArrayList<Integer> productbaseremain = new ArrayList<>();
+        ArrayList<Integer> productbaseweight = new ArrayList<>();
+
+//"bar1","bar2","bar3","bar4","bar5","bar6","bar7"};
+// {"name1","name2","name3","name4","name5","name6","name7"};
+// {"cad1","cad2","cad3","cad4","cad5","cad6","cad7"};
+
+        if (extra!=null){
+            Product new_product = (Product) extra.getSerializable("product");
+            productbarcode.add(new_product.barcode);
+            productnames.add(new_product.name);
+            productcaducity.add(new_product.caducity);
+            productquantity.add(new_product.quantity);
+            productbasearea.add(new_product.base_area);
+            productbaseremain.add(new_product.remain_product);
+            productbaseweight.add(new_product.total_weight);
+        }
 
         int i;
-        for(i=0; i<productbarcode.length; i++){
+        for(i=0; i<productbarcode.size(); i++){
             //create object and add all the string/attributes into it
-            productlist.add(new Product(productbarcode[i],productnames[i],
-                    productcaducity[i],i,0,100,500) );
-            //falta por completar los atributos de la clase Product
+            productlist.add(new Product(productbarcode.get(i),productnames.get(i),
+                    productcaducity.get(i),productquantity.get(i),productbasearea.get(i),
+                    productbaseremain.get(i),productbaseweight.get(i)) );
         }
 
     }

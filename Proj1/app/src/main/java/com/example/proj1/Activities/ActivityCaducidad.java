@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -38,18 +39,21 @@ public class ActivityCaducidad extends AppCompatActivity {
             public void onClick(View view) {
                 //Set up of the product class object
                 Calendar act_date= Calendar.getInstance();
-                String[] array_str = getIntent().getStringArrayExtra("PRODUCT_STR");
-                int[] array_int = getIntent().getIntArrayExtra("PRODUCT_INT");
-                Product product = new Product(array_str[0],array_str[1],array_str[2],array_int[0],array_int[1],array_int[2],array_int[3]);
-                //check
+//                String[] array_str = getIntent().getStringArrayExtra("PRODUCT_STR");
+//                int[] array_int = getIntent().getIntArrayExtra("PRODUCT_INT");
+//                Product product = new Product(array_str[0],array_str[1],array_str[2],array_int[0],array_int[1],array_int[2],array_int[3]);
+                Product product = (Product) getIntent().getSerializableExtra("product");
+                //checks the correctness of the date
                 if (product.isValidCadDate(cad_day.getInputType(),cad_month.getInputType(),cad_year.getInputType(),act_date)){
                     //si la fecha de caducidad es correcta
+                    Intent intent = new Intent(ActivityCaducidad.this,ActivityList.class);
                     product.setCaducity(cad_data);
-                    startActivity(new Intent(ActivityCaducidad.this,ActivityList.class));
+                    intent.putExtra("productobj",product);
+                    startActivity(intent);
                 }
                 else{
                     //si la fecha de caducidad es incorrecta
-
+                    Toast.makeText(ActivityCaducidad.this, "fecha de caducidad erronea", Toast.LENGTH_SHORT).show();
                 }
             }
         });
