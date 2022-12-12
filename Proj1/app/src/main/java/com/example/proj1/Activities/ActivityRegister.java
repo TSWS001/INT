@@ -42,7 +42,10 @@ public class ActivityRegister extends AppCompatActivity {
             public void onClick(View view) {
                 SetUserData();
                 if (!validcad){
-                    Toast.makeText(ActivityRegister.this, "fecha de nacimiento invalida,", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ActivityRegister.this, "fecha de nacimiento invalida", Toast.LENGTH_SHORT).show();
+                }
+                else if (!mandatoryfilled){
+                    Toast.makeText(ActivityRegister.this, "Los campos con * son obligatorios", Toast.LENGTH_SHORT).show();
                 }
                 else
                 {
@@ -78,7 +81,7 @@ public class ActivityRegister extends AppCompatActivity {
 
         user.setPhone(phone_data);
 
-        mandatoryfilled= (first_name_data.equals("") && last_name_data=="" && email_data=="" && password_data=="");
+        mandatoryfilled= (first_name_data.equals("") && last_name_data.equals("") && email_data.equals("") && password_data.equals(""));
             //probamos poner "" y si no añadimos un espacio al final del first_name_data al asignarle valor
 
         if (validcad) {
@@ -88,7 +91,8 @@ public class ActivityRegister extends AppCompatActivity {
                 user.setBirth_date(birth_data);
         }
         Log.i("validcad:", String.valueOf(validcad));
-            Log.i("first_name:",user.first_name);
+        Log.i("manatoryfilled:", String.valueOf(mandatoryfilled));
+        Log.i("first_name:",user.first_name);
 //            Log.i("last_name_data:",user.last_name);
 //            Log.i("email_data:",user.email);
 //            Log.i("password_data:",user.password);
