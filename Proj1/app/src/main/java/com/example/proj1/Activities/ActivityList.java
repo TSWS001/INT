@@ -34,7 +34,8 @@ public class ActivityList extends AppCompatActivity implements RecyclerViewInter
         btnback.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(ActivityList.this,MainActivity.class));
+                finish();
+                //startActivity(new Intent(ActivityList.this,MainActivity.class));
             }
         });
 
@@ -70,7 +71,8 @@ public class ActivityList extends AppCompatActivity implements RecyclerViewInter
 // {"name1","name2","name3","name4","name5","name6","name7"};
 // {"cad1","cad2","cad3","cad4","cad5","cad6","cad7"};
 
-        if (extra!=null){
+
+        if (extra!=null){       // si existe informacion en el "product" del Bundle:
             Product new_product = (Product) extra.getSerializable("product");
             productbarcode.add(new_product.barcode);
             productnames.add(new_product.name);
@@ -101,7 +103,7 @@ public class ActivityList extends AppCompatActivity implements RecyclerViewInter
         intent.putExtra("QUANTITY_STATE",productlist.get(position).RemainProductToText());
         intent.putExtra("INGREDIENTS",productlist.get(position).getIngredients());
         //aqui recibe el array de float de nutritional info
-        float[] arraynutri= productlist.get(position).getNutricionalInfo();
+        float[] arraynutri= productlist.get(position).getNutricionalInfo();// el intent tabien se puede pasarse con un Array de strings
         intent.putExtra("NUTRI_GRASAS",arraynutri[0]);
         intent.putExtra("NUTRI_GRASAS_SAT",arraynutri[1]);
         intent.putExtra("NUTRI_HIDCARB",arraynutri[2]);

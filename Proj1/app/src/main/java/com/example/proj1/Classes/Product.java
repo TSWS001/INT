@@ -1,11 +1,17 @@
 package com.example.proj1.Classes;
 import static java.lang.String.valueOf;
 
+import android.util.Log;
+import android.widget.Toast;
+
+import com.example.proj1.Activities.ActivityCaducidad;
+
 import java.io.Serializable;
 import java.lang.reflect.Array;
 import java.time.Month;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Scanner;
 import java.util.Calendar;
 
@@ -142,5 +148,39 @@ public class Product implements Serializable { //connected with database Product
             }
         }
         return bool;
+    }
+// en caso de que no funcione correctamente el Database, utilizaremos esta funcion donde simularemos una database.
+// Contendra toda la informacion de los productos que escaneemos
+    public Product getProductData(String barcode){
+//        String barcodes[] = {"GALLETAS-PRINCIPE-0001","COLACAO-ORIGINAL-0002","TOMATE-SOLIS-0003",
+//                "ESPAGUETIS-0004","ARROZ-0005","LECHE-ENTERA-0006","ATUN-CLARO-0007","HUEVOS-0006",
+//                "SAL-IODADA-0009","ACEITE-OLIVA-VIRGENEXTRA-0010"};
+
+        //declaration of the Products in the Product array
+        ArrayList<Product> database= new ArrayList<>(List.of(
+                new Product("GALLETAS-PRINCIPE-0001","Galletas Príncipe","",1,300,101,0),
+                new Product(),
+
+        ));
+        //set nutritional information
+        database.get(0).setNutricionalInfo(17,5.6f,71,32,3.1f,6.2f,0.49f);
+
+        //set description
+        database.get(0).ingredients="Harina de TRIGO 49 %, azúcar, grasa de palma, aceite de nabina, cacao magro en polvo 4,5 %, jarabe de glucosa, almidón de TRIGO, gasificantes (carbonatos de amonio, carbonatos de sodio), emulgente (lecitinas de SOJA), sal, LECHE desnatada en polvo, permeato de suero (de LECHE), aroma.PUEDE CONTENER HUEVO.";
+
+
+        int i;
+        Product product = null;
+        for (i=0; i<10; i++){
+            if(Objects.equals(database.get(i).barcode, barcode))
+                product=database.get(i);
+        }
+
+        if (product!=null)
+            return product;
+        else{
+            Log.e("DATABASE ERROR","can't find the barcode introduced");
+            return null;
+        }
     }
 }

@@ -43,6 +43,7 @@ public class ActivityCaducidad extends AppCompatActivity {
 //                int[] array_int = getIntent().getIntArrayExtra("PRODUCT_INT");
 //                Product product = new Product(array_str[0],array_str[1],array_str[2],array_int[0],array_int[1],array_int[2],array_int[3]);
                 Product product = (Product) getIntent().getSerializableExtra("product");
+
                 //checks the correctness of the date
                 if (product.isValidCadDate(cad_day.getInputType(),cad_month.getInputType(),cad_year.getInputType(),act_date)){
                     //si la fecha de caducidad es correcta

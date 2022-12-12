@@ -28,10 +28,10 @@
         <activity android:name=".Activities.ActivityRegister"/>
         <activity android:name=".Activities.ActivitySettings" />
 <!--        <activity android:name=".Activities.ActivityInicio"/>-->
-<!--        <activity android:name=".Activities.MainActivity"/>-->
+        <activity android:name=".Activities.MainActivity"/>
 
         <activity
-            android:name=".Activities.MainActivity"
+            android:name=".Activities.ActivityInicio"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

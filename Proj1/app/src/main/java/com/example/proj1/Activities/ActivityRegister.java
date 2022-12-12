@@ -82,7 +82,7 @@ public class ActivityRegister extends AppCompatActivity {
         user.setPhone(phone_data);
 
         mandatoryfilled= (first_name_data.equals("") && last_name_data.equals("") && email_data.equals("") && password_data.equals(""));
-            //probamos poner "" y si no añadimos un espacio al final del first_name_data al asignarle valor
+            //probamos poner "" y si no añadimos un espacio al final del first_name_data al asignarle valor o sino comprovar si .length ==0
 
         if (validcad) {
             if (emptycad)

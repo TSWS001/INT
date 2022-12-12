@@ -1,6 +1,9 @@
 package com.example.proj1.Activities;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,6 +23,7 @@ public class ActivityProdInfo extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.product_info);
         {
+
             String name,cad,perc,state,ingred;
             String grasa,grasa_sat,hidcarbono,azucar,fibra,proteina,sal;
 
@@ -43,6 +47,8 @@ public class ActivityProdInfo extends AppCompatActivity {
             TextView tvgrasa,tvgrasa_sat,tvhidcarbono,tvazucar,tvfibra,tvproteina,tvsal;
 
             //Find views
+            ImageView back_prod_info= findViewById(R.id.back_prod_info);
+
             tvname = findViewById(R.id.prod_name);
             tvcad = findViewById(R.id.cad_date);
             tvpercent = findViewById(R.id.prod_rem_percent);
@@ -71,6 +77,14 @@ public class ActivityProdInfo extends AppCompatActivity {
             tvfibra.setText(fibra);
             tvproteina.setText(proteina);
             tvsal.setText(sal);
+
+            back_prod_info.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    finish();
+                    //startActivity(new Intent(ActivityProdInfo.this,MainActivity.class));
+                }
+            });
 
         }
     }

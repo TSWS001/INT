@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <ImageView
-        android:id="@+id/back_settings"
+        android:id="@+id/back_prod_info"
         android:layout_width="40dp"
         android:layout_height="50dp"
         android:layout_centerVertical="true"
@@ -15,15 +15,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:contentDescription="@string/back_to_main_menu" />
+
     <LinearLayout
         android:id="@+id/prod_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center"
-        android:layout_marginTop="20dp"
         android:layout_marginHorizontal="20dp"
-        android:layout_marginBottom="35dp"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="20dp"
+        tools:layout_editor_absoluteY="-23dp">
 
         <TextView
             android:id="@+id/prod_name"
@@ -562,6 +563,7 @@
                 android:textSize="20sp" />
         </LinearLayout>
     </LinearLayout>
+
     <TextView
         android:id="@+id/pie_layout"
         android:layout_width="wrap_content"

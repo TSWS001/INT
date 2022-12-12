@@ -67,6 +67,7 @@ public class ActivityEscaneo extends AppCompatActivity {
             public void onClick(View view) {
                 Intent i =new Intent(ActivityEscaneo.this,ActivityCaducidad.class);
                 //get data from server, and send it to ActivityCaducidad with an Intent
+
 //                String[] array_str = new String[] {"ESPAGUETIS-0004","Espaguetis",""};
 //                int[] array_int = new int[] {5,100,88,10};
                 Product product = new Product("ESPAGUETIS-0004","Espaguetis",
@@ -77,6 +78,7 @@ public class ActivityEscaneo extends AppCompatActivity {
             }
         });
     }
+
 
     private void escanear() {
         Intent i = new Intent(ActivityEscaneo.this, ActivityEscanear.class);
