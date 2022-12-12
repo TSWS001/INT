@@ -35,10 +35,12 @@
         android:id="@+id/cond_pol_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="15dp"
+        android:textColor="@color/black"
         android:text="@string/cond_pol_text"
+        android:scrollbars="vertical"
         android:textAlignment="textStart"
-        android:textSize="18sp"/>
+        android:textSize="15sp"/>
 </LinearLayout>
     <TextView
         android:id="@+id/pie_layout"

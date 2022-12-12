@@ -124,21 +124,22 @@ public class Product { //connected with database Products
     }
 
     public boolean isValidCadDate(int d,int m,int y,Calendar act_date) {
+        boolean bool=true;
         if (m<1 || m>12 || d<1 || d>31){
-            return false;
+            bool= false;
         }else if ((m==4 || m==6 || m==9 || m==11) && d>30) {
-            return false;
+            bool= false;
         }else if ((m==2) && ((((y%4==0 && (y%100!=0) || y%400==0)) && d>29) || (((y%4!=0 || y%100==0) && y%400!=0) && d>28))){
-            return false;
+            bool= false;
         }else if (y<act_date.get(Calendar.YEAR)){
-            return false;
+            bool= false;
         }else if (y==act_date.get(Calendar.YEAR)){
             if (m<act_date.get(Calendar.MONTH)){
-                return false;
+                bool= false;
             }else if (m==act_date.get(Calendar.MONTH) && d<act_date.get(Calendar.DAY_OF_MONTH)){
-                return false;
+                bool= false;
             }
         }
-        return true;
+        return bool;
     }
 }
