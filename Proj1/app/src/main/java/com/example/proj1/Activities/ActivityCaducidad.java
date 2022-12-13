@@ -20,6 +20,7 @@ public class ActivityCaducidad extends AppCompatActivity {
 
     Button btnAceptar,btnNoCad;
     EditText cad_day, cad_month, cad_year;
+    Product product;
     //habria que hacer un atributo de la clase customer de si el usuario esta o no registrado
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,14 +43,15 @@ public class ActivityCaducidad extends AppCompatActivity {
 //                String[] array_str = getIntent().getStringArrayExtra("PRODUCT_STR");
 //                int[] array_int = getIntent().getIntArrayExtra("PRODUCT_INT");
 //                Product product = new Product(array_str[0],array_str[1],array_str[2],array_int[0],array_int[1],array_int[2],array_int[3]);
-                Product product = (Product) getIntent().getSerializableExtra("product");
-
+                product = (Product) getIntent().getSerializableExtra("product");
                 //checks the correctness of the date
                 if (product.isValidCadDate(cad_day.getInputType(),cad_month.getInputType(),cad_year.getInputType(),act_date)){
                     //si la fecha de caducidad es correcta
                     Intent intent = new Intent(ActivityCaducidad.this,ActivityList.class);
                     product.setCaducity(cad_data);
-                    intent.putExtra("productobj",product);
+                    intent.putExtra("product",product);
+                    Log.i("Debugggggggg:","With cad "+product.barcode);
+
                     startActivity(intent);
                 }
                 else{
@@ -62,7 +64,12 @@ public class ActivityCaducidad extends AppCompatActivity {
         btnNoCad.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(ActivityCaducidad.this,ActivityList.class));
+                Intent intent=new Intent(ActivityCaducidad.this,ActivityList.class);
+                product = (Product) getIntent().getSerializableExtra("product");
+                intent.putExtra("product",product);
+                Log.i("Debugggggggg:","No cad "+product.grasas);
+
+                startActivity(intent);
             }
         });
     }

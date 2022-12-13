@@ -117,7 +117,7 @@ public class Product implements Serializable { //connected with database Product
 
     //funcion de segun el % remain, devuelva completo, ...
     public String RemainProductToText(){
-        if (this.remain_product<10){
+        if (this.remain_product<15){
             return ("Casi vacío");
         } else if (this.remain_product<30){
             return ("Menos de la mitad");
@@ -149,25 +149,51 @@ public class Product implements Serializable { //connected with database Product
         }
         return bool;
     }
+
+
 // en caso de que no funcione correctamente el Database, utilizaremos esta funcion donde simularemos una database.
 // Contendra toda la informacion de los productos que escaneemos
+
     public Product getProductData(String barcode){
-//        String barcodes[] = {"GALLETAS-PRINCIPE-0001","COLACAO-ORIGINAL-0002","TOMATE-SOLIS-0003",
-//                "ESPAGUETIS-0004","ARROZ-0005","LECHE-ENTERA-0006","ATUN-CLARO-0007","HUEVOS-0006",
-//                "SAL-IODADA-0009","ACEITE-OLIVA-VIRGENEXTRA-0010"};
 
         //declaration of the Products in the Product array
         ArrayList<Product> database= new ArrayList<>(List.of(
-                new Product("GALLETAS-PRINCIPE-0001","Galletas Príncipe","",1,300,101,0),
-                new Product(),
+                new Product("GALLETAS-PRINCIPE-0001","Galletas Príncipe","",1,300,10,0),
+                new Product("COLACAO-ORIGINAL-0002","Colacao el original","",1,760,100,0),
+                new Product("TOMATE-SOLIS-0003","Tomate solís","",1,350,100,0),
+                new Product("ESPAGUETIS-0004","Espaguetis","",1,1000,100,0),
+                new Product("ARROZ-0005","Arroz redondo Sos","",1,1000,100,0),
+                new Product("LECHE-ENTERA-0006","Leche entera carrefour brick","",1,1500,100,0),
+                new Product("ATUN-CLARO-0007","Atún claro en aceite de oliva Carrefour pack de 8 latas de 52","",1,560,100,0),
+                new Product("HUEVOS-0006","Huevos L morenos Carreofur 12 ud.","",1,876,100,0),
+                new Product("SAL-IODADA-0009","Sal marina yodada fina Carrefour 1kg","",1,1000,100,0),
+                new Product("ACEITE-OLIVA-VIRGENEXTRA-0010","Aceite de oliva virgen extra Carrefour 1 l.","",1,1000,100,0)
+                ));
 
-        ));
         //set nutritional information
         database.get(0).setNutricionalInfo(17,5.6f,71,32,3.1f,6.2f,0.49f);
+        database.get(1).setNutricionalInfo(2.5f,1.6f,78,70,7.8f,6.6f,0.1f);
+        database.get(2).setNutricionalInfo(3.1f,0.4f,9.1f,6.2f,1.3f,1.2f,0.91f);
+        database.get(3).setNutricionalInfo(1.5f,0.3f,70,2.9f,3.6f,12,0.03f);
+        database.get(4).setNutricionalInfo(0.5f,0.1f,79,0.1f,2.8f,6.5f,0);
+        database.get(5).setNutricionalInfo(3.6f,2.5f,4.7f,4.7f,0,3,0.13f);
+        database.get(6).setNutricionalInfo(7.5f,1.1f,0,0,0,26,1.5f);
+        database.get(7).setNutricionalInfo(9.5f,2.8f,0.7f,0.7f,12.5f,0,0.36f);
+        database.get(8).setNutricionalInfo(0,0,0,0,0,0,0);
+        database.get(9).setNutricionalInfo(100,16,0,0,0,0,0);
+
 
         //set description
         database.get(0).ingredients="Harina de TRIGO 49 %, azúcar, grasa de palma, aceite de nabina, cacao magro en polvo 4,5 %, jarabe de glucosa, almidón de TRIGO, gasificantes (carbonatos de amonio, carbonatos de sodio), emulgente (lecitinas de SOJA), sal, LECHE desnatada en polvo, permeato de suero (de LECHE), aroma.PUEDE CONTENER HUEVO.";
-
+        database.get(1).ingredients="Azúcar, cacao desgrasado natural¹ (22%), crema de cereal kola-malteado [harina de trigo, extracto de malta de cebada, aroma natural (extracto de nuez de cola)], sales minerales (calcio, fósforo), aromas, sal.";
+        database.get(2).ingredients="Tomate y concentrado de tomate (174g de tomate para elaborar 100 g de tomate frito), aceite de girasol, azúcar, almidón modificado de maíz, sal, aroma, cebolla, ajo, pimienta blanca.";
+        database.get(3).ingredients="Semola de trigo duro. Puede contener trazas de huevo.";
+        database.get(4).ingredients="100% Arroz grano redondo.";
+        database.get(5).ingredients="Leche entera de vaca.";
+        database.get(6).ingredients="Atún claro, aceite de oliva 24,2%, sal.";
+        database.get(7).ingredients="Huevo";
+        database.get(8).ingredients="Sal marina";
+        database.get(9).ingredients="100% Aceite de oliva virgen extra. Coupage variedades Arbequina, Hojiblanca y Picual";
 
         int i;
         Product product = null;

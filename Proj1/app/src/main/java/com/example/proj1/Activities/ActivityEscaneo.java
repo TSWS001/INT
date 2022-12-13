@@ -27,7 +27,7 @@ public class ActivityEscaneo extends AppCompatActivity {
     private static final int CODIGO_PERMISOS_CAMARA = 1, CODIGO_INTENT = 2;
     private boolean permisoCamaraConcedido = false, permisoSolicitadoDesdeBoton = false;
     private TextView tvCodigoLeido;
-
+    String codigo;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,13 +67,11 @@ public class ActivityEscaneo extends AppCompatActivity {
             public void onClick(View view) {
                 Intent i =new Intent(ActivityEscaneo.this,ActivityCaducidad.class);
                 //get data from server, and send it to ActivityCaducidad with an Intent
+                Product product = new Product("","","",0,0,0,0).getProductData(codigo);
 
-//                String[] array_str = new String[] {"ESPAGUETIS-0004","Espaguetis",""};
-//                int[] array_int = new int[] {5,100,88,10};
-                Product product = new Product("ESPAGUETIS-0004","Espaguetis",
-                        "",5,100,88,10);
+                //send the data
                 i.putExtra("product", product);
-
+                Log.i("Debugggggggg:","Escaneo "+product.grasas);
                 startActivity(i);
             }
         });
@@ -93,7 +91,7 @@ public class ActivityEscaneo extends AppCompatActivity {
             if (resultCode == Activity.RESULT_OK) {
                 if (data != null) {
                     //Ahora lee el codigo de barras y guarda el texto
-                    String codigo = data.getStringExtra("codigo");
+                    codigo = data.getStringExtra("codigo");
                     tvCodigoLeido.setText(codigo);
 
                 }

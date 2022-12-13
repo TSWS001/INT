@@ -33,7 +33,7 @@
                 android:id="@+id/text_productname"
                 android:layout_width="258dp"
                 android:layout_height="38dp"
-                android:text="TextView"
+                android:text="Nombre"
                 android:textSize="28sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -43,10 +43,10 @@
 
             <TextView
                 android:id="@+id/text_caducity"
-                android:layout_width="201dp"
-                android:layout_height="32dp"
+                android:layout_width="227dp"
+                android:layout_height="37dp"
                 android:layout_marginTop="8dp"
-                android:text="TextView"
+                android:text="caducidad"
                 android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.288"

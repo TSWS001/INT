@@ -2,6 +2,7 @@ package com.example.proj1.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -22,70 +23,68 @@ public class ActivityProdInfo extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.product_info);
-        {
 
-            String name,cad,perc,state,ingred;
-            String grasa,grasa_sat,hidcarbono,azucar,fibra,proteina,sal;
+        String name,cad,state,ingred;
+        int perc;
+        float grasa,grasa_sat,hidcarbono,azucar,fibra,proteina,sal;
 
-            //Get string from Intent
-            name = getIntent().getStringExtra("NAME");
-            cad = getIntent().getStringExtra("CADUCITY");
-            perc = getIntent().getStringExtra("PERCENT");
-            state = getIntent().getStringExtra("QUANTITY_STATE");
-            ingred = getIntent().getStringExtra("INGREDIENTS");
+        //Get string from Intent
+        name = getIntent().getStringExtra("NAME");
+        cad = getIntent().getStringExtra("CADUCITY");
+        perc = getIntent().getIntExtra("PERCENT",-1);
+        state = getIntent().getStringExtra("QUANTITY_STATE");
+        ingred = getIntent().getStringExtra("INGREDIENTS");
 
-            grasa = getIntent().getStringExtra("NUTRI_GRASAS");
-            grasa_sat = getIntent().getStringExtra("NUTRI_GRASAS_SAT");
-            hidcarbono = getIntent().getStringExtra("NUTRI_HIDCARB");
-            azucar = getIntent().getStringExtra("NUTRI_AZUCARES");
-            fibra = getIntent().getStringExtra("NUTRI_FIBRA");
-            proteina = getIntent().getStringExtra("NUTRI_PROT");
-            sal = getIntent().getStringExtra("NUTRI_SAL");
+        grasa = getIntent().getFloatExtra("NUTRI_GRASAS",-1);
+        grasa_sat = getIntent().getFloatExtra("NUTRI_GRASAS_SAT",-1);
+        hidcarbono = getIntent().getFloatExtra("NUTRI_HIDCARB",-1);
+        azucar = getIntent().getFloatExtra("NUTRI_AZUCARES",-1);
+        fibra = getIntent().getFloatExtra("NUTRI_FIBRA",-1);
+        proteina = getIntent().getFloatExtra("NUTRI_PROT",-1);
+        sal = getIntent().getFloatExtra("NUTRI_SAL",-1);
 
+        Log.i("xxxxxxxxxxinlei:","prodinfo_name "+name);
 
-            TextView tvname,tvcad,tvpercent,tvstate,tvingredient;
-            TextView tvgrasa,tvgrasa_sat,tvhidcarbono,tvazucar,tvfibra,tvproteina,tvsal;
+        TextView tvname,tvcad,tvpercent,tvstate,tvingredient;
+        TextView tvgrasa,tvgrasa_sat,tvhidcarbono,tvazucar,tvfibra,tvproteina,tvsal;
 
-            //Find views
-            ImageView back_prod_info= findViewById(R.id.back_prod_info);
+        //Find views
+        ImageView back_prod_info= findViewById(R.id.back_prod_info);
 
-            tvname = findViewById(R.id.prod_name);
-            tvcad = findViewById(R.id.cad_date);
-            tvpercent = findViewById(R.id.prod_rem_percent);
-            tvstate = findViewById(R.id.prod_rem_text);
-            tvingredient = findViewById(R.id.prod_ingredientes);
+        tvname = findViewById(R.id.prod_name);
+        tvcad = findViewById(R.id.cad_date);
+        tvpercent = findViewById(R.id.prod_rem_percent);
+        tvstate = findViewById(R.id.prod_rem_text);
+        tvingredient = findViewById(R.id.prod_ingredientes);
 
-            tvgrasa = findViewById(R.id.prod_nutri_grasas);
-            tvgrasa_sat = findViewById(R.id.prod_nutri_grasas_sat);
-            tvhidcarbono = findViewById(R.id.prod_nutri_hid_carb);
-            tvazucar = findViewById(R.id.prod_nutri_azucares);
-            tvfibra = findViewById(R.id.prod_nutri_fibra);
-            tvproteina = findViewById(R.id.prod_nutri_prot);
-            tvsal = findViewById(R.id.prod_nutri_sal);
+        tvgrasa = findViewById(R.id.prod_nutri_grasas);
+        tvgrasa_sat = findViewById(R.id.prod_nutri_grasas_sat);
+        tvhidcarbono = findViewById(R.id.prod_nutri_hid_carb);
+        tvazucar = findViewById(R.id.prod_nutri_azucares);
+        tvfibra = findViewById(R.id.prod_nutri_fibra);
+        tvproteina = findViewById(R.id.prod_nutri_prot);
+        tvsal = findViewById(R.id.prod_nutri_sal);
 
-            // Set texts
-            tvname.setText(name);
-            tvcad.setText(cad);
-            tvpercent.setText(perc);
-            tvstate.setText(state);
-            tvingredient.setText(ingred);
+        // Set the String got from the Intent to the TextViews found
+        tvname.setText(name);
+        tvcad.setText(cad);
+        tvpercent.setText(String.valueOf(perc));
+        tvstate.setText(state);
+        tvingredient.setText(ingred);
 
-            tvgrasa.setText(grasa);
-            tvgrasa_sat.setText(grasa_sat);
-            tvhidcarbono.setText(hidcarbono);
-            tvazucar.setText(azucar);
-            tvfibra.setText(fibra);
-            tvproteina.setText(proteina);
-            tvsal.setText(sal);
+        tvgrasa.setText(String.valueOf(grasa));
+        tvgrasa_sat.setText(String.valueOf(grasa_sat));
+        tvhidcarbono.setText( String.valueOf(hidcarbono));
+        tvazucar.setText(String.valueOf(azucar));
+        tvfibra.setText(String.valueOf(fibra));
+        tvproteina.setText(String.valueOf(proteina));
+        tvsal.setText(String.valueOf(sal));
 
-            back_prod_info.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    finish();
-                    //startActivity(new Intent(ActivityProdInfo.this,MainActivity.class));
-                }
-            });
-
-        }
+        back_prod_info.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
     }
 }

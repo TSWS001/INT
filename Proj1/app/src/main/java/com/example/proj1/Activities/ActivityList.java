@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -34,8 +35,7 @@ public class ActivityList extends AppCompatActivity implements RecyclerViewInter
         btnback.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                finish();
-                //startActivity(new Intent(ActivityList.this,MainActivity.class));
+                startActivity(new Intent(ActivityList.this,MainActivity.class));
             }
         });
 
@@ -57,8 +57,6 @@ public class ActivityList extends AppCompatActivity implements RecyclerViewInter
     }
 
     private void SetUpProducts() {
-        Bundle extra = getIntent().getBundleExtra("product");
-
         ArrayList<String> productbarcode = new ArrayList<>();
         ArrayList<String> productnames = new ArrayList<>();
         ArrayList<String> productcaducity = new ArrayList<>();
@@ -67,53 +65,53 @@ public class ActivityList extends AppCompatActivity implements RecyclerViewInter
         ArrayList<Integer> productbaseremain = new ArrayList<>();
         ArrayList<Integer> productbaseweight = new ArrayList<>();
 
-//"bar1","bar2","bar3","bar4","bar5","bar6","bar7"};
-// {"name1","name2","name3","name4","name5","name6","name7"};
-// {"cad1","cad2","cad3","cad4","cad5","cad6","cad7"};
-
-
-        if (extra!=null){       // si existe informacion en el "product" del Bundle:
-            Product new_product = (Product) extra.getSerializable("product");
-            productbarcode.add(new_product.barcode);
-            productnames.add(new_product.name);
-            productcaducity.add(new_product.caducity);
-            productquantity.add(new_product.quantity);
-            productbasearea.add(new_product.base_area);
-            productbaseremain.add(new_product.remain_product);
-            productbaseweight.add(new_product.total_weight);
+        Product new_product = (Product) getIntent().getSerializableExtra("product");
+        if(new_product!=null){
+            productlist.add(new_product);
+//            productbarcode.add(new_product.barcode);
+//            productnames.add(new_product.name);
+//            productcaducity.add(new_product.caducity);
+//            productquantity.add(new_product.quantity);
+//            productbasearea.add(new_product.base_area);
+//            productbaseremain.add(new_product.remain_product);
+//            productbaseweight.add(new_product.total_weight);
+            Log.i("Debugggggggg:","Adding "+new_product.ingredients);
         }
+        else
+            Log.i("xxxxxxxxxxinlei:","the product added is null.Error from ActivityList");
 
-        int i;
-        for(i=0; i<productbarcode.size(); i++){
-            //create object and add all the string/attributes into it
-            productlist.add(new Product(productbarcode.get(i),productnames.get(i),
-                    productcaducity.get(i),productquantity.get(i),productbasearea.get(i),
-                    productbaseremain.get(i),productbaseweight.get(i)) );
-        }
-
+//        int i;
+//        for(i=0; i<productbarcode.size(); i++){
+//            //create object and add all the attributes into it
+//            productlist.add(new Product(productbarcode.get(i),productnames.get(i),
+//                    productcaducity.get(i),productquantity.get(i),productbasearea.get(i),
+//                    productbaseremain.get(i),productbaseweight.get(i)));
+//        }
     }
 
     @Override
     public void onItemClick(int position) {
         Intent intent = new Intent(ActivityList.this, ActivityProdInfo.class);
 
-        intent.putExtra("NAME",productlist.get(position).getName());
-        intent.putExtra("CADUCITY",productlist.get(position).getCaducity());
-        intent.putExtra("PERCENT",productlist.get(position).getRemain_product());
-        intent.putExtra("QUANTITY_STATE",productlist.get(position).RemainProductToText());
-        intent.putExtra("INGREDIENTS",productlist.get(position).getIngredients());
-        //aqui recibe el array de float de nutritional info
-        float[] arraynutri= productlist.get(position).getNutricionalInfo();// el intent tabien se puede pasarse con un Array de strings
-        intent.putExtra("NUTRI_GRASAS",arraynutri[0]);
-        intent.putExtra("NUTRI_GRASAS_SAT",arraynutri[1]);
-        intent.putExtra("NUTRI_HIDCARB",arraynutri[2]);
-        intent.putExtra("NUTRI_AZUCARES",arraynutri[3]);
-        intent.putExtra("NUTRI_FIBRA",arraynutri[4]);
-        intent.putExtra("NUTRI_PROT",arraynutri[5]);
-        intent.putExtra("NUTRI_SAL",arraynutri[6]);
+        Product prod= productlist.get(position);
 
+        intent.putExtra("NAME",prod.getName());
+        intent.putExtra("CADUCITY",prod.getCaducity());
+        intent.putExtra("PERCENT", prod.getRemain_product());
+        intent.putExtra("QUANTITY_STATE",prod.RemainProductToText());
+        intent.putExtra("INGREDIENTS",prod.getIngredients());
+
+//        aqui recibe el array de float de nutritional info
+        intent.putExtra("NUTRI_GRASAS",prod.getNutricionalInfo()[0]);
+        intent.putExtra("NUTRI_GRASAS_SAT",prod.grasas_sat);
+        intent.putExtra("NUTRI_HIDCARB",prod.hid_carb);
+        intent.putExtra("NUTRI_AZUCARES",prod.azucares);
+        intent.putExtra("NUTRI_FIBRA",prod.fibra);
+        intent.putExtra("NUTRI_PROT",prod.proteinas);
+        intent.putExtra("NUTRI_SAL",prod.sal);
+
+        Log.i("Debugggggggg:","aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa "+prod.getNutricionalInfo()[0]);
         startActivity(intent);
-
     }
 
     @Override

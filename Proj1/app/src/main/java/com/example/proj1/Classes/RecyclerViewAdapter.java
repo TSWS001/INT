@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MyViewHolder> {
 
@@ -43,9 +44,12 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         // the position of the recycler view
 
         String Quantity = String.valueOf(productlist.get(position).getQuantity())+" u";
-
+        String cad = productlist.get(position).getCaducity();
+        if (Objects.equals(cad, "")){
+            cad="No hay fecha caducidad";
+        }
         holder.name.setText(productlist.get(position).getName());
-        holder.caducity.setText(productlist.get(position).getCaducity());
+        holder.caducity.setText(cad);
         holder.quantity.setText(Quantity);
 
         //faltan mas atributos amostrar
