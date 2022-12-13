@@ -36,18 +36,17 @@
         android:layout_height="fill_parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
-    <TextView
-        android:id="@+id/cond_pol_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:textColor="@color/black"
-        android:text="@string/cond_pol_text"
-        android:scrollbars="vertical"
-        android:textAlignment="textStart"
-        android:textSize="15sp"/>
+        <TextView
+            android:id="@+id/cond_pol_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:textColor="@color/black"
+            android:text="@string/cond_pol_text"
+            android:scrollbars="vertical"
+            android:textAlignment="textStart"
+            android:textSize="15sp"/>
     </ScrollView>
-
 
 </LinearLayout>
     <TextView
