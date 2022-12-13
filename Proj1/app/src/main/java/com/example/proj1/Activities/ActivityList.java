@@ -4,8 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
@@ -15,8 +18,15 @@ import com.example.proj1.Classes.Product;
 import com.example.proj1.R;
 import com.example.proj1.Classes.RecyclerViewAdapter;
 import com.example.proj1.RecyclerViewInterface;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+
+import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class ActivityList extends AppCompatActivity implements RecyclerViewInterface {
 
@@ -27,6 +37,21 @@ public class ActivityList extends AppCompatActivity implements RecyclerViewInter
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.productlist);
+
+        SharedPreferences preferences =getPreferences(Context.MODE_PRIVATE);
+        Gson gson = new Gson();
+        String json;
+
+        //obtener los datos de la lista de productos desde preferences
+        json = preferences.getString("listadeproductos","");
+        Log.i("strinnnnnnnnnnnnnnnn:",json);//resultado default es []
+
+        if(json.length()>2) {
+            Type listType = new TypeToken<ArrayList<Product>>(){}.getType();
+            productlist = gson.fromJson(json, listType);
+            Log.i("DebugggggggGGGGg:", "From get json " + productlist.get(0).barcode);
+        }
+
 
         TextView listquantity = findViewById(R.id.product_quantity);
         ImageView btnback = findViewById(R.id.left_icon);
@@ -52,42 +77,32 @@ public class ActivityList extends AppCompatActivity implements RecyclerViewInter
 
          adapter = new RecyclerViewAdapter(this,productlist, this);
         recyclerView.setAdapter(adapter);
-        listquantity.setText(String.valueOf(adapter.getItemCount())); //set the value of "x products remaining"
+        listquantity.setText(String.valueOf(productlist.size())); //set the value of "x products remaining"
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
 
     private void SetUpProducts() {
-        ArrayList<String> productbarcode = new ArrayList<>();
-        ArrayList<String> productnames = new ArrayList<>();
-        ArrayList<String> productcaducity = new ArrayList<>();
-        ArrayList<Integer> productquantity = new ArrayList<>();
-        ArrayList<Integer> productbasearea = new ArrayList<>();
-        ArrayList<Integer> productbaseremain = new ArrayList<>();
-        ArrayList<Integer> productbaseweight = new ArrayList<>();
 
+        SharedPreferences preferences =getPreferences(Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        Gson gson = new Gson();
+        String json;
+
+        //------------------------------------------------------------------------------------------
         Product new_product = (Product) getIntent().getSerializableExtra("product");
         if(new_product!=null){
             productlist.add(new_product);
-//            productbarcode.add(new_product.barcode);
-//            productnames.add(new_product.name);
-//            productcaducity.add(new_product.caducity);
-//            productquantity.add(new_product.quantity);
-//            productbasearea.add(new_product.base_area);
-//            productbaseremain.add(new_product.remain_product);
-//            productbaseweight.add(new_product.total_weight);
-            Log.i("Debugggggggg:","Adding "+new_product.ingredients);
+            Log.i("Debugggggggg:","Adding "+new_product.barcode);
         }
         else
-            Log.i("xxxxxxxxxxinlei:","the product added is null.Error from ActivityList");
-
-//        int i;
-//        for(i=0; i<productbarcode.size(); i++){
-//            //create object and add all the attributes into it
-//            productlist.add(new Product(productbarcode.get(i),productnames.get(i),
-//                    productcaducity.get(i),productquantity.get(i),productbasearea.get(i),
-//                    productbaseremain.get(i),productbaseweight.get(i)));
-//        }
+            Log.i("xxxxxxxxxxinlei:","the product added is null. Error from ActivityList");
+        //------------------------------------------------------------------------------------------
+        //guardar los datos de la lista de productos a preferences
+        json = gson.toJson(productlist);
+        editor.putString("listadeproductos",json);
+        editor.apply();
     }
+
 
     @Override
     public void onItemClick(int position) {
@@ -116,8 +131,17 @@ public class ActivityList extends AppCompatActivity implements RecyclerViewInter
 
     @Override
     public void onItemLongClick(int position) {
+        SharedPreferences preferences =getPreferences(Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        Gson gson = new Gson();
+        String json;
+
         productlist.remove(position);
         adapter.notifyItemRemoved(position);
+
+        json = gson.toJson(productlist);
+        editor.putString("listadeproductos",json);
+        editor.apply();
     }
 }
 

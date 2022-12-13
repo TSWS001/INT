@@ -59,7 +59,8 @@ public class ActivityRegister extends AppCompatActivity {
         btnlogin.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(ActivityRegister.this,ActivityLogin.class));
+                finish();
+                //startActivity(new Intent(ActivityRegister.this,ActivityLogin.class));
             }
         });
     }
@@ -81,7 +82,7 @@ public class ActivityRegister extends AppCompatActivity {
 
         user.setPhone(phone_data);
 
-        mandatoryfilled= (first_name_data.equals("") && last_name_data.equals("") && email_data.equals("") && password_data.equals(""));
+        mandatoryfilled= (first_name_data.length()>0 && last_name_data.length()>0 && email_data.length()>0 && password_data.length()>0 );
             //probamos poner "" y si no añadimos un espacio al final del first_name_data al asignarle valor o sino comprovar si .length ==0
 
         if (validcad) {

@@ -66,13 +66,17 @@ public class ActivityEscaneo extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent i =new Intent(ActivityEscaneo.this,ActivityCaducidad.class);
-                //get data from server, and send it to ActivityCaducidad with an Intent
-                Product product = new Product("","","",0,0,0,0).getProductData(codigo);
+                if (codigo!=null) {
+                    //get data from server, and send it to ActivityCaducidad with an Intent
+                    Product product = new Product("", "", "", 0, 0, 0, 0).getProductData(codigo);
 
-                //send the data
-                i.putExtra("product", product);
-                Log.i("Debugggggggg:","Escaneo "+product.grasas);
-                startActivity(i);
+                    //send the data
+                    i.putExtra("product", product);
+                    Log.i("Debugggggggg:", "Escaneo " + product.grasas);
+                    startActivity(i);
+                }
+                else
+                    Toast.makeText(ActivityEscaneo.this,"Es necessario el codigo de barras",Toast.LENGTH_SHORT).show();
             }
         });
     }

@@ -43,7 +43,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         //assigning values to the views we created in the card_view layout file based on
         // the position of the recycler view
 
-        String Quantity = String.valueOf(productlist.get(position).getQuantity())+" u";
+        String Quantity = productlist.get(position).getQuantity() +" u";
         String cad = productlist.get(position).getCaducity();
         if (Objects.equals(cad, "")){
             cad="No hay fecha caducidad";

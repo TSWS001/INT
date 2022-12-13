@@ -40,9 +40,7 @@ public class ActivityCaducidad extends AppCompatActivity {
             public void onClick(View view) {
                 //Set up of the product class object
                 Calendar act_date= Calendar.getInstance();
-//                String[] array_str = getIntent().getStringArrayExtra("PRODUCT_STR");
-//                int[] array_int = getIntent().getIntArrayExtra("PRODUCT_INT");
-//                Product product = new Product(array_str[0],array_str[1],array_str[2],array_int[0],array_int[1],array_int[2],array_int[3]);
+                Log.i("aaaaaaaaaaaaaaaaaaaaaaa", act_date.get(Calendar.DAY_OF_MONTH)+"/"+act_date.get(Calendar.MONTH)+"/"+act_date.get(Calendar.YEAR));
                 product = (Product) getIntent().getSerializableExtra("product");
                 //checks the correctness of the date
                 if (product.isValidCadDate(cad_day.getInputType(),cad_month.getInputType(),cad_year.getInputType(),act_date)){
@@ -67,7 +65,7 @@ public class ActivityCaducidad extends AppCompatActivity {
                 Intent intent=new Intent(ActivityCaducidad.this,ActivityList.class);
                 product = (Product) getIntent().getSerializableExtra("product");
                 intent.putExtra("product",product);
-                Log.i("Debugggggggg:","No cad "+product.grasas);
+                Log.i("Debugggggggg:","No cad "+product.barcode);
 
                 startActivity(intent);
             }
