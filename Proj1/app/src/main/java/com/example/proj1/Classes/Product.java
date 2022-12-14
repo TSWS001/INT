@@ -131,7 +131,8 @@ public class Product implements Serializable { //connected with database Product
         }
     }
 
-    public boolean isValidCadDate(int d,int m,int y,Calendar act_date) {
+    public boolean isValidCadDate(int d,int m,int y) {
+        Calendar act_date= Calendar.getInstance();
         boolean bool=true;
         if (m<1 || m>12 || d<1 || d>31){
             bool= false;

@@ -45,7 +45,8 @@ public class Customer { //connects with database Customers
         return birth_date;
     }
 
-    public boolean isValidBirthDate(int d, int m, int y, Calendar act_date) {
+    public boolean isValidBirthDate(int d, int m, int y) {
+        Calendar act_date= Calendar.getInstance();
         boolean bool=true;
         if (m<1 || m>12 || d<1 || d>31){
             bool= false;

@@ -76,8 +76,7 @@ public class ActivityRegister extends AppCompatActivity {
         String phone_data = phone.getText().toString();
 
         user = new Customer(first_name_data, last_name_data, email_data, password_data);
-        Calendar act_date = Calendar.getInstance();
-        validcad = user.isValidBirthDate(birth_day.getInputType(),birth_month.getInputType(),birth_year.getInputType(),act_date);
+        validcad = user.isValidBirthDate(birth_day.getInputType(),birth_month.getInputType(),birth_year.getInputType());
         emptycad = birth_data.equals("//");
 
         user.setPhone(phone_data);
