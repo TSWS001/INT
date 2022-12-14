@@ -32,6 +32,7 @@ public class ActivityList extends AppCompatActivity implements RecyclerViewInter
 
     ArrayList<Product> productlist = new ArrayList<>();
     RecyclerViewAdapter adapter;
+    TextView listquantity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,8 +53,7 @@ public class ActivityList extends AppCompatActivity implements RecyclerViewInter
             Log.i("DebugggggggGGGGg:", "From get json " + productlist.get(0).barcode);
         }
 
-
-        TextView listquantity = findViewById(R.id.product_quantity);
+        listquantity = findViewById(R.id.product_quantity);
         ImageView btnback = findViewById(R.id.left_icon);
         ImageView btnplus = findViewById(R.id.right_icon);
 
@@ -125,7 +125,6 @@ public class ActivityList extends AppCompatActivity implements RecyclerViewInter
         intent.putExtra("NUTRI_PROT",prod.proteinas);
         intent.putExtra("NUTRI_SAL",prod.sal);
 
-        Log.i("Debugggggggg:","aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa "+prod.getNutricionalInfo()[0]);
         startActivity(intent);
     }
 
@@ -138,11 +137,14 @@ public class ActivityList extends AppCompatActivity implements RecyclerViewInter
 
         productlist.remove(position);
         adapter.notifyItemRemoved(position);
+        listquantity.setText(String.valueOf(productlist.size()));
 
         json = gson.toJson(productlist);
         editor.putString("listadeproductos",json);
         editor.apply();
     }
+    @Override
+    public void onBackPressed() {//para cualquier tipo de retroceso a la anterior actividad
+        startActivity(new Intent(ActivityList.this,MainActivity.class));
+    }
 }
-
-

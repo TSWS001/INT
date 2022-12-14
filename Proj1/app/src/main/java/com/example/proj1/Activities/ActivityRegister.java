@@ -1,6 +1,8 @@
 package com.example.proj1.Activities;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -12,14 +14,16 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.proj1.Classes.Customer;
 import com.example.proj1.R;
+import com.google.gson.Gson;
 
 import java.util.*;
 
 public class ActivityRegister extends AppCompatActivity {
-    Customer user;
+    ArrayList<Customer> users; //array of users
+    Customer user; //new user
     boolean validcad= true, emptycad, mandatoryfilled=true;
     Button btnAceptar,btnlogin;
-    EditText first_name,last_name, email, password, birth_day, birth_month, birth_year,prefix_phone, phone, address;
+    EditText first_name,last_name, email, password,password2, birth_day, birth_month, birth_year, phone;
     //habria que hacer un atributo de la clase customer de si el usuario esta o no registrado
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +36,7 @@ public class ActivityRegister extends AppCompatActivity {
         last_name = findViewById(R.id.textlastname);
         email = findViewById(R.id.text_email);
         password = findViewById(R.id.text_password);
+        password2 = findViewById(R.id.text_password2);
         birth_day = findViewById(R.id.birth_day);
         birth_month = findViewById(R.id.birth_month);
         birth_year = findViewById(R.id.birth_year);
@@ -41,17 +46,19 @@ public class ActivityRegister extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 SetUserData();
-                if (!validcad){
+                if (!validcad)
                     Toast.makeText(ActivityRegister.this, "fecha de nacimiento invalida", Toast.LENGTH_SHORT).show();
-                }
-                else if (!mandatoryfilled){
+                else if (!mandatoryfilled)
                     Toast.makeText(ActivityRegister.this, "Los campos con * son obligatorios", Toast.LENGTH_SHORT).show();
-                }
+                else if (!password.getText().toString().equals(password2.getText().toString()))
+                    Toast.makeText(ActivityRegister.this, "La contraseña debe ser identicas", Toast.LENGTH_SHORT).show();
                 else
                 {
+                    //funcion que se guardar a preference
                     Intent i = new Intent(ActivityRegister.this,MainActivity.class);
                     i.putExtra("NAME",user.first_name);
                     startActivity(i);
+                    finish();
                 }
             }
         });
@@ -59,8 +66,9 @@ public class ActivityRegister extends AppCompatActivity {
         btnlogin.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
+                startActivity(new Intent(ActivityRegister.this,ActivityLogin.class));
                 finish();
-                //startActivity(new Intent(ActivityRegister.this,ActivityLogin.class));
+
             }
         });
     }
@@ -74,30 +82,37 @@ public class ActivityRegister extends AppCompatActivity {
         //campos opcionales
         String birth_data = birth_day.getText().toString()+"/"+birth_month.getText().toString()+"/"+birth_year.getText().toString();
         String phone_data = phone.getText().toString();
+        //Log.i("aaaaaaaaaaaaaaaaaa:",Integer.parseUnsignedInt(birth_day.getText().toString())+" "+Integer.parseUnsignedInt(birth_month.getText().toString())+" "+Integer.parseUnsignedInt(birth_year.getText().toString()));
+        //Log.i("aaaaaaaaaaaaaaaaaa:",password_data+" "+password2.getText().toString());
 
         user = new Customer(first_name_data, last_name_data, email_data, password_data);
-        validcad = user.isValidBirthDate(birth_day.getInputType(),birth_month.getInputType(),birth_year.getInputType());
-        emptycad = birth_data.equals("//");
-
-        user.setPhone(phone_data);
+        users.add(user);
 
         mandatoryfilled= (first_name_data.length()>0 && last_name_data.length()>0 && email_data.length()>0 && password_data.length()>0 );
-            //probamos poner "" y si no añadimos un espacio al final del first_name_data al asignarle valor o sino comprovar si .length ==0
+        emptycad = birth_data.equals("//");
 
-        if (validcad) {
-            if (emptycad)
-                user.setBirth_date("");
-            else
-                user.setBirth_date(birth_data);
+        if (emptycad)
+            user.setBirth_date("");
+        else{
+            validcad = user.isValidBirthDate(Integer.parseUnsignedInt(birth_day.getText().toString()),Integer.parseUnsignedInt(birth_month.getText().toString()),Integer.parseUnsignedInt(birth_year.getText().toString()));
+            user.setBirth_date(birth_data);
         }
+        user.setPhone(phone_data);
+
         Log.i("validcad:", String.valueOf(validcad));
         Log.i("manatoryfilled:", String.valueOf(mandatoryfilled));
         Log.i("first_name:",user.first_name);
-//            Log.i("last_name_data:",user.last_name);
-//            Log.i("email_data:",user.email);
-//            Log.i("password_data:",user.password);
-//            Log.i("birth_data:",user.birth_date);
-//            Log.i("phone_data:",user.phone);
-//            Log.i("address_data:",user.address);
+    }
+
+    public void GuardarDatos(){
+        SharedPreferences preferences = getSharedPreferences("logindata", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        Gson gson = new Gson();
+        String json;
+
+        json = gson.toJson(users);
+        editor.putString("userslist",json);
+
+        editor.apply();
     }
 }

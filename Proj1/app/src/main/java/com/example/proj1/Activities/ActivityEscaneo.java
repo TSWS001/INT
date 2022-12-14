@@ -74,6 +74,7 @@ public class ActivityEscaneo extends AppCompatActivity {
                     i.putExtra("product", product);
                     Log.i("Debugggggggg:", "Escaneo " + product.grasas);
                     startActivity(i);
+                    finish();
                 }
                 else
                     Toast.makeText(ActivityEscaneo.this,"Es necessario el codigo de barras",Toast.LENGTH_SHORT).show();

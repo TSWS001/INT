@@ -21,6 +21,8 @@ public class ActivityCaducidad extends AppCompatActivity {
     Button btnAceptar,btnNoCad;
     EditText cad_day, cad_month, cad_year;
     Product product;
+    String day,month,year;
+
     //habria que hacer un atributo de la clase customer de si el usuario esta o no registrado
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,28 +34,33 @@ public class ActivityCaducidad extends AppCompatActivity {
         cad_day = findViewById(R.id.cad_day);
         cad_month = findViewById(R.id.cad_month);
         cad_year = findViewById(R.id.cad_year);
-        String cad_data = cad_day.getText().toString()+"/"+cad_month.getText().toString()+"/"+cad_year.getText().toString();
 
         btnAceptar.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                //Set up of the product class object
-                Calendar act_date= Calendar.getInstance();
-                Log.i("aaaaaaaaaaaaaaaaaaaaaaa", cad_day.getInputType()+"/"+cad_month.getInputType()+"/"+cad_year.getInputType());
                 product = (Product) getIntent().getSerializableExtra("product");
                 //checks the correctness of the date
-                if (product.isValidCadDate(cad_day.toString(),cad_month.getInputType(),cad_year.getInputType())){
+                day = cad_day.getText().toString();
+                month = cad_month.getText().toString();
+                year = cad_year.getText().toString();
+                String cad_data = day+"/"+month+"/"+year;
+
+                if (day.length()+month.length()+year.length()<4){
+                    Toast.makeText(ActivityCaducidad.this, "introduce la fecha de caducidad", Toast.LENGTH_SHORT).show();
+                }
+                else if (!product.isValidCadDate(Integer.parseUnsignedInt(day),Integer.parseUnsignedInt(month),Integer.parseUnsignedInt(year))){
+                    //si la fecha de caducidad es incorrecta
+                    Toast.makeText(ActivityCaducidad.this, "fecha de caducidad erronea", Toast.LENGTH_SHORT).show();
+                }
+                else{
                     //si la fecha de caducidad es correcta
                     Intent intent = new Intent(ActivityCaducidad.this,ActivityList.class);
                     product.setCaducity(cad_data);
+                    Log.i("aaaaaaaaaaaaaaaaaaaaaaa", cad_data+"="+product.caducity);
                     intent.putExtra("product",product);
                     Log.i("Debugggggggg:","With cad "+product.barcode);
-
                     startActivity(intent);
-                }
-                else{
-                    //si la fecha de caducidad es incorrecta
-                    Toast.makeText(ActivityCaducidad.this, "fecha de caducidad erronea", Toast.LENGTH_SHORT).show();
+                    finish();
                 }
             }
         });
@@ -67,6 +74,7 @@ public class ActivityCaducidad extends AppCompatActivity {
                 Log.i("Debugggggggg:","No cad "+product.barcode);
 
                 startActivity(intent);
+                finish();
             }
         });
     }

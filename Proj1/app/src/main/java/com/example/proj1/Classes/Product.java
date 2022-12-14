@@ -43,7 +43,6 @@ public class Product implements Serializable { //connected with database Product
         this.base_area = base_area;
     }
 
-
     public void setCaducity(String cad){//detect the date we write on the app and save it in Product.caducity
         this.caducity=cad;
     }
@@ -62,7 +61,7 @@ public class Product implements Serializable { //connected with database Product
         this.sal=sal;
     }
 
-    ; //previous than current date. We shall do a function so we can use the same to check Customer.birthdate
+    //previous than current date. We shall do a function so we can use the same to check Customer.birthdate
     public void setBarcode(String code){
         this.barcode=code;
     }
