@@ -45,8 +45,8 @@ public class ActivityCaducidad extends AppCompatActivity {
                 year = cad_year.getText().toString();
                 String cad_data = day+"/"+month+"/"+year;
 
-                if (day.length()+month.length()+year.length()<4){
-                    Toast.makeText(ActivityCaducidad.this, "introduce la fecha de caducidad", Toast.LENGTH_SHORT).show();
+                if (day.length()+month.length()+year.length()<8){
+                    Toast.makeText(ActivityCaducidad.this, "introduce una fecha de caducidad válida", Toast.LENGTH_SHORT).show();
                 }
                 else if (!product.isValidCadDate(Integer.parseUnsignedInt(day),Integer.parseUnsignedInt(month),Integer.parseUnsignedInt(year))){
                     //si la fecha de caducidad es incorrecta
