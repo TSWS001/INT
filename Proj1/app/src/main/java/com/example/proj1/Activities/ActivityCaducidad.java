@@ -69,6 +69,7 @@ public class ActivityCaducidad extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent=new Intent(ActivityCaducidad.this,ActivityList.class);
+                product.setCaducity("No tiene");
                 product = (Product) getIntent().getSerializableExtra("product");
                 intent.putExtra("product",product);
                 Log.i("Debugggggggg:","No cad "+product.barcode);

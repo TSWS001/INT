@@ -25,7 +25,7 @@ import java.util.Objects;
 public class ActivityLogin extends AppCompatActivity {
     Button btnAceptar, btnRegistrarse;
     EditText email, password;
-    ArrayList<Customer> users;
+    ArrayList<Customer> users = new ArrayList<>();
     Customer user_current;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,27 +53,33 @@ public class ActivityLogin extends AppCompatActivity {
                 Intent i = new Intent(ActivityLogin.this,MainActivity.class);
 
                 int pos = CheckIdentity(email.getText().toString(),password.getText().toString());
-                if (pos>=0){
-                    user_current=users.get(pos);
+                Log.i("bbbbbbbbbbbbbbbbbb","position: "+pos);
+                UserArrayPrint(); // debug
+                if (pos>=0) {
+                    user_current = users.get(pos);
+                    i.putExtra("NAME",user_current.last_name);
+                    startActivity(i);
+                    finish();
                 }
-                i.putExtra("NAME",user_current.last_name);
-                startActivity(i);
-                finish();
+//                else{
+//                    Toast.makeText(ActivityLogin.this," denegada",Toast.LENGTH_SHORT).show();
+//                }
+
             }
         });
     }
-    private void getUserData(){//0 si correcto, 1 si contraseña incorrecta, 2 si no existe usuario
+    private void getUserData(){
         SharedPreferences preferences = getSharedPreferences("logindata", Context.MODE_PRIVATE);
         Gson gson = new Gson();
         String json;
-        int position;
+
         //recuperar la lista de usuarios
         json = preferences.getString("userslist","");
-//        Log.i("strinnnnnnnnnnnnnnnn:",json);//resultado default es []
 
         if(json.length()>2) {
             Type listType = new TypeToken<ArrayList<Customer>>(){}.getType();
             users = gson.fromJson(json, listType);
+            // si existe el users leemos el primer usuario
             Log.i("DebugggggggGGGGg:", "From get json " + users.get(0).first_name+" "+users.get(0).last_name);
         }
 
@@ -82,8 +88,10 @@ public class ActivityLogin extends AppCompatActivity {
     public int CheckIdentity(String email,String pass) {
         int i;
         for (i=0; i<users.size(); i++){
+            Log.i("strinnnnnnnnnnnnnnnn:", users.get(i).email);
             if (Objects.equals(users.get(i).email, email)){ // found email
                 //check pass
+
                 if (Objects.equals(users.get(i).password, pass)){
                     //correct pass
                     return i;
@@ -96,8 +104,16 @@ public class ActivityLogin extends AppCompatActivity {
             }
         }
         //fuera del for: not email found
-        Toast.makeText(ActivityLogin.this,"Usuario no encontrado",Toast.LENGTH_SHORT).show();
+        Toast.makeText(ActivityLogin.this,"Usuario "+email+" no encontrado",Toast.LENGTH_SHORT).show();
         return -2;
 
+    }
+
+    public void UserArrayPrint(){
+        int i;
+        for (i=0; i<users.size(); i++){
+            Log.i("bbbbbbbbbbbbbbbbbb","usuario numero "+i+" "+users.get(i).first_name+" "+users.get(i).last_name+" "+users.get(i).password);
+
+        }
     }
 }

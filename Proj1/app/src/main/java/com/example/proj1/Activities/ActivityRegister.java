@@ -19,7 +19,7 @@ import com.google.gson.Gson;
 import java.util.*;
 
 public class ActivityRegister extends AppCompatActivity {
-    ArrayList<Customer> users; //array of users
+    ArrayList<Customer> users = new ArrayList<>(); //array of users
     Customer user; //new user
     boolean validcad= true, emptycad, mandatoryfilled=true;
     Button btnAceptar,btnlogin;
@@ -48,13 +48,14 @@ public class ActivityRegister extends AppCompatActivity {
                 SetUserData();
                 if (!validcad)
                     Toast.makeText(ActivityRegister.this, "fecha de nacimiento invalida", Toast.LENGTH_SHORT).show();
-                else if (!mandatoryfilled)
-                    Toast.makeText(ActivityRegister.this, "Los campos con * son obligatorios", Toast.LENGTH_SHORT).show();
                 else if (!password.getText().toString().equals(password2.getText().toString()))
-                    Toast.makeText(ActivityRegister.this, "La contraseña debe ser identicas", Toast.LENGTH_SHORT).show();
-                else
-                {
-                    //funcion que se guardar a preference
+                    Toast.makeText(ActivityRegister.this, "Las contraseñas debe ser identicas", Toast.LENGTH_SHORT).show();
+                else if (!mandatoryfilled){
+                    Toast.makeText(ActivityRegister.this, "Los campos con * son obligatorios", Toast.LENGTH_SHORT).show();
+                    UserArrayPrint();
+                }
+                else {
+                    GuardarDatos();
                     Intent i = new Intent(ActivityRegister.this,MainActivity.class);
                     i.putExtra("NAME",user.first_name);
                     startActivity(i);
@@ -83,13 +84,12 @@ public class ActivityRegister extends AppCompatActivity {
         String birth_data = birth_day.getText().toString()+"/"+birth_month.getText().toString()+"/"+birth_year.getText().toString();
         String phone_data = phone.getText().toString();
         //Log.i("aaaaaaaaaaaaaaaaaa:",Integer.parseUnsignedInt(birth_day.getText().toString())+" "+Integer.parseUnsignedInt(birth_month.getText().toString())+" "+Integer.parseUnsignedInt(birth_year.getText().toString()));
-        //Log.i("aaaaaaaaaaaaaaaaaa:",password_data+" "+password2.getText().toString());
 
-        user = new Customer(first_name_data, last_name_data, email_data, password_data);
-        users.add(user);
 
         mandatoryfilled= (first_name_data.length()>0 && last_name_data.length()>0 && email_data.length()>0 && password_data.length()>0 );
         emptycad = birth_data.equals("//");
+
+        user = new Customer(email_data,first_name_data, last_name_data, password_data);
 
         if (emptycad)
             user.setBirth_date("");
@@ -98,6 +98,8 @@ public class ActivityRegister extends AppCompatActivity {
             user.setBirth_date(birth_data);
         }
         user.setPhone(phone_data);
+
+        users.add(user);
 
         Log.i("validcad:", String.valueOf(validcad));
         Log.i("manatoryfilled:", String.valueOf(mandatoryfilled));
@@ -111,8 +113,16 @@ public class ActivityRegister extends AppCompatActivity {
         String json;
 
         json = gson.toJson(users);
+        UserArrayPrint();//debug
         editor.putString("userslist",json);
 
         editor.apply();
+    }
+
+    public void UserArrayPrint(){
+        int i;
+        for (i=0; i<users.size(); i++){
+            Log.i("bbbbbbbbbbbbbbbbbb","usuario numero "+i+" "+users.get(i).first_name+" "+users.get(i).last_name);
+        }
     }
 }

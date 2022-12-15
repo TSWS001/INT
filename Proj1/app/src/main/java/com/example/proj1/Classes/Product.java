@@ -186,7 +186,7 @@ public class Product implements Serializable { //connected with database Product
 
         //set description
         database.get(0).ingredients="Harina de TRIGO 49 %, azúcar, grasa de palma, aceite de nabina, cacao magro en polvo 4,5 %, jarabe de glucosa, almidón de TRIGO, gasificantes (carbonatos de amonio, carbonatos de sodio), emulgente (lecitinas de SOJA), sal, LECHE desnatada en polvo, permeato de suero (de LECHE), aroma.PUEDE CONTENER HUEVO.";
-        database.get(1).ingredients="Azúcar, cacao desgrasado natural¹ (22%), crema de cereal kola-malteado [harina de trigo, extracto de malta de cebada, aroma natural (extracto de nuez de cola)], sales minerales (calcio, fósforo), aromas, sal.";
+        database.get(1).ingredients="Azúcar, cacao desgrasado natural (22%), crema de cereal kola-malteado [harina de trigo, extracto de malta de cebada, aroma natural (extracto de nuez de cola)], sales minerales (calcio, fósforo), aromas, sal.";
         database.get(2).ingredients="Tomate y concentrado de tomate (174g de tomate para elaborar 100 g de tomate frito), aceite de girasol, azúcar, almidón modificado de maíz, sal, aroma, cebolla, ajo, pimienta blanca.";
         database.get(3).ingredients="Semola de trigo duro. Puede contener trazas de huevo.";
         database.get(4).ingredients="100% Arroz grano redondo.";
