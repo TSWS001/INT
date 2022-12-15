@@ -155,6 +155,36 @@
                     android:layout_marginStart="5dp"
                     android:textColor="@color/black"/>
             </LinearLayout>
+            <LinearLayout
+                android:id="@+id/contact_web"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="start"
+                android:layout_marginTop="5dp">
+                <TextView
+                    android:id="@+id/contact_web_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/web_page"
+                    android:textSize="18sp"
+                    android:textColor="@color/black"/>
+                <TextView
+                    android:id="@+id/contact_web_ddots"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/double_dots"
+                    android:textSize="18sp"
+                    android:textColor="@color/black"/>
+                <TextView
+                    android:id="@+id/contact_web_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/contact_web"
+                    android:textSize="18sp"
+                    android:layout_marginStart="5dp"
+                    android:textColor="@color/black"/>
+            </LinearLayout>
         </LinearLayout>
 
     </LinearLayout>

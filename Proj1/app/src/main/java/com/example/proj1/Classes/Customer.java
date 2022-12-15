@@ -10,9 +10,9 @@ public class Customer { //connects with database Customers
     public String phone=null; //send offers, optional
     public String birth_date=null; //for some offers from markets, recipes or diet, optional
 
-    public Customer(String email, String first_name, String second_name, String password){//constructor for mandatory attributes
+    public Customer(String email, String first_name, String last_name, String password){//constructor for mandatory attributes
         this.first_name=first_name;
-        this.last_name=second_name;
+        this.last_name=last_name;
         this.email=email;
         this.password=password;
     }
