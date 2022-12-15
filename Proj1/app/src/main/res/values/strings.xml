@@ -72,6 +72,8 @@
     <string name="contact_email">soporte@dom.com</string>
     <string name="contact_phone">601124308</string>
     <string name="contact_address">C/ Jordi Girona, 1</string>
+    <string name="web_page">Página web</string>
+    <string name="contact_web">dom.domrav.net</string>
 
     <!--user_login.xml-->
     <string name="registrar">Regístrate</string>
