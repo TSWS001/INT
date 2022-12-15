@@ -26,6 +26,7 @@ public class ActivitySettings extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(ActivitySettings.this,ActivityLogin.class));
+                finish();
             }
         });
 

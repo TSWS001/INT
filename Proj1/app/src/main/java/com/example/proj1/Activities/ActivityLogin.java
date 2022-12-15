@@ -43,6 +43,7 @@ public class ActivityLogin extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(ActivityLogin.this,ActivityRegister.class));
+                UserArrayPrint();
                 finish();
             }
         });
@@ -57,7 +58,7 @@ public class ActivityLogin extends AppCompatActivity {
                 UserArrayPrint(); // debug
                 if (pos>=0) {
                     user_current = users.get(pos);
-                    i.putExtra("NAME",user_current.last_name);
+                    i.putExtra("NAME",user_current.first_name);
                     startActivity(i);
                     finish();
                 }
@@ -112,7 +113,7 @@ public class ActivityLogin extends AppCompatActivity {
     public void UserArrayPrint(){
         int i;
         for (i=0; i<users.size(); i++){
-            Log.i("bbbbbbbbbbbbbbbbbb","usuario numero "+i+" "+users.get(i).first_name+" "+users.get(i).last_name+" "+users.get(i).password);
+            Log.i("bbbbbbbbbbbbbbbbbb","usuario numero "+i+" "+ users.get(i).email+" "+users.get(i).first_name+" "+users.get(i).last_name+" "+users.get(i).password);
 
         }
     }

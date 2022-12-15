@@ -54,7 +54,7 @@ public class ActivityList extends AppCompatActivity implements RecyclerViewInter
         }
 
         listquantity = findViewById(R.id.product_quantity);
-        ImageView btnback = findViewById(R.id.left_icon);
+        ImageView btnback = findViewById(R.id.back_arrow_list);
         ImageView btnplus = findViewById(R.id.right_icon);
 
         btnback.setOnClickListener(new View.OnClickListener() {
@@ -102,7 +102,6 @@ public class ActivityList extends AppCompatActivity implements RecyclerViewInter
         editor.putString("listadeproductos",json);
         editor.apply();
     }
-
 
     @Override
     public void onItemClick(int position) {

@@ -7,7 +7,7 @@
 
 
     <ImageView
-        android:id="@id/left_icon"
+        android:id="@+id/back_arrow_caducity"
         android:layout_width="40dp"
         android:layout_height="50dp"
         android:layout_centerVertical="true"

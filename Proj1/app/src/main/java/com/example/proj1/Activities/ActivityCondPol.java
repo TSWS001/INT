@@ -18,11 +18,12 @@ public class ActivityCondPol extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.cond_politics);
 
-        back = findViewById(R.id.left_icon);
+        back = findViewById(R.id.back_arrow_condpol);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(ActivityCondPol.this,ActivitySettings.class));
+                finish();
             }
         });
     }

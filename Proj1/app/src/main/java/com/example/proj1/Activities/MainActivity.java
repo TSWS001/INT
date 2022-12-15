@@ -2,7 +2,9 @@ package com.example.proj1.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -12,6 +14,7 @@ import android.widget.Toast;
 
 import com.example.proj1.Classes.Customer;
 import com.example.proj1.R;
+import com.google.gson.Gson;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -22,8 +25,15 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         TextView nombre = findViewById(R.id.welcome_name);
-        String name= getIntent().getStringExtra("NAME");
-        nombre.setText(name);//sets the name of the user to the main page
+        String name;
+        name = getIntent().getStringExtra("NAME");
+        Log.i("Nombre de intent", name);
+        if (name !=null)
+            GuardarNombre(name);
+
+        name=LeerNombre();
+        Log.i("Nombre de preference",name);
+        nombre.setText(name);   //sets the name of the user to the main page
 
         ImageView ic_camera = findViewById(R.id.img11);
         ImageView ic_list = findViewById(R.id.img12);
@@ -59,5 +69,20 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
+    public void GuardarNombre(String name){
+        SharedPreferences preferences = getSharedPreferences("nombre", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+
+        editor.putString("NAME",name);
+        editor.apply();
+    }
+
+    public String LeerNombre(){
+        SharedPreferences preferences = getSharedPreferences("nombre", Context.MODE_PRIVATE);
+
+        return preferences.getString("NAME","");
+    }
+
 }
 

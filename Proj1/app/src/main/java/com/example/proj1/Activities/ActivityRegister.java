@@ -52,9 +52,9 @@ public class ActivityRegister extends AppCompatActivity {
                     Toast.makeText(ActivityRegister.this, "Las contraseñas debe ser identicas", Toast.LENGTH_SHORT).show();
                 else if (!mandatoryfilled){
                     Toast.makeText(ActivityRegister.this, "Los campos con * son obligatorios", Toast.LENGTH_SHORT).show();
-                    UserArrayPrint();
                 }
                 else {
+                    GuardarUsuario();
                     GuardarDatos();
                     Intent i = new Intent(ActivityRegister.this,MainActivity.class);
                     i.putExtra("NAME",user.first_name);
@@ -99,8 +99,6 @@ public class ActivityRegister extends AppCompatActivity {
         }
         user.setPhone(phone_data);
 
-        users.add(user);
-
         Log.i("validcad:", String.valueOf(validcad));
         Log.i("manatoryfilled:", String.valueOf(mandatoryfilled));
         Log.i("first_name:",user.first_name);
@@ -117,6 +115,17 @@ public class ActivityRegister extends AppCompatActivity {
         editor.putString("userslist",json);
 
         editor.apply();
+    }
+
+    public void GuardarUsuario(){
+        int i;
+        for (i=0; i<users.size(); i++) {
+            if (Objects.equals(users.get(i).email, user.email)){
+                Toast.makeText(ActivityRegister.this,"Usuario ya registrado",Toast.LENGTH_SHORT).show();
+                return;
+            }
+        }
+        users.add(user);
     }
 
     public void UserArrayPrint(){

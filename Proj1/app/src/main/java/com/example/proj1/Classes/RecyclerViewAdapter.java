@@ -45,7 +45,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
         String Quantity = productlist.get(position).getQuantity() +" u";
         String cad = productlist.get(position).getCaducity();
-        if (Objects.equals(cad, "")){
+        if (Objects.equals(cad, "No tiene")){
             cad="No hay fecha de caducidad";
         }
         holder.name.setText(productlist.get(position).getName());
