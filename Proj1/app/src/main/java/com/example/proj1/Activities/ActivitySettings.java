@@ -26,7 +26,7 @@ public class ActivitySettings extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(ActivitySettings.this,ActivityLogin.class));
-                finish();
+                finish();   //la idea es volver a login, y no poder acceder a main con un retroceder (back)
             }
         });
 

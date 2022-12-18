@@ -26,13 +26,17 @@ public class MainActivity extends AppCompatActivity {
 
         TextView nombre = findViewById(R.id.welcome_name);
         String name;
-        name = getIntent().getStringExtra("NAME");
-        Log.i("Nombre de intent", name);
-        if (name !=null)
-            GuardarNombre(name);
 
-        name=LeerNombre();
-        Log.i("Nombre de preference",name);
+        name = getIntent().getStringExtra("NAME"); // leer nombre del intent
+        if (name !=null){
+            Log.i("Nombre del intent", name);
+            GuardarNombre(name);
+        }
+        else {
+            name=LeerNombre(); // leer nombre del preference
+            Log.i("Nombre del preference",name);
+        }
+        Log.i("Nombre para set",name);
         nombre.setText(name);   //sets the name of the user to the main page
 
         ImageView ic_camera = findViewById(R.id.img11);
@@ -66,8 +70,6 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this, "ic_settings clicked", Toast.LENGTH_SHORT).show();
             startActivity(new Intent(this, ActivitySettings.class));
         }
-
-
     }
 
     public void GuardarNombre(String name){

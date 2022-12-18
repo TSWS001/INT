@@ -1,5 +1,7 @@
 package com.example.proj1.Classes;
 
+import android.util.Log;
+
 import java.util.Calendar;
 
 public class Customer { //connects with database Customers
@@ -47,6 +49,7 @@ public class Customer { //connects with database Customers
 
     public boolean isValidBirthDate(int d, int m, int y) {
         Calendar act_date= Calendar.getInstance();
+        Log.i("feeeeeeeeecha actual:",act_date.get(Calendar.DAY_OF_MONTH)+" "+act_date.get(Calendar.MONTH)+" "+act_date.get(Calendar.YEAR));
         boolean bool=true;
         if (m<1 || m>12 || d<1 || d>31){
             bool= false;

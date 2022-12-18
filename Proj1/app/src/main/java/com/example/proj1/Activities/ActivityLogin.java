@@ -44,7 +44,6 @@ public class ActivityLogin extends AppCompatActivity {
             public void onClick(View view) {
                 startActivity(new Intent(ActivityLogin.this,ActivityRegister.class));
                 UserArrayPrint();
-                finish();
             }
         });
 

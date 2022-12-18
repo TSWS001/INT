@@ -68,6 +68,7 @@ public class ActivityList extends AppCompatActivity implements RecyclerViewInter
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(ActivityList.this,ActivityEscaneo.class));
+                finish();
             }
         });
 

@@ -132,6 +132,7 @@ public class Product implements Serializable { //connected with database Product
 
     public boolean isValidCadDate(int d,int m,int y) {
         Calendar act_date= Calendar.getInstance();
+        Log.i("feeeeeeeeecha actual:",act_date.get(Calendar.DAY_OF_MONTH)+" "+act_date.get(Calendar.MONTH)+" "+act_date.get(Calendar.YEAR));
         boolean bool=true;
         if (m<1 || m>12 || d<1 || d>31){
             bool= false;
