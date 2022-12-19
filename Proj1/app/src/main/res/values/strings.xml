@@ -38,6 +38,7 @@
     <!--caducidad.xml-->
     <string name="cad_title">Añade la cantidad y la fecha de caducidad:</string>
     <string name="no_cad_date">No tiene fecha de caducidad</string>
+    <string name="quantity">Cantidad</string>
 
     <!--card_view.xml-->
 
@@ -46,7 +47,7 @@
     <string name="pie_inicio">A KaveHome Project</string>
 
     <!--product_info.xml-->
-    <string name="quantity">Cantidad</string>
+    <string name="rem_quantity">Cantidad restante</string>
     <string name="nutri_info">Información nutricional</string>
     <string name="ingredients">Ingredientes</string>
     <string name="grasas">Grasas</string>
@@ -62,6 +63,7 @@
     <!--productlist.xml-->
     <string name="my_products">Mis productos</string>
     <string name="available">Productos disponibles</string>
+    <string name="prod_commands">Pulsa un producto para más información, mantén para eliminarlo</string>
 
     <!--server_test.xml-->
     <string name="conectar">Conectar</string>

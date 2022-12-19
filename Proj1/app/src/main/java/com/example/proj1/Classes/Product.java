@@ -65,8 +65,8 @@ public class Product implements Serializable { //connected with database Product
     public void setBarcode(String code){
         this.barcode=code;
     }
-    public void setQuantity(){
-        this.quantity=1;
+    public void setQuantity(int quantity){
+        this.quantity=quantity;
     };
     public void QuantityAdd(){
         this.quantity++;
