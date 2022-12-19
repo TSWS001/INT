@@ -35,12 +35,12 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="15dp">
         <TextView
             android:id="@+id/cond_pol_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
             android:textColor="@color/black"
             android:text="@string/cond_pol_text"
             android:scrollbars="vertical"

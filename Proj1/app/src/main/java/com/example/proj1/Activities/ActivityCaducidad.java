@@ -41,12 +41,10 @@ public class ActivityCaducidad extends AppCompatActivity {
         cad_year = findViewById(R.id.cad_year);
         backarrow = findViewById(R.id.back_arrow_caducity);
 
-
         btnAceptar.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
                 product = (Product) getIntent().getSerializableExtra("product");
-                quant = quantity.getText().toString();
                 //checks the correctness of the date
                 day = cad_day.getText().toString();
                 month = cad_month.getText().toString();
@@ -93,6 +91,7 @@ public class ActivityCaducidad extends AppCompatActivity {
         });
     }
     public void setQuantityInt(){
+        quant = quantity.getText().toString();
         if (quant.length()<1){
             //si no hay cantidad asignada
             quant_int=1;

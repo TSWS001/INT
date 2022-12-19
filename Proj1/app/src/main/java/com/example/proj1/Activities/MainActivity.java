@@ -55,16 +55,16 @@ public class MainActivity extends AppCompatActivity {
 
     public void Clicklistener (View v) {
         if (v == findViewById(R.id.img11)) {
-            Toast.makeText(this, "ic_camera clicked", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Abriendo cámara para escaneo", Toast.LENGTH_SHORT).show();
             startActivity(new Intent(this, ActivityEscaneo.class));
         } else if (v == findViewById(R.id.img12)) {
-            Toast.makeText(this, "cargando la lista de productos", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Cargando la lista de productos", Toast.LENGTH_SHORT).show();
             startActivity(new Intent(this, ActivityList.class));
         } else if (v == findViewById(R.id.img21)) {
-            Toast.makeText(this, "Shopping function is coming soon...", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Las compras online estarán disponible próximamente", Toast.LENGTH_SHORT).show();
             //activityshopping
         } else if (v == findViewById(R.id.img22)) {
-            Toast.makeText(this, "Diet function is coming soon...", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "La recomendación de dietas estará disponible próximamente", Toast.LENGTH_SHORT).show();
             //activitydiet
         } else if (v == findViewById(R.id.ic_settings)) {
             Toast.makeText(this, "ic_settings clicked", Toast.LENGTH_SHORT).show();
