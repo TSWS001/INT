@@ -10,6 +10,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
+import android.util.SparseIntArray;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -26,6 +27,7 @@ import org.json.JSONException;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Objects;
 
 public class ActivityList extends AppCompatActivity implements RecyclerViewInterface {
@@ -76,10 +78,12 @@ public class ActivityList extends AppCompatActivity implements RecyclerViewInter
 
         SetUpProducts();
 
-         adapter = new RecyclerViewAdapter(this,productlist, this);
+        adapter = new RecyclerViewAdapter(this,productlist, this);
         recyclerView.setAdapter(adapter);
         listquantity.setText(String.valueOf(productlist.size())); //set the value of "x products remaining"
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        CheckandNotifyCaducity();   //notifica si un producto esta a 3 dias de la fecha de caducidad
     }
 
     private void SetUpProducts() {
@@ -147,4 +151,56 @@ public class ActivityList extends AppCompatActivity implements RecyclerViewInter
     public void onBackPressed() {//para cualquier tipo de retroceso a la anterior actividad
         startActivity(new Intent(ActivityList.this,MainActivity.class));
     }
+
+    public int[] DateToInteger(String date){
+        String[] DateString = date.split("/");
+        int i;
+        int[] DateInt = new int[DateString.length];
+
+        for(i=0; i<DateString.length; i++)
+            DateInt[i] = Integer.parseInt(DateString[i]);
+
+        return DateInt;
+    }
+    public boolean LeapYear(int y){
+        return y%4==0 && (y%100!=0) || y%400==0;
+    }
+    public int StringDateToDays(String Date) {  //pasa de una un date string a dias del año
+
+    }
+
+    public boolean Check3daysbefore(int[] DateCad, int d, int m, int y){
+
+
+
+        if (DateCad[2]!=y) {//si año diferente
+            if() {// si el mes es igual que el mes_cad-1
+                //if el dia es
+
+            }
+            return -1;
+        }
+        else if (DateCad[1]!=m) {
+
+        }
+    }
+
+    public int CheckandNotifyCaducity(){
+        Calendar actual_date = Calendar.getInstance();
+        int i,j,d,m,y;
+        int[] DateCad;
+        d=actual_date.get(Calendar.DAY_OF_MONTH);
+        m=actual_date.get(Calendar.MONTH);
+        y=actual_date.get(Calendar.YEAR);
+
+        for (i=0; i<productlist.size(); i++){
+            DateCad = DateToInteger(productlist.get(i).caducity);
+                Check3daysbefore(DateCad,d,m,y);
+
+            }
+        }
+
+    }
+
 }
+
