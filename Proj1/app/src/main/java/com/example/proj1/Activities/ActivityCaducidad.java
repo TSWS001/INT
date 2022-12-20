@@ -21,10 +21,11 @@ import java.util.Calendar;
 public class ActivityCaducidad extends AppCompatActivity {
 
     Button btnAceptar,btnNoCad;
-    EditText cad_day, cad_month, cad_year;
+    EditText cad_day, cad_month, cad_year, quantity;
     ImageView backarrow;
     Product product;
-    String day,month,year;
+    String day,month,year, quant;
+    int quant_int;
 
     //habria que hacer un atributo de la clase customer de si el usuario esta o no registrado
     @Override
@@ -34,11 +35,11 @@ public class ActivityCaducidad extends AppCompatActivity {
 
         btnNoCad = findViewById(R.id.btnnocaducity);
         btnAceptar = findViewById(R.id.btnaceptar_cad);
+        quantity= findViewById(R.id.cad_quantity);
         cad_day = findViewById(R.id.cad_day);
         cad_month = findViewById(R.id.cad_month);
         cad_year = findViewById(R.id.cad_year);
         backarrow = findViewById(R.id.back_arrow_caducity);
-
 
         btnAceptar.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -49,7 +50,8 @@ public class ActivityCaducidad extends AppCompatActivity {
                 month = cad_month.getText().toString();
                 year = cad_year.getText().toString();
                 String cad_data = day+"/"+month+"/"+year;
-
+                setQuantityInt();
+                Log.i("CANTIDAD en int", "int quantity"+"="+quant_int);
                 if (day.length()+month.length()+year.length()<8){
                     Toast.makeText(ActivityCaducidad.this, "introduce una fecha de caducidad válida", Toast.LENGTH_SHORT).show();
                 }
@@ -61,6 +63,8 @@ public class ActivityCaducidad extends AppCompatActivity {
                     //si la fecha de caducidad es correcta
                     Intent intent = new Intent(ActivityCaducidad.this,ActivityList.class);
                     product.setCaducity(cad_data);
+                    product.setQuantity(quant_int);
+                    Log.i("CANTIDAD stored", "stored quantity"+"="+product.quantity);
                     Log.i("aaaaaaaaaaaaaaaaaaaaaaa", cad_data+"="+product.caducity);
                     intent.putExtra("product",product);
                     Log.i("Debugggggggg:","With cad "+product.barcode);
@@ -76,6 +80,8 @@ public class ActivityCaducidad extends AppCompatActivity {
                 Intent intent=new Intent(ActivityCaducidad.this,ActivityList.class);
                 product = (Product) getIntent().getSerializableExtra("product");
                 product.setCaducity("No tiene");
+                setQuantityInt();
+                Log.i("CANTIDAD stored", "stored quantity"+"="+product.quantity);
                 intent.putExtra("product",product);
                 Log.i("Debugggggggg:","No cad "+product.barcode);
 
@@ -83,5 +89,16 @@ public class ActivityCaducidad extends AppCompatActivity {
                 finish();
             }
         });
+    }
+    public void setQuantityInt(){
+        quant = quantity.getText().toString();
+        if (quant.length()<1){
+            //si no hay cantidad asignada
+            quant_int=1;
+        }
+        else{
+            quant_int=Integer.parseUnsignedInt(quant);
+        }
+        product.setQuantity(quant_int);
     }
 }

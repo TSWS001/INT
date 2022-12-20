@@ -53,7 +53,7 @@
                     android:id="@+id/cad_main_title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/cad_date"
+                    android:text="@string/quantity"
                     android:textSize="30sp"
                     android:textAlignment="center"
                     android:textColor="@color/black" />
@@ -66,9 +66,20 @@
                     android:textAlignment="center"
                     android:textColor="@color/black" />
             </LinearLayout>
+
+            <EditText
+                android:id="@+id/cad_quantity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:inputType="number"
+                android:gravity="center"
+                android:textSize="30sp"
+                android:text="1"/>
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
                 android:layout_gravity="center_horizontal"
                 android:orientation="horizontal">
                 <TextView
@@ -95,8 +106,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:orientation="horizontal"
-                android:layout_marginTop="100dp">
+                android:orientation="horizontal">
 
                 <EditText
                     android:id="@+id/cad_day"
