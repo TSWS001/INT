@@ -152,7 +152,7 @@ public class ActivityList extends AppCompatActivity implements RecyclerViewInter
         startActivity(new Intent(ActivityList.this,MainActivity.class));
     }
 
-    public int[] DateToInteger(String date){
+    public int[] DateToInteger(String date){    //output structure: [day,month,year]
         String[] DateString = date.split("/");
         int i;
         int[] DateInt = new int[DateString.length];
@@ -162,19 +162,56 @@ public class ActivityList extends AppCompatActivity implements RecyclerViewInter
 
         return DateInt;
     }
+
     public boolean LeapYear(int y){
         return y%4==0 && (y%100!=0) || y%400==0;
     }
-    public int StringDateToDays(String Date) {  //pasa de una un date string a dias del año
 
+    public int StringDateToDays(String Date) {  //pasa de una un date string a dias del año
+        int[] dateInt = DateToInteger(Date);
+        int res=0,d,m,y,i;
+        boolean leapyear;
+        final int LEAPYEAR=366,NO_LEAPYEAR=365;
+        //set up
+        d=dateInt[0];
+        m=dateInt[1];
+        y=dateInt[2];
+        leapyear=LeapYear(y);
+        //sum of months
+        for(i=1; i<m; i++) {//suma del mes 1 hasta el mes m-1
+            if (i<8){   //primera mitad del año
+                if (i==2) {//caso especial
+                    if(leapyear)
+                        res=res+29;
+                    else
+                        res=res+28;
+                }
+                else if (i%2==0) //caso general
+                    res=res+30;
+                else
+                    res=res+31;
+            }
+            else {  //segunda mitad del año
+                if (i%2==0)
+                    res=res+31;
+                else
+                    res=res+30;
+            }
+        }
+        //sum of days
+        res=res+d;
+        Log.i("result StringDateToDays",String.valueOf(res));
+       return res;
     }
 
     public boolean Check3daysbefore(int[] DateCad, int d, int m, int y){
+        int d_cad,m_cad,y_cad;
+        d_cad=DateCad[0];
+        m_cad=DateCad[1];
+        y_cad=DateCad[2];
 
-
-
-        if (DateCad[2]!=y) {//si año diferente
-            if() {// si el mes es igual que el mes_cad-1
+        if (y_cad==y) {//si año diferente
+            if() {  // si el mes es igual que el mes_cad-1
                 //if el dia es
 
             }
