@@ -41,7 +41,7 @@ public class ActivityList extends AppCompatActivity implements RecyclerViewInter
     ArrayList<Product> productlist = new ArrayList<>();
     RecyclerViewAdapter adapter;
     TextView listquantity;
-
+    boolean PrimeraEjecuciondelaApp=false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,16 +51,25 @@ public class ActivityList extends AppCompatActivity implements RecyclerViewInter
         Gson gson = new Gson();
         String json;
 
+//        //antes de obtener los datos del productlist desde preference verificamos si es la primera ejecucion
+//        // de la app
+//        if(productlist.size()==0) {
+//            Toast.makeText(ActivityList.this,"PrimeraEjecuciondelaApp=true",Toast.LENGTH_SHORT).show();
+//            PrimeraEjecuciondelaApp = true;
+//        }
         //obtener los datos de la lista de productos desde preferences
         json = preferences.getString("listadeproductos","");
-        Log.i("strinnnnnnnnnnnnnnnn:",json);//resultado default es []
+        Log.i("ActList contenido JSON:",json);//resultado default es []
 
-        if(json.length()>2) {
+        if(json.length()>2) {   //si el contenido de preference no esta vacio
             Type listType = new TypeToken<ArrayList<Product>>(){}.getType();
             productlist = gson.fromJson(json, listType);
             CheckAndNotifyCaducity();   //notifica si un producto esta a punto de caducar
             Log.i("DebugggggggGGGGg:", "From get json " + productlist.get(0).barcode);
         }
+//        //reseteamos el atributo notify en todos los productos de la productlist
+//        if(PrimeraEjecuciondelaApp)
+//            SetAllNotifyToFalse();
 
         listquantity = findViewById(R.id.product_quantity);
         ImageView btnback = findViewById(R.id.back_arrow_list);
@@ -89,7 +98,6 @@ public class ActivityList extends AppCompatActivity implements RecyclerViewInter
         recyclerView.setAdapter(adapter);
         listquantity.setText(String.valueOf(productlist.size())); //set the value of "x products remaining"
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
     }
 
     private void SetUpProducts() {
@@ -102,6 +110,7 @@ public class ActivityList extends AppCompatActivity implements RecyclerViewInter
         //------------------------------------------------------------------------------------------
         Product new_product = (Product) getIntent().getSerializableExtra("product");
         if(new_product!=null){
+            new_product.notificado=false;
             productlist.add(new_product);
             Log.i("Debugggggggg:","Adding "+new_product.barcode);
         }
@@ -156,6 +165,13 @@ public class ActivityList extends AppCompatActivity implements RecyclerViewInter
     @Override
     public void onBackPressed() {//para cualquier tipo de retroceso a la anterior actividad
         startActivity(new Intent(ActivityList.this,MainActivity.class));
+    }
+
+    public void SetAllNotifyToFalse(){
+        int i;
+        for (i=0; i<productlist.size(); i++){
+            productlist.get(i).notificado=false;
+        }
     }
 
     public int[] DateToInteger(String date){    //output structure: [day,month,year]
@@ -213,7 +229,7 @@ public class ActivityList extends AppCompatActivity implements RecyclerViewInter
         y_cad=DateCad[2];
         totaldays_now=StringDateToDays(d,m,y);
         totaldays_cad=StringDateToDays(d_cad,m_cad,y_cad);
-        //Log.i("dia caducidad de prod:",d_cad+"/"+m_cad+"/"+y_cad);
+        Log.i("dia caducidad de prod:",d_cad+"/"+m_cad+"/"+y_cad);
 
         if (y_cad == y + 1) {//caso especial, los años se diferencia en 1 año
             if(LeapYear(y))
@@ -287,14 +303,15 @@ public class ActivityList extends AppCompatActivity implements RecyclerViewInter
 
         for (i=0; i<productlist.size(); i++){
             DateCad = DateToInteger(productlist.get(i).caducity);
+            Log.i("ActList prod.notficado:",i+" "+productlist.get(i).notificado+"");
             if(!productlist.get(i).notificado){ //si el prod actual no ha sido notificado
                 X = DaysDifference(DateCad,d,m,y);
-                //Log.i("Act List____X:",String.valueOf(X));
+                Log.i("Act List____X:",String.valueOf(X));
                 if(3>=X){
                     //si el producto esta a punto de caducar y no es hoy
                     setNotification(i,X);
                     productlist.get(i).notificado=true;
-                    //Toast.makeText(ActivityList.this,"Caduca en menos de "+X,Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ActivityList.this,"Caduca en menos de "+X,Toast.LENGTH_SHORT).show();
                 }
                 else
                     return;
