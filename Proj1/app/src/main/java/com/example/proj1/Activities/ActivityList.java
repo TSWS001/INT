@@ -1,12 +1,17 @@
 package com.example.proj1.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
@@ -14,6 +19,7 @@ import android.util.SparseIntArray;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.proj1.Classes.Product;
 import com.example.proj1.R;
@@ -83,7 +89,7 @@ public class ActivityList extends AppCompatActivity implements RecyclerViewInter
         listquantity.setText(String.valueOf(productlist.size())); //set the value of "x products remaining"
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        CheckandNotifyCaducity();   //notifica si un producto esta a 3 dias de la fecha de caducidad
+        CheckAndNotifyCaducity();   //notifica si un producto esta a punto de caducar
     }
 
     private void SetUpProducts() {
@@ -167,15 +173,9 @@ public class ActivityList extends AppCompatActivity implements RecyclerViewInter
         return y%4==0 && (y%100!=0) || y%400==0;
     }
 
-    public int StringDateToDays(String Date) {  //pasa de una un date string a dias del año
-        int[] dateInt = DateToInteger(Date);
-        int res=0,d,m,y,i;
+    public int StringDateToDays(int d, int m, int y) {  //pasa de una un date string a dias del año
+        int res=0,i;
         boolean leapyear;
-        final int LEAPYEAR=366,NO_LEAPYEAR=365;
-        //set up
-        d=dateInt[0];
-        m=dateInt[1];
-        y=dateInt[2];
         leapyear=LeapYear(y);
         //sum of months
         for(i=1; i<m; i++) {//suma del mes 1 hasta el mes m-1
@@ -204,40 +204,79 @@ public class ActivityList extends AppCompatActivity implements RecyclerViewInter
        return res;
     }
 
-    public boolean Check3daysbefore(int[] DateCad, int d, int m, int y){
-        int d_cad,m_cad,y_cad;
+    public boolean CheckXdaysbefore(int[] DateCad, int d, int m, int y){
+        int d_cad,m_cad,y_cad,totaldays_cad,totaldays_now;
+        final int LEAPYEAR=366,NO_LEAPYEAR=365, X=3;
+        boolean leapyear=LeapYear(y);
+
         d_cad=DateCad[0];
         m_cad=DateCad[1];
         y_cad=DateCad[2];
+        totaldays_now=StringDateToDays(d,m,y);
+        totaldays_cad=StringDateToDays(d_cad,m_cad,y_cad);
 
-        if (y_cad==y) {//si año diferente
-            if() {  // si el mes es igual que el mes_cad-1
-                //if el dia es
 
-            }
-            return -1;
+        if (y_cad == y + 1) {//caso especial
+            if(leapyear)
+                return LEAPYEAR + totaldays_cad - totaldays_now <= X;
+            else
+                return NO_LEAPYEAR + totaldays_cad - totaldays_now <= X;
         }
-        else if (DateCad[1]!=m) {
+        else if (y_cad == y) {//año igual
+            return totaldays_cad - totaldays_now<=X;
+        }
+        else//año muy diferente
+            return false;
+    }
 
+    private void createNotificationChannel() {
+        // Create the NotificationChannel, but only on API 26+ because
+        // the NotificationChannel class is new and not in the support library
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            CharSequence name = "Canal1";
+            String description = "canal para notificar";
+            int importance = NotificationManager.IMPORTANCE_DEFAULT;
+            NotificationChannel channel = new NotificationChannel("123", name, importance);
+            channel.setDescription(description);
+            // Register the channel with the system; you can't change the importance
+            // or other notification behaviors after this
+            NotificationManager notificationManager = getSystemService(NotificationManager.class);
+            notificationManager.createNotificationChannel(channel);
         }
     }
 
-    public int CheckandNotifyCaducity(){
+    public void setNotification(int position){
+        createNotificationChannel();//creacion del canal
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "123")
+                .setSmallIcon(R.drawable.ic_baseline_fastfood_24)
+                .setContentTitle("Se te caduca la comida !!!!!")//añadir el nombre del prod
+                .setContentText("El producto "+productlist.get(position).name+" se caducará dentro de 3 dias")
+                .setPriority(NotificationCompat.PRIORITY_DEFAULT);
+        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
+
+    // notificationId(first input) is a unique int for each notification that you must define
+        notificationManager.notify(position, builder.build());
+    }
+
+    public void CheckAndNotifyCaducity(){
         Calendar actual_date = Calendar.getInstance();
         int i,j,d,m,y;
         int[] DateCad;
+
         d=actual_date.get(Calendar.DAY_OF_MONTH);
         m=actual_date.get(Calendar.MONTH);
         y=actual_date.get(Calendar.YEAR);
 
         for (i=0; i<productlist.size(); i++){
             DateCad = DateToInteger(productlist.get(i).caducity);
-                Check3daysbefore(DateCad,d,m,y);
-
+            if(CheckXdaysbefore(DateCad,d,m,y)){
+                setNotification(i);
+                Toast.makeText(ActivityList.this,"Notificacion generada",Toast.LENGTH_SHORT).show();
             }
         }
-
     }
+
+
 
 }
 

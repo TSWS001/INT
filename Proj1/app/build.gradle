@@ -34,7 +34,8 @@ android {
 
 dependencies {
     implementation 'com.google.code.gson:gson:2.8.8'//para convertir objetos en formato gson(String) para poder guardarlo en Preference
-    implementation 'me.dm7.barcodescanner:zxing:1.9.13'
+    implementation 'me.dm7.barcodescanner:zxing:1.9.13' //libreria relacionada con el escaner del codigo
+    implementation "androidx.core:core:1.6.0" //libreria relacionada con las notificaciones
     implementation 'androidx.appcompat:appcompat:1.5.1'
     implementation 'com.google.android.material:material:1.6.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.3'
