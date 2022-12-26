@@ -58,6 +58,7 @@ public class ActivityList extends AppCompatActivity implements RecyclerViewInter
         if(json.length()>2) {
             Type listType = new TypeToken<ArrayList<Product>>(){}.getType();
             productlist = gson.fromJson(json, listType);
+            CheckAndNotifyCaducity();   //notifica si un producto esta a punto de caducar
             Log.i("DebugggggggGGGGg:", "From get json " + productlist.get(0).barcode);
         }
 
@@ -89,7 +90,6 @@ public class ActivityList extends AppCompatActivity implements RecyclerViewInter
         listquantity.setText(String.valueOf(productlist.size())); //set the value of "x products remaining"
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        CheckAndNotifyCaducity();   //notifica si un producto esta a punto de caducar
     }
 
     private void SetUpProducts() {
@@ -178,9 +178,9 @@ public class ActivityList extends AppCompatActivity implements RecyclerViewInter
         boolean leapyear;
         leapyear=LeapYear(y);
         //sum of months
-        for(i=1; i<m; i++) {//suma del mes 1 hasta el mes m-1
-            if (i<8){   //primera mitad del año
-                if (i==2) {//caso especial
+        for(i=1; i<m; i++) {    //suma del mes 1 hasta el mes m-1
+            if (i<8){           //primera mitad del año
+                if (i==2) {     //caso especial
                     if(leapyear)
                         res=res+29;
                     else
@@ -204,29 +204,28 @@ public class ActivityList extends AppCompatActivity implements RecyclerViewInter
        return res;
     }
 
-    public boolean CheckXdaysbefore(int[] DateCad, int d, int m, int y){
+    public int DaysDifference(int[] DateCad, int d, int m, int y){
         int d_cad,m_cad,y_cad,totaldays_cad,totaldays_now;
-        final int LEAPYEAR=366,NO_LEAPYEAR=365, X=3;
-        boolean leapyear=LeapYear(y);
+        final int LEAPYEAR=366,NO_LEAPYEAR=365;
 
         d_cad=DateCad[0];
         m_cad=DateCad[1];
         y_cad=DateCad[2];
         totaldays_now=StringDateToDays(d,m,y);
         totaldays_cad=StringDateToDays(d_cad,m_cad,y_cad);
+        //Log.i("dia caducidad de prod:",d_cad+"/"+m_cad+"/"+y_cad);
 
-
-        if (y_cad == y + 1) {//caso especial
-            if(leapyear)
-                return LEAPYEAR + totaldays_cad - totaldays_now <= X;
+        if (y_cad == y + 1) {//caso especial, los años se diferencia en 1 año
+            if(LeapYear(y))
+                return LEAPYEAR + totaldays_cad - totaldays_now;
             else
-                return NO_LEAPYEAR + totaldays_cad - totaldays_now <= X;
+                return NO_LEAPYEAR + totaldays_cad - totaldays_now;
         }
         else if (y_cad == y) {//año igual
-            return totaldays_cad - totaldays_now<=X;
+            return totaldays_cad - totaldays_now;
         }
         else//año muy diferente
-            return false;
+            return -1;
     }
 
     private void createNotificationChannel() {
@@ -245,12 +244,19 @@ public class ActivityList extends AppCompatActivity implements RecyclerViewInter
         }
     }
 
-    public void setNotification(int position){
+    public void setNotification(int position, int X){   //X is the difference between two dates
         createNotificationChannel();//creacion del canal
+        String msg;
+
+        if (X==0)
+            msg="El producto "+productlist.get(position).name+" se caducará HOY";
+        else   //si el product se caduca dentro de mas de 1 dia
+            msg="El producto "+productlist.get(position).name+" se caducará dentro de "+X+" dias";
+
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "123")
                 .setSmallIcon(R.drawable.ic_baseline_fastfood_24)
                 .setContentTitle("Se te caduca la comida !!!!!")//añadir el nombre del prod
-                .setContentText("El producto "+productlist.get(position).name+" se caducará dentro de 3 dias")
+                .setContentText(msg)
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT);
         NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
 
@@ -258,9 +264,21 @@ public class ActivityList extends AppCompatActivity implements RecyclerViewInter
         notificationManager.notify(position, builder.build());
     }
 
+    public boolean NumeroExiste(ArrayList<Integer> arrayList, int numero){
+        int i;
+        if (arrayList.size()==0)
+            return false;
+
+        for (i=0; i<arrayList.size(); i++){
+            if (arrayList.get(i)==numero)
+                return true;
+        }
+        return false;
+    }
+
     public void CheckAndNotifyCaducity(){
         Calendar actual_date = Calendar.getInstance();
-        int i,j,d,m,y;
+        int i,d,m,y,X;
         int[] DateCad;
 
         d=actual_date.get(Calendar.DAY_OF_MONTH);
@@ -269,14 +287,33 @@ public class ActivityList extends AppCompatActivity implements RecyclerViewInter
 
         for (i=0; i<productlist.size(); i++){
             DateCad = DateToInteger(productlist.get(i).caducity);
-            if(CheckXdaysbefore(DateCad,d,m,y)){
-                setNotification(i);
-                Toast.makeText(ActivityList.this,"Notificacion generada",Toast.LENGTH_SHORT).show();
+            if(!productlist.get(i).notificado){ //si el prod actual no ha sido notificado
+                X = DaysDifference(DateCad,d,m,y);
+                //Log.i("Act List____X:",String.valueOf(X));
+                if(3>=X){
+                    //si el producto esta a punto de caducar y no es hoy
+                    setNotification(i,X);
+                    productlist.get(i).notificado=true;
+                    //Toast.makeText(ActivityList.this,"Caduca en menos de "+X,Toast.LENGTH_SHORT).show();
+                }
+                else
+                    return;
+
             }
         }
     }
-
-
-
 }
 
+/*
+* if(X==0){  //si caduca hoy
+                    setNotification(i,X);
+                    productlist.get(i).notificado=true;
+                    Toast.makeText(ActivityList.this,"Caduca HOY "+X,Toast.LENGTH_SHORT).show();
+                }
+                else if(3>=X){
+                    //si el producto esta a punto de caducar y no es hoy
+                    setNotification(i,X);
+                    productlist.get(i).notificado=true;
+                    Toast.makeText(ActivityList.this,"Caduca en menos de "+X,Toast.LENGTH_SHORT).show();
+                }
+* */

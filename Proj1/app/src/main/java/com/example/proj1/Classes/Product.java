@@ -32,6 +32,7 @@ public class Product implements Serializable { //connected with database Product
     public float proteinas;
     public float sal;
     public String ingredients;
+    public boolean notificado=false;
 
     public Product(String barcode, String name, String caducity, int quantity, int total_weight, int remain_product, int base_area) {
         this.barcode = barcode;

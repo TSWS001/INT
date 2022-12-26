@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this, "La recomendación de dietas estará disponible próximamente", Toast.LENGTH_SHORT).show();
             //activitydiet
         } else if (v == findViewById(R.id.ic_settings)) {
-            Toast.makeText(this, "ic_settings clicked", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this, "ic_settings clicked", Toast.LENGTH_SHORT).show();
             startActivity(new Intent(this, ActivitySettings.class));
         }
     }

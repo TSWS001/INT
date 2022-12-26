@@ -53,7 +53,7 @@ public class ActivityLogin extends AppCompatActivity {
                 Intent i = new Intent(ActivityLogin.this,MainActivity.class);
 
                 int pos = CheckIdentity(email.getText().toString(),password.getText().toString());
-                Log.i("bbbbbbbbbbbbbbbbbb","position: "+pos);
+                Log.i("ActLogin :","position del usuario: "+pos);
                 UserArrayPrint(); // debug
                 if (pos>=0) {
                     user_current = users.get(pos);
