@@ -144,9 +144,9 @@ public class Product implements Serializable { //connected with database Product
         }else if (y<act_date.get(Calendar.YEAR)){
             bool= false;
         }else if (y==act_date.get(Calendar.YEAR)){
-            if (m<act_date.get(Calendar.MONTH)){
+            if (m<act_date.get(Calendar.MONTH)+1){
                 bool= false;
-            }else if (m==act_date.get(Calendar.MONTH) && d<act_date.get(Calendar.DAY_OF_MONTH)){
+            }else if (m==act_date.get(Calendar.MONTH)+1 && d<act_date.get(Calendar.DAY_OF_MONTH)){
                 bool= false;
             }
         }

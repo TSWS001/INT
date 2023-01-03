@@ -64,8 +64,7 @@ public class ActivityList extends AppCompatActivity implements RecyclerViewInter
         if(json.length()>2) {   //si el contenido de preference no esta vacio
             Type listType = new TypeToken<ArrayList<Product>>(){}.getType();
             productlist = gson.fromJson(json, listType);
-            CheckAndNotifyCaducity();   //notifica si un producto esta a punto de caducar
-            Log.i("DebugggggggGGGGg:", "From get json " + productlist.get(0).barcode);
+            Log.i("ActList prodlist lleno:", "From get json prod 0 barcode " + productlist.get(0).barcode);
         }
 //        //reseteamos el atributo notify en todos los productos de la productlist
 //        if(PrimeraEjecuciondelaApp)
@@ -93,6 +92,9 @@ public class ActivityList extends AppCompatActivity implements RecyclerViewInter
         RecyclerView recyclerView = findViewById(R.id.mRecyclerView);
 
         SetUpProducts();
+        //la pongo despues del setUpProducts para q notificque el nuevo prod añadido
+        CheckAndNotifyCaducity();   //notifica si un producto esta a punto de caducar
+        StoreList();
 
         adapter = new RecyclerViewAdapter(this,productlist, this);
         recyclerView.setAdapter(adapter);
@@ -102,25 +104,27 @@ public class ActivityList extends AppCompatActivity implements RecyclerViewInter
 
     private void SetUpProducts() {
 
-        SharedPreferences preferences =getPreferences(Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = preferences.edit();
-        Gson gson = new Gson();
-        String json;
+//        SharedPreferences preferences =getPreferences(Context.MODE_PRIVATE);
+//        SharedPreferences.Editor editor = preferences.edit();
+//        Gson gson = new Gson();
+//        String json;
 
         //------------------------------------------------------------------------------------------
         Product new_product = (Product) getIntent().getSerializableExtra("product");
         if(new_product!=null){
             new_product.notificado=false;
             productlist.add(new_product);
-            Log.i("Debugggggggg:","Adding "+new_product.barcode);
+            Log.i("ActList setup:","Adding "+new_product.barcode);
+            Log.i("ActList setup_listsize:",String.valueOf(productlist.size()));
+
         }
         else
             Log.i("xxxxxxxxxxinlei:","the product added is null. Error from ActivityList");
         //------------------------------------------------------------------------------------------
         //guardar los datos de la lista de productos a preferences
-        json = gson.toJson(productlist);
-        editor.putString("listadeproductos",json);
-        editor.apply();
+//        json = gson.toJson(productlist);
+//        editor.putString("listadeproductos",json);
+//        editor.apply();
     }
 
     @Override
@@ -167,11 +171,23 @@ public class ActivityList extends AppCompatActivity implements RecyclerViewInter
         startActivity(new Intent(ActivityList.this,MainActivity.class));
     }
 
-    public void SetAllNotifyToFalse(){
-        int i;
-        for (i=0; i<productlist.size(); i++){
-            productlist.get(i).notificado=false;
-        }
+//    public void SetAllNotifyToFalse(){
+//        int i;
+//        for (i=0; i<productlist.size(); i++){
+//            productlist.get(i).notificado=false;
+//        }
+//    }
+
+    public void StoreList(){
+        SharedPreferences preferences =getPreferences(Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        Gson gson = new Gson();
+        String json;
+
+        //guardar los datos de la lista de productos a preferences
+        json = gson.toJson(productlist);
+        editor.putString("listadeproductos",json);
+        editor.apply();
     }
 
     public int[] DateToInteger(String date){    //output structure: [day,month,year]
@@ -298,12 +314,14 @@ public class ActivityList extends AppCompatActivity implements RecyclerViewInter
         int[] DateCad;
 
         d=actual_date.get(Calendar.DAY_OF_MONTH);
-        m=actual_date.get(Calendar.MONTH);
+        m=actual_date.get(Calendar.MONTH)+1;
         y=actual_date.get(Calendar.YEAR);
+        Log.i("ActList fecha actual:",d+"/"+m+"/"+y);
 
         for (i=0; i<productlist.size(); i++){
             DateCad = DateToInteger(productlist.get(i).caducity);
-            Log.i("ActList prod.notficado:",i+" "+productlist.get(i).notificado+"");
+            Log.i("Act List_list_size:",String.valueOf(productlist.size()));
+            Log.i("ActList prod.notficado:",i+" "+productlist.get(i).notificado+" "+" fecha cad: "+productlist.get(i).caducity);
             if(!productlist.get(i).notificado){ //si el prod actual no ha sido notificado
                 X = DaysDifference(DateCad,d,m,y);
                 Log.i("Act List____X:",String.valueOf(X));
@@ -311,7 +329,7 @@ public class ActivityList extends AppCompatActivity implements RecyclerViewInter
                     //si el producto esta a punto de caducar y no es hoy
                     setNotification(i,X);
                     productlist.get(i).notificado=true;
-                    Toast.makeText(ActivityList.this,"Caduca en menos de "+X,Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(ActivityList.this,"Caduca en menos de "+X,Toast.LENGTH_SHORT).show();
                 }
                 else
                     return;

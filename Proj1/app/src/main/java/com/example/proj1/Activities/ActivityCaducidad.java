@@ -51,7 +51,7 @@ public class ActivityCaducidad extends AppCompatActivity {
                 year = cad_year.getText().toString();
                 String cad_data = day+"/"+month+"/"+year;
                 setQuantityInt();
-                Log.i("CANTIDAD en int", "int quantity"+"="+quant_int);
+                //Log.i("CANTIDAD en int", "int quantity"+"="+quant_int);
                 if (day.length()+month.length()+year.length()<8){
                     Toast.makeText(ActivityCaducidad.this, "introduce una fecha de caducidad válida", Toast.LENGTH_SHORT).show();
                 }
@@ -64,10 +64,9 @@ public class ActivityCaducidad extends AppCompatActivity {
                     Intent intent = new Intent(ActivityCaducidad.this,ActivityList.class);
                     product.setCaducity(cad_data);
                     product.setQuantity(quant_int);
-                    Log.i("CANTIDAD stored", "stored quantity"+"="+product.quantity);
-                    Log.i("aaaaaaaaaaaaaaaaaaaaaaa", cad_data+"="+product.caducity);
+                    //Log.i("CANTIDAD stored", "stored quantity"+"="+product.quantity);
                     intent.putExtra("product",product);
-                    Log.i("Debugggggggg:","With cad "+product.barcode);
+                    Log.i("ActCad with cad:","With cad "+product.barcode);
                     startActivity(intent);
                     finish();
                 }
@@ -81,9 +80,9 @@ public class ActivityCaducidad extends AppCompatActivity {
                 product = (Product) getIntent().getSerializableExtra("product");
                 product.setCaducity("No tiene");
                 setQuantityInt();
-                Log.i("CANTIDAD stored", "stored quantity"+"="+product.quantity);
+                //Log.i("CANTIDAD stored", "stored quantity"+"="+product.quantity);
                 intent.putExtra("product",product);
-                Log.i("Debugggggggg:","No cad "+product.barcode);
+                Log.i("ActCad no cad:","No cad "+product.barcode);
 
                 startActivity(intent);
                 finish();
